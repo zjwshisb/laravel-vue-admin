@@ -14,5 +14,6 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:backend')->get('/user', function (Request $request) {
-    return $request->user();
+    dump( \Illuminate\Support\Facades\Auth::user());
+    return;
 });

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\UserProvider;
 class BackendGuard extends TokenGuard {
 
-    protected $expressKey = 'expire_time';
+    protected $expireKey = 'expire_time';
 
     protected $maintainTime = 30 * 60;
 
@@ -17,9 +17,6 @@ class BackendGuard extends TokenGuard {
 
     public function user()
     {
-        // If we've already retrieved the user for the current request we can just
-        // return it back immediately. We do not want to fetch the user data on
-        // every call to this method because that would be tremendously slow.
         if (! is_null($this->user)) {
             return $this->user;
         }
@@ -30,11 +27,18 @@ class BackendGuard extends TokenGuard {
 
         if (! empty($token)) {
             $user = $this->provider->retrieveByCredentials(
+                // 登陆的查询条件
                 [
                     [$this->storageKey,'=', $token],
-                    [$this->expressKey,'<',date("Y-m-d H:i:s",time()+$this->maintainTime)]
+                    [$this->expireKey,'>',date("Y-m-d H:i:s")]
                 ]
             );
+            // token 延期
+            if($user){
+                $expireKey = $this->expireKey;
+                $user->$expireKey = date("Y-m-d H:i:s",time() + $this->maintainTime);
+                $user->save();
+            }
         }
 
         return $this->user = $user;
