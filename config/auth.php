@@ -38,7 +38,7 @@ return [
     'guards' => [
         'backend' => [
             'driver'=>'backend',
-            'provider'=>'admin'
+            'provider'=>'backend'
         ]
     ],
 
@@ -60,8 +60,8 @@ return [
     */
 
     'providers' => [
-        'admin' => [
-            'driver' => 'eloquent',
+        'backend' => [
+            'driver' => 'backend',
             'model' => App\Models\Admin::class,
         ]
     ],

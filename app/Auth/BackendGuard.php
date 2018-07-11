@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\UserProvider;
 class BackendGuard extends TokenGuard {
 
+    protected $expressKey = 'expire_time';
+
+    protected $maintainTime = 30 * 60;
+
     public function __construct(UserProvider $provider, Request $request, $inputKey = 'api_token', $storageKey = 'api_token')
     {
        parent::__construct($provider,$request,$inputKey,$storageKey);
@@ -26,7 +30,10 @@ class BackendGuard extends TokenGuard {
 
         if (! empty($token)) {
             $user = $this->provider->retrieveByCredentials(
-                [$this->storageKey => $token]
+                [
+                    [$this->storageKey,'=', $token],
+                    [$this->expressKey,'<',date("Y-m-d H:i:s",time()+$this->maintainTime)]
+                ]
             );
         }
 

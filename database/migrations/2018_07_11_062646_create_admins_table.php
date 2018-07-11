@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('password',128)->comment('密码');
             $table->tinyInteger('is_super')->comment('是否超级管理员');
             $table->string('api_token',128)->nullable()->comment('登陆token');
+            $table->dateTime('expire_time')->nullable()->comment('token过期时间');
             $table->timestamps();
         });
     }
