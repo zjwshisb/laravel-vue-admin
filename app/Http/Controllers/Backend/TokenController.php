@@ -3,12 +3,13 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
 
 class TokenController extends BackendController{
 
     public function index(){
-
+        echo Route::currentRouteName();
     }
 
     public function store(Request $request){

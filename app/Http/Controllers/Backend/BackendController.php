@@ -13,7 +13,10 @@ class BackendController extends Controller{
      * @param string $key
      * @return array
      */
-    protected function success($data,string $key = 'data') : array {
+    protected function success($data = null,string $key = 'data') : array {
+        if(is_null($data)){
+            $data = [];
+        }
         if(!is_array($data)){
             $data =  [ $key => $data];
         }

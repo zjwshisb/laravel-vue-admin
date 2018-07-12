@@ -14,9 +14,9 @@ import store from './store'
 
 import '@/icons' // icon
 import '@/permission' // permission control
-
+import elementUIVerify from 'element-ui-verify'
 Vue.use(ElementUI, { locale })
-
+Vue.use(elementUIVerify)
 Vue.config.productionTip = false
 
 new Vue({
