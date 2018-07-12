@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <h3 class="title">vue-element-admin</h3>
+      <h3 class="title">laravel-vue-admin</h3>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user" />
@@ -77,7 +77,8 @@ export default {
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
             this.$router.push({ path: '/' })
-          }).catch(() => {
+          }).catch(error => {
+            this.$message.error(error)
             this.loading = false
           })
         } else {

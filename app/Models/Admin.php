@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
+
 class Admin extends Authenticatable
 {
     use Notifiable;
+    use HasRoles;
+
+    protected $guard_name = 'backend';
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +31,4 @@ class Admin extends Authenticatable
         'password'
     ];
 
-    public function retrieveByCredentials($array) {
-        var_dump($array);exit();
-    }
 }

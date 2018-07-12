@@ -6,7 +6,7 @@ const user = {
     token: getToken(),
     name: '',
     avatar: '',
-    roles: []
+    permissions: []
   },
 
   mutations: {
@@ -16,11 +16,8 @@ const user = {
     SET_NAME: (state, name) => {
       state.name = name
     },
-    SET_AVATAR: (state, avatar) => {
-      state.avatar = avatar
-    },
-    SET_ROLES: (state, roles) => {
-      state.roles = roles
+    SET_PERMISSIONS: (state, permissions) => {
+      state.permissions = permissions
     }
   },
 
@@ -29,11 +26,14 @@ const user = {
     Login({ commit }, userInfo) {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
-        login(username, userInfo.password).then(response => {
-          const data = response.data
-          setToken(data.token)
-          commit('SET_TOKEN', data.token)
-          resolve()
+        login({ username: username, password: userInfo.password }).then(response => {
+          if (response.status === 1) {
+            setToken(response.token)
+            commit('SET_TOKEN', response.token)
+            resolve()
+          } else {
+            reject(response.msg)
+          }
         }).catch(error => {
           reject(error)
         })
@@ -43,16 +43,15 @@ const user = {
     // 获取用户信息
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
-        getInfo(state.token).then(response => {
-          const data = response.data
-          if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
-            commit('SET_ROLES', data.roles)
+        getInfo(state.token).then(res => {
+          const user = res.user
+          if (res.permissions && res.permissions.length > 0) {
+            commit('SET_PERMISSIONS', res.permissions)
           } else {
-            reject('getInfo: roles must be a non-null array !')
+            reject('no permissions')
           }
-          commit('SET_NAME', data.name)
-          commit('SET_AVATAR', data.avatar)
-          resolve(response)
+          commit('SET_NAME', user.username)
+          resolve(res)
         }).catch(error => {
           reject(error)
         })

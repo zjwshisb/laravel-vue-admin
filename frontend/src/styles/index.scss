@@ -3,7 +3,8 @@
 @import './transition.scss';
 @import './element-ui.scss';
 @import './sidebar.scss';
-
+@import './common.scss';
+@import '/btn.scss';
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -75,4 +76,15 @@ a:hover {
 
 .app-container {
   padding: 20px;
+}
+.pagination-container {
+  margin-top: 30px;
+}
+.filter-container {
+  padding-bottom: 10px;
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
 }

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $admin = new \App\Models\Admin();
         $admin->username = 'admin';
         $admin->password = Hash::make('admin');
-        $admin->is_super = 1;
+        $admin->is_super = 0;
         $admin->save();
     }
 }

@@ -10,11 +10,21 @@ class BackendGuard extends TokenGuard {
 
     protected $maintainTime = 30 * 60;
 
+    /**
+     * BackendGuard constructor.
+     * @param UserProvider $provider
+     * @param Request $request
+     * @param string $inputKey
+     * @param string $storageKey
+     */
     public function __construct(UserProvider $provider, Request $request, $inputKey = 'api_token', $storageKey = 'api_token')
     {
        parent::__construct($provider,$request,$inputKey,$storageKey);
     }
 
+    /**
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     */
     public function user()
     {
         if (! is_null($this->user)) {
@@ -24,7 +34,6 @@ class BackendGuard extends TokenGuard {
         $user = null;
 
         $token = $this->getTokenForRequest();
-
         if (! empty($token)) {
             $user = $this->provider->retrieveByCredentials(
                 // 登陆的查询条件
@@ -40,7 +49,6 @@ class BackendGuard extends TokenGuard {
                 $user->save();
             }
         }
-
         return $this->user = $user;
     }
 }
