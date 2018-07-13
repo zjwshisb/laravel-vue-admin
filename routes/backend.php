@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 Route::apiResource('tokens','TokenController');
 
-Route::group(['middleware' => ['auth:backend']],function () {
+Route::group(['middleware' => ['auth:backend','permission']],function () {
     Route::apiResources([
         'users'=> 'UserController',
         'roles'=> 'RoleController',

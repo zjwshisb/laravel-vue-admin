@@ -42,6 +42,7 @@ export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })
+// 异步路由
 export const asyncRouterMap = [
   {
     path: '/system',

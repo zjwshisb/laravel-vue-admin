@@ -63,10 +63,8 @@ class RoleController extends BackendController
      * @return array
      */
     public function update(Request $request,$id) {
-        $role = Role::find($id);
-        if(!$role) {
-            $this->fail('角色不存在');
-        }
+        $role = Role::findOrFail($id);
+
         $role->name = $request->name;
         $role->description = $request->description;
         if($role->save()){

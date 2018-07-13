@@ -3,14 +3,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
 
 class TokenController extends BackendController{
-
-    public function index(){
-        echo Route::currentRouteName();
-    }
 
     public function store(Request $request){
         $username = $request->username;
@@ -22,6 +17,7 @@ class TokenController extends BackendController{
             $token = str_random(40);
             $admin->api_token = $token;
             $admin->expire_time = date("Y-m-d H:i:s",time()+ 30 * 60);
+            $admin->last_login_at = date("Y-m-d H:i:s");
             if($admin->save()){
                 return $this->success($token,'token');
             }

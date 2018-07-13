@@ -13,7 +13,7 @@ router.beforeEach((to, from, next) => {
       next({ path: '/' })
       NProgress.done() // if current page is dashboard will not trigger	afterEach hook, so manually handle it
     } else {
-      if (store.getters.permissions.length === 0) {
+      if (store.getters.name === '') {
         store.dispatch('GetInfo').then(res => { // 拉取用户信息
           const permissions = res.permissions
           store.dispatch('GenerateRoutes', { permissions }).then(syncRouters => { // 根据roles权限生成可访问的路由表

@@ -2,7 +2,6 @@ import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
 import store from '../store'
 import { getToken } from '@/utils/auth'
-
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
@@ -24,9 +23,6 @@ service.interceptors.request.use(config => {
 // respone拦截器
 service.interceptors.response.use(
   response => {
-  /**
-  * code为非20000是抛错 可结合自己业务进行修改
-  */
     const res = response.data
     if (res.errorCode) {
       // token 失效
@@ -41,9 +37,19 @@ service.interceptors.response.use(
           })
         })
       }
+      // 没有权限操作
+      if (res.errorCode === 403) {
+        MessageBox.alert('你没有权限执行此操作', '确定登出', {
+          confirmButtonText: '确定',
+          type: 'error',
+          callback: action => {
+            location.reload() // 刷新页面从新获取权限
+          }
+        })
+      }
       return Promise.reject('error')
     } else {
-      return response.data
+      return res
     }
   },
   error => {

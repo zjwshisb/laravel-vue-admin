@@ -19,7 +19,7 @@ Vue.use(ElementUI, { locale })
 Vue.use(elementUIVerify)
 Vue.config.productionTip = false
 
-// 注册权限指令(v-permission="'users.update'"),根据权限控制页面的按钮显示与否
+// 注册权限指令(v-permission="'users.update'"),根据权限控制页面元素显示与否
 Vue.directive('permission', {
   inserted: function(el, binding, vnode) {
     const permission = new Set(vnode.context.$route.meta.permissions)

@@ -18,7 +18,7 @@
           {{scope.row.status === 1 ? '启用':'禁用'}}
         </template>
       </el-table-column>
-      <el-table-column label="权限组">
+      <el-table-column label="权限组" align="center">
         <template slot-scope="scope">
           {{rolesToString(scope.row.roles)}}
         </template>

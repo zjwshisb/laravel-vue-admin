@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Validator;
 class AdminController extends BackendController{
@@ -24,6 +25,7 @@ class AdminController extends BackendController{
     /**
      * @param Request $request
      * @return array
+     * @throws ValidationException
      */
     public function store(Request $request){
         $validator = Validator::make($request->all(),[
@@ -31,15 +33,13 @@ class AdminController extends BackendController{
             'password'=>'required'
         ]);
         if($validator->fails()){
-            return $this->fail('表单填写不完整');
+           throw new ValidationException($validator);
         }
         $admin = Admin::firstOrNew([['username',$request->username]]);
         if($admin->exists) {
             return $this->fail('已存在相同的账号名');
         }
-        $admin->username = $request->username;
-        $admin->password = $request->password;
-        $admin->status = $request->status;
+        $admin->fill($request->all());
         if($admin->save()){
             $roles = Role::whereIn('id',$request->roles)->get();
             $admin->syncRoles($roles);
@@ -54,10 +54,7 @@ class AdminController extends BackendController{
      * @return array
      */
     public function update(Request $request,$id) {
-        $admin = Admin::find($id);
-        if(!$admin) {
-            $this->fail('账户不存在');
-        }
+        $admin = Admin::findOrFail($id);
         $admin->status = $request->status;
         if($admin->save()){
             $roles = Role::whereIn('id',$request->roles)->get();

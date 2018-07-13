@@ -12,7 +12,7 @@ class PermissionSeeder extends Seeder{
         $date = date('Y-m-d H:i:s');
         DB::table($tableNames['permissions'])->insert([
             [
-                'name'=>'tokens.index',
+                'name'=>'roles.index',
                 'description' => '角色列表',
                 'group'=>'权限组',
                 'guard_name'=>'backend',
@@ -20,7 +20,7 @@ class PermissionSeeder extends Seeder{
                 'updated_at'=>$date
             ],
             [
-                'name'=>'tokens.store',
+                'name'=>'roles.store',
                 'description' => '新增角色',
                 'group'=>'权限组',
                 'guard_name'=>'backend',
@@ -28,7 +28,7 @@ class PermissionSeeder extends Seeder{
                 'updated_at'=>$date
             ],
             [
-                'name'=>'tokens.update',
+                'name'=>'roles.update',
                 'description'=>'编辑角色',
                 'group'=>'权限组',
                 'guard_name'=>'backend',
@@ -36,7 +36,7 @@ class PermissionSeeder extends Seeder{
                 'updated_at'=>$date
             ],
             [
-                'name'=>'tokens.destroy',
+                'name'=>'roles.destroy',
                 'description'=>'删除角色',
                 'group'=>'权限组',
                 'guard_name'=>'backend',
@@ -44,7 +44,7 @@ class PermissionSeeder extends Seeder{
                 'updated_at'=>$date
             ],
             [
-                'name'=>'admin.index',
+                'name'=>'admins.index',
                 'description' => '管理员列表',
                 'group'=>'管理员',
                 'guard_name'=>'backend',
@@ -52,7 +52,7 @@ class PermissionSeeder extends Seeder{
                 'updated_at'=>$date
             ],
             [
-                'name'=>'admin.store',
+                'name'=>'admins.store',
                 'description' => '新增管理员',
                 'group'=>'管理员',
                 'guard_name'=>'backend',
@@ -60,7 +60,7 @@ class PermissionSeeder extends Seeder{
                 'updated_at'=>$date
             ],
             [
-                'name'=>'admin.update',
+                'name'=>'admins.update',
                 'description'=>'编辑管理员',
                 'group'=>'管理员',
                 'guard_name'=>'backend',
@@ -68,7 +68,7 @@ class PermissionSeeder extends Seeder{
                 'updated_at'=>$date
             ],
             [
-                'name'=>'admin.destroy',
+                'name'=>'admins.destroy',
                 'description'=>'删除管理员',
                 'group'=>'管理员',
                 'guard_name'=>'backend',

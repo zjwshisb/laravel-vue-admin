@@ -14,7 +14,10 @@ class DatabaseSeeder extends Seeder
         $admin = new \App\Models\Admin();
         $admin->username = 'admin';
         $admin->password = 'admin';
-        $admin->is_super = 0;
+        $admin->is_super = 1;
         $admin->save();
+        $this->call([
+            PermissionSeeder::class
+        ]);
     }
 }
