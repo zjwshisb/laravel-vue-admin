@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $admin = new \App\Models\Admin();
         $admin->username = 'admin';
-        $admin->password = Hash::make('admin');
+        $admin->password = 'admin';
         $admin->is_super = 0;
         $admin->save();
     }

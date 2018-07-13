@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "0.17.1",
     "element-ui": "2.3.4",
+    "element-ui-verify": "^1.1.5",
     "js-cookie": "2.2.0",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",

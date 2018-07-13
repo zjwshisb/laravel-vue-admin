@@ -1,29 +1,36 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input v-model="query.name" class="filter-item w-200" size="medium" placeholder="权限名"></el-input>
+      <el-input v-model="query.name" class="filter-item w-200" size="medium" placeholder="用户名"></el-input>
       <el-button  class="filter-item"  icon="el-icon-search" @click="fetchList">搜索</el-button>
-      <el-button v-permission="'roles.store'" type="primary" class="filter-item"  icon="el-icon-plus" @click="showAdd()">新增</el-button>
+      <el-button type="primary" v-permission="'admins.store'" class="filter-item"  icon="el-icon-plus" @click="showAdd()">新增</el-button>
     </div>
-    <el-table :data="roles" border stripe v-loading="visible.listLoading">
+    <el-table :data="admins" border stripe v-loading="visible.listLoading">
       <el-table-column label="#" width="100px">
         <template slot-scope="scope">
           {{query.size * (query.page-1) + scope.$index + 1}}
         </template>
       </el-table-column>
-      <el-table-column prop="name" label="名称" align="center">
+      <el-table-column prop="username" label="账号" align="center">
       </el-table-column>
-      <el-table-column prop="description" label="说明" align="center">
+      <el-table-column  label="状态" align="center">
+        <template slot-scope="scope">
+          {{scope.row.status === 1 ? '启用':'禁用'}}
+        </template>
+      </el-table-column>
+      <el-table-column label="权限组">
+        <template slot-scope="scope">
+          {{rolesToString(scope.row.roles)}}
+        </template>
+      </el-table-column>
+      <el-table-column prop="last_login_time" label="最后登陆时间" align="center">
       </el-table-column>
       <el-table-column prop="created_at" label="创建时间" align="center">
       </el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
-          <el-button size="mini" icon="el-icon-edit" type="primary" @click="showEdit(scope.row)" v-permission="'roles.update'">
+          <el-button size="mini" icon="el-icon-edit" type="primary" @click="showEdit(scope.row)" v-permission="'admins.update'">
             编辑
-          </el-button>
-          <el-button size="mini" icon="el-icon-close" type="danger" @click="handleDelete(scope.row.id)" v-permission="'roles.destroy'">
-            删除
           </el-button>
         </template>
       </el-table-column>
@@ -39,18 +46,32 @@
               :total="total">
       </el-pagination>
     </div>
-    <el-dialog :title="formTitle" :visible.sync="visible.form" width="800px" @close="$refs['form'].resetFields()">
+    <el-dialog :title="formTitle" :visible.sync="visible.form" width="600px" @close="$refs['form'].resetFields()">
       <el-form :model="form" label-width="100px" ref="form" >
-        <el-form-item label="名称" prop="name" verify  required>
-          <el-input v-model="form.name"></el-input>
+        <el-form-item label="账户名" prop="username" verify  required v-if="formType === 'add'">
+          <el-input v-model="form.username" />
         </el-form-item>
-        <el-form-item label="说明" prop="description" verify required>
-          <el-input v-model="form.description"></el-input>
+        <el-form-item label="密码" prop="password" verify  required v-if="formType === 'add'">
+          <el-input v-model="form.password"/>
         </el-form-item>
-        <el-form-item :label="key" prop="permissions" v-for="group,key in permissions" style="margin-bottom: 0px" :key="key">
-          <el-checkbox-group v-model="form.permissions" >
-            <el-checkbox v-for="per in group" :label="per.id" :key="per.id">{{per.description}}</el-checkbox>
-          </el-checkbox-group>
+        <el-form-item label="状态" prop="status" verify  required>
+          <el-switch
+              v-model="form.status"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              :active-value="1"
+              :inactive-value="0">
+          </el-switch>
+        </el-form-item>
+        <el-form-item label="权限角色" prop="roles">
+          <el-select v-model="form.roles" multiple placeholder="请选择" style="width: 100%">
+            <el-option
+                v-for="role in roles"
+                :key="role.id"
+                :label="role.name"
+                :value="role.id">
+            </el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -62,9 +83,9 @@
 </template>
 
 <script>
-  import { fetchRoles, addRole, editRole, deleteRole } from '@/api/system'
+  import { fetchAdmins, addAdmin, editAdmin } from '@/api/system'
   export default {
-    name: 'system-role',
+    name: 'system-admin',
     data() {
       return {
         query: {
@@ -82,15 +103,24 @@
         formTitle: '新增角色',
         editRow: '',
         form: {
-          name: '',
-          description: '',
-          permissions: []
+          username: '',
+          password: '',
+          roles: [],
+          status: 0
         },
-        roles: [],
-        permissions: {}
+        admins: [],
+        roles: []
       }
     },
     methods: {
+      rolesToString(roles) {
+        return roles.reduce((carry, role, index) => {
+          if (index === 0) {
+            return role.name
+          }
+          return role.name + '，' + carry
+        }, '')
+      },
       handleSizeChange(size) {
         this.query.size = size
         this.fetchList()
@@ -99,49 +129,35 @@
         this.query.page = page
         this.fetchList()
       },
-      handleDelete(id) {
-        this.$confirm('是否删除该角色?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          deleteRole(id).then(res => {
-            if (res.status === 1) {
-              this.$message.success('删除成功')
-              this.fetchList()
-            } else {
-              this.$message.error(res.msg)
-            }
-          })
-        }).catch(() => {
-
-        })
-      },
       handleForm() {
         this.$refs.form.validate().then(valid => {
           if (valid) {
             this.visible.formLoading = true
             if (this.formType === 'add') {
-              addRole(this.form).then(res => {
+              addAdmin(this.form).then(res => {
                 if (res.status === 1) {
                   this.fetchList()
-                  this.$message.success('新增成功')
                   this.visible.form = false
+                  this.$message.success('新增成功')
                 } else {
                   this.$message.error(res.msg)
                 }
                 this.visible.formLoading = false
+              }).catch(() => {
+                this.visible.form = false
               })
             } else {
-              editRole(this.form, this.editRow.id).then(res => {
+              editAdmin(this.form, this.editRow.id).then(res => {
                 if (res.status === 1) {
                   this.fetchList()
-                  this.$message.success('编辑成功')
+                  this.$message.success('编辑')
                   this.visible.form = false
                 } else {
                   this.$message.error(res.msg)
                 }
                 this.visible.formLoading = false
+              }).catch(() => {
+                this.visible.form = false
               })
             }
           }
@@ -150,9 +166,9 @@
       showEdit(row) {
         Object.existAssign(this.form, row)
         this.editRow = row
-        this.form.permissions = []
-        for (const per of row.permissions) {
-          this.form.permissions.push(per.id)
+        this.form.roles = []
+        for (const role of row.roles) {
+          this.form.roles.push(role.id)
         }
         this.visible.form = true
         this.formType = 'edit'
@@ -166,12 +182,12 @@
       },
       fetchList() {
         this.visible.listLoading = true
-        fetchRoles(this.query).then(res => {
-          this.roles = res.roles.data
-          this.total = res.roles.total
-          this.permissions = res.permissions
+        fetchAdmins(this.query).then(res => {
+          this.admins = res.admins.data
+          this.total = res.admins.total
+          this.roles = res.roles
           this.visible.listLoading = false
-        }).catch(() => {})
+        })
       }
     },
     created() {

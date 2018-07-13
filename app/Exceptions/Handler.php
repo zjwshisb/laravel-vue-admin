@@ -65,4 +65,5 @@ class Handler extends ExceptionHandler
             ], 200)
             : redirect()->guest(route('login'));
     }
+
 }

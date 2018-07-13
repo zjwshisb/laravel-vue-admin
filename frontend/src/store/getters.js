@@ -3,6 +3,7 @@ const getters = {
   device: state => state.app.device,
   token: state => state.user.token,
   name: state => state.user.name,
-  permissions: state => state.user.permissions
+  permissions: state => state.user.permissions,
+  addRouters: state => state.permission.addRouters
 }
 export default getters

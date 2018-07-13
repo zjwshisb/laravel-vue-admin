@@ -17,6 +17,7 @@ Route::apiResource('tokens','TokenController');
 Route::group(['middleware' => ['auth:backend']],function () {
     Route::apiResources([
         'users'=> 'UserController',
-        'roles'=> 'RoleController'
+        'roles'=> 'RoleController',
+        'admins'=> 'AdminController'
     ]);
 });

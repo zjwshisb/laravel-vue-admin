@@ -34,21 +34,7 @@ export const constantRouterMap = [
       path: 'dashboard',
       component: () => import('@/views/dashboard/index')
     }]
-  },
-  {
-    path: '/system',
-    component: Layout,
-    children: [
-      {
-        path: 'role',
-        name: 'system-role',
-        component: () => import('@/views/system/role'),
-        meta: { title: '权限管理', icon: 'role' }
-      }
-    ]
-  },
-
-  { path: '*', redirect: '/404', hidden: true }
+  }
 ]
 
 export default new Router({
@@ -56,4 +42,28 @@ export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })
+export const asyncRouterMap = [
+  {
+    path: '/system',
+    component: Layout,
+    meta: { title: '系统管理', icon: 'system' },
+    children: [
+      {
+        path: 'role',
+        name: 'system-role',
+        component: () => import('@/views/system/role'),
+        meta: { title: '权限', icon: 'role',
+          permissions: ['roles.index', 'roles.update', 'roles.destroy', 'roles.store'] }
+      },
+      {
+        path: 'admin',
+        name: 'system-admin',
+        component: () => import('@/views/system/admin'),
+        meta: { title: '管理员', icon: 'admin',
+          permissions: ['admins.index', 'admins.update', 'admins.store'] }
+      }
+    ]
+  },
+  { path: '*', redirect: '/404', hidden: true }
+]
 

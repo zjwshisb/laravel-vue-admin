@@ -15,7 +15,11 @@ router.beforeEach((to, from, next) => {
     } else {
       if (store.getters.permissions.length === 0) {
         store.dispatch('GetInfo').then(res => { // 拉取用户信息
-          next()
+          const permissions = res.permissions
+          store.dispatch('GenerateRoutes', { permissions }).then(syncRouters => { // 根据roles权限生成可访问的路由表
+            router.addRoutes(syncRouters) // 动态添加可访问路由表
+            next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+          })
         }).catch((err) => {
           store.dispatch('FedLogOut').then(() => {
             Message.error(err || 'Verification failed, please login again')

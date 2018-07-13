@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable
@@ -28,7 +29,16 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password'
+        'password','api_token','expire_time'
     ];
+
+    /**
+     * @param $val
+     */
+    public function setPasswordAttribute($val) {
+        $this->attributes['password'] = Hash::make($val);
+    }
+
+
 
 }

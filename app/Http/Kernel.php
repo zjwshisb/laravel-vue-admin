@@ -38,9 +38,9 @@ class Kernel extends HttpKernel
         ],
 
         'backend' => [
+            'cors',
             'throttle:60,1',
             'bindings',
-            'cors'
         ],
     ];
 
@@ -52,6 +52,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'cors'=> \Barryvdh\Cors\HandleCors::class,
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -60,6 +61,5 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'cors'=> \Barryvdh\Cors\HandleCors::class,
     ];
 }

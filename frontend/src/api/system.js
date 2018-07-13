@@ -21,4 +21,37 @@ export const editRole = (data, id) => {
     data
   })
 }
+export const deleteRole = id => {
+  return request({
+    url: `/roles/${id}`,
+    method: 'delete'
+  })
+}
+export const fetchAdmins = params => {
+  return request({
+    url: '/admins',
+    method: 'get',
+    params
+  })
+}
+export const addAdmin = data => {
+  return request({
+    url: '/admins',
+    method: 'post',
+    data
+  })
+}
+export const editAdmin = (data, id) => {
+  return request({
+    url: `/admins/${id}`,
+    method: 'put',
+    data
+  })
+}
+export const deleteAdmin = id => {
+  return request({
+    url: `/admins/${id}`,
+    method: 'delete'
+  })
+}
 
