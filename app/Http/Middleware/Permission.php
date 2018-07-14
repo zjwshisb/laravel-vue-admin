@@ -17,7 +17,7 @@ class Permission {
      * @return mixed
      * @throws ForbiddenException
      */
-    public function handle($request, Closure $next, $guard = null){
+    public function handle($request, Closure $next){
         $user = $request->user();
         $permission  = Route::currentRouteName();
         if($user->is_super || in_array($permission,$this->except) || $user->hasPermissionTo($permission)){

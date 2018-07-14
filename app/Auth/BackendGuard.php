@@ -36,13 +36,13 @@ class BackendGuard extends TokenGuard {
         $token = $this->getTokenForRequest();
         if (! empty($token)) {
             $user = $this->provider->retrieveByCredentials(
-                // 登陆的查询条件
+                // 验证的查询条件
                 [
                     [$this->storageKey,'=', $token],
                     [$this->expireKey,'>',date("Y-m-d H:i:s")]
                 ]
             );
-            // token 延期
+            // 验证后的操作:token 延期
             if($user){
                 $expireKey = $this->expireKey;
                 $user->$expireKey = date("Y-m-d H:i:s",time() + $this->maintainTime);
