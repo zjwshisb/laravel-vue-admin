@@ -27,15 +27,21 @@ service.interceptors.response.use(
     if (res.errorCode) {
       // token 失效
       if (res.errorCode === 401) {
-        MessageBox.confirm('你已被登出，可以取消继续留在该页面，或者重新登录', '确定登出', {
-          confirmButtonText: '重新登录',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          store.dispatch('FedLogOut').then(() => {
-            location.reload()// 为了重新实例化vue-router对象 避免bug
+        if (store.getters.name !== '') {
+          MessageBox.confirm('你已被登出，可以取消继续留在该页面，或者重新登录', '确定登出', {
+            confirmButtonText: '重新登录',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            store.dispatch('FedLogOut').then(() => {
+              location.reload()// 为了重新实例化vue-router对象 避免bug
+            })
           })
-        })
+        } else {
+          store.dispatch('FedLogOut').then(() => {
+            location.reload()
+          })
+        }
       }
       // 没有权限操作
       if (res.errorCode === 403) {
