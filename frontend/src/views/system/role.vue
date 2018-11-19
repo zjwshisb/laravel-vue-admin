@@ -47,10 +47,15 @@
         <el-form-item label="说明" prop="description" verify required>
           <el-input v-model="form.description"></el-input>
         </el-form-item>
-        <el-form-item :label="key" prop="permissions" v-for="group,key in permissions" style="margin-bottom: 0px" :key="key">
-          <el-checkbox-group v-model="form.permissions" >
-            <el-checkbox v-for="per in group" :label="per.id" :key="per.id">{{per.description}}</el-checkbox>
-          </el-checkbox-group>
+        <el-form-item label="权限" >
+          <el-tree
+            :data="permissions"
+            show-checkbox
+            node-key="id"
+            ref="tree"
+            :default-checked-keys="form.permissions"
+            :props="defaultProps">
+          </el-tree>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -87,7 +92,12 @@
           permissions: []
         },
         roles: [],
-        permissions: {}
+        permissions: [],
+        defaultProps: {
+          children: 'children',
+          label: 'name',
+          id: 'id'
+        }
       }
     },
     methods: {
@@ -121,6 +131,7 @@
         this.$refs.form.validate().then(valid => {
           if (valid) {
             this.visible.formLoading = true
+            this.form.permissions = this.$refs.tree.getCheckedKeys()
             if (this.formType === 'add') {
               addRole(this.form).then(res => {
                 if (res.status === 1) {
@@ -154,12 +165,18 @@
         for (const per of row.permissions) {
           this.form.permissions.push(per.id)
         }
+        if (this.$refs.tree !== undefined) {
+          this.$refs.tree.setCheckedKeys(this.form.permissions)
+        }
         this.visible.form = true
         this.formType = 'edit'
         this.formTitle = '编辑角色'
       },
       showAdd() {
         Object.assign(this.form, this.$options.data().form)
+        if (this.$refs.tree !== undefined) {
+          this.$refs.tree.setCheckedKeys([])
+        }
         this.visible.form = true
         this.formType = 'add'
         this.formTitle = '新增角色'

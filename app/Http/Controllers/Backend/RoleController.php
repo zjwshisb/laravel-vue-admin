@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Roles;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -21,16 +22,13 @@ class RoleController extends BackendController
     {
         $roles = Role::when($name = $request->name,function($query) use ($name){
             $query->where('name',$name);
-        })->orderBy('created_at','desc')->with('permissions')
-        ->paginate($request->size);
+        })->orderBy('created_at','desc')->with('permissions:name,id,role_id')
+            ->paginate($request->size);
         $permissions = Permission::all();
-        $group = [];
-        foreach ($permissions as $val) {
-            $group[$val->group][] = $val;
-        }
+        $menu = Roles::getPermissions($permissions);
         return $this->success([
             'roles' => $roles,
-            'permissions' => $group
+            'permissions' => $menu
         ]);
     }
 

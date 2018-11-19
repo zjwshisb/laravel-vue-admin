@@ -29,7 +29,7 @@ function filterAsyncRouter(asyncRouterMap, permissions) {
 
 const permission = {
   state: {
-    routers: constantRouterMap,
+    routes: constantRouterMap,
     addRouters: []
   },
   mutations: {

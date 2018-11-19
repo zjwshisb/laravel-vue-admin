@@ -19,6 +19,7 @@ class CreatePermissionTables extends Migration
             $table->increments('id');
             $table->string('name',64);
             $table->string('group',32)->comment('权限分组');
+            $table->string('menu',32)->comment('菜单');
             $table->string('description')->nullable();
             $table->string('guard_name',64);
             $table->timestamps();
