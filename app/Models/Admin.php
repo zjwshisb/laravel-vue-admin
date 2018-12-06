@@ -39,6 +39,11 @@ class Admin extends Authenticatable
         $this->attributes['password'] = Hash::make($val);
     }
 
-
+    /**
+     * @return bool
+     */
+    public function getSuperAdminAttribute(){
+        return !!$this->is_super;
+    }
 
 }

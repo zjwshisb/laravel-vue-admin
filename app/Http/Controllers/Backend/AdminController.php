@@ -1,67 +1,46 @@
 <?php
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\StoreAdmin;
+use App\Http\Resources\Backend\AdminResource;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Validator;
 class AdminController extends BackendController{
+
     /**
      * @param Request $request
-     * @return array
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(Request $request)
     {
-        $admin = Admin::when($username = $request->username,function($query) use ($username){
+        $admins = Admin::when($username = $request->username,function($query) use ($username){
             $query->where('username','like',$username."%");
         })->orderBy('created_at','desc')->with('roles')->paginate($request->size);
-        return $this->success([
-            'admins' => $admin,
-            'roles'=> Role::all()
-        ]);
+        return AdminResource::collection($admins);
     }
 
     /**
-     * @param Request $request
-     * @return array
-     * @throws ValidationException
+     * @param StoreAdmin $request
+     * @return AdminResource
      */
-    public function store(Request $request){
-        $validator = Validator::make($request->all(),[
-            'username'=>'required',
-            'password'=>'required'
-        ]);
-        if($validator->fails()){
-           throw new ValidationException($validator);
-        }
-        $admin = Admin::firstOrNew([['username',$request->username]]);
-        if($admin->exists) {
-            return $this->fail('已存在相同的账号名');
-        }
-        $admin->fill($request->all());
-        if($admin->save()){
-            $roles = Role::whereIn('id',$request->roles)->get();
-            $admin->syncRoles($roles);
-            return $this->success();
-        }
-        return $this->fail('保存失败');
+    public function store(StoreAdmin $request){
+        $admin = Admin::create($request->all());
+        $roles = Role::whereIn('id',$request->roles)->get();
+        $admin->syncRoles($roles);
+        return new AdminResource($admin);
     }
 
     /**
-     * @param Request $request
-     * @param $id
-     * @return array
+     * @param Admin $admin
+     * @return AdminResource
      */
-    public function update(Request $request,$id) {
-        $admin = Admin::findOrFail($id);
-        $admin->status = $request->status;
-        if($admin->save()){
-            $roles = Role::whereIn('id',$request->roles)->get();
-            $admin->syncRoles($roles);
-            return $this->success();
-        }
-        return $this->fail('保存失败');
+    public function update(Admin $admin) {
+        $admin->status = \request()->status;
+        $admin->save();
+        $roles = Role::whereIn('id',\request()->roles)->get();
+        $admin->syncRoles($roles);
+        return new AdminResource($admin);
     }
 
 }

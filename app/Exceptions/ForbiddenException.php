@@ -13,12 +13,4 @@ class ForbiddenException extends \Exception{
     {
         parent::__construct($message, $code, $previous);
     }
-
-    public function render($request){
-        if($request->expectsJson()) {
-            return response()->json([
-                'errorCode' => $this->getCode()
-            ], 200);
-        }
-    }
 }
