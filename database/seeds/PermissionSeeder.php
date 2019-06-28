@@ -13,77 +13,58 @@ class PermissionSeeder extends Seeder
     {
         $tableNames = config('permission.table_names');
         $date = date('Y-m-d H:i:s');
-        $data = [
-
-            [
-                'name' => 'roles.index',
-                'description' => '角色列表',
-                'group' => '权限组',
-                'menu' => '系统管理',
-                'created_at' => $date,
-                'updated_at' => $date
-            ],
-            [
-                'name' => 'roles.store',
-                'description' => '新增角色',
-                'group' => '权限组',
-                'menu' => '系统管理',
-                'created_at' => $date,
-                'updated_at' => $date
-            ],
-            [
-                'name' => 'roles.update',
-                'description' => '编辑角色',
-                'group' => '权限组',
-                'menu' => '系统管理',
-                'created_at' => $date,
-                'updated_at' => $date
-            ],
-            [
-                'name' => 'roles.destroy',
-                'description' => '删除角色',
-                'group' => '权限组',
-                'menu' => '系统管理',
-                'created_at' => $date,
-                'updated_at' => $date
-            ],
-            [
-                'name' => 'admins.index',
-                'description' => '管理员列表',
-                'group' => '管理员',
-                'menu' => '系统管理',
-                'created_at' => $date,
-                'updated_at' => $date
-            ],
-            [
-                'name' => 'admins.store',
-                'description' => '新增管理员',
-                'group' => '管理员',
-                'menu' => '系统管理',
-                'created_at' => $date,
-                'updated_at' => $date
-            ],
-            [
-                'name' => 'admins.update',
-                'description' => '编辑管理员',
-                'group' => '管理员',
-                'menu' => '系统管理',
-                'created_at' => $date,
-                'updated_at' => $date
-            ],
-            [
-                'name' => 'admins.destroy',
-                'description' => '删除管理员',
-                'group' => '管理员',
-                'menu' => '系统管理',
-                'created_at' => $date,
-                'updated_at' => $date
+        $permissions = [
+            '系统管理' => [
+                '权限组' => [
+                    '角色列表' => 'roles.index',
+                    '新增角色' => 'roles.store',
+                    '编辑角色' => 'roles.update',
+                    '修改密码' => 'roles.destroy'
+                ],
+                '管理员' => [
+                    '管理员列表' => 'admins.index',
+                    '新增管理员' => 'admins.store',
+                    '编辑管理员' => 'admins.update',
+                    '重置密码' => 'admins.destroy'
+                ]
             ]
-
         ];
-        foreach ($data as &$item) {
-            $item['guard_name']= 'backend';
+        $permissionNames = [];
+        foreach ($permissions as $key => $permission) {
+            foreach ($permission as $k => $item) {
+                foreach ($item as $i => $v) {
+                    if (DB::table($tableNames['permissions'])->whereName($v)->doesntExist()) {
+                        DB::table($tableNames['permissions'])->insert([
+                            'name' => $v,
+                            'menu' => $key,
+                            'group' => $k,
+                            'created_at' => $date,
+                            'updated_at' => $date,
+                            'description' => $i,
+                            'guard_name' => 'backend'
+                        ]);
+                    } else {
+                        DB::table($tableNames['permissions'])->whereName($v)->update([
+                            'name' => $v,
+                            'menu' => $key,
+                            'group' => $k,
+                            'created_at' => $date,
+                            'updated_at' => $date,
+                            'description' => $i,
+                            'guard_name' => 'backend'
+                        ]);
+                    }
+                    array_push($permissionNames, $v);
+                }
+            }
         }
-        DB::table($tableNames['permissions'])->insert($data);
+        if (app()->environment() === 'production') {
+            $data = DB::table($tableNames['permissions'])->get();
+            foreach ($data as $datum) {
+                if (!in_array($datum->name, $permissionNames)) {
+                    DB::table($tableNames['permissions'])->whereName($datum->name)->delete();
+                }
+            }
+        }
     }
 }

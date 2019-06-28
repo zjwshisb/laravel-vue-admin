@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 class Permission {
 
     protected $except = [
-      'me.index'
+      'me.index',
+        'data.index'
     ];
 
     /**
