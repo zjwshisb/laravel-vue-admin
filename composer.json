@@ -20,7 +20,8 @@
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0",
         "barryvdh/laravel-ide-helper": "^2.4",
-        "doctrine/dbal": "~2.3"
+        "doctrine/dbal": "~2.3",
+        "mnabialek/laravel-sql-logger": "^2.2"
     },
     "autoload": {
         "classmap": [
