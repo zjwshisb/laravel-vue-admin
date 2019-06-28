@@ -40,7 +40,7 @@ class Kernel extends HttpKernel
 
         'backend' => [
             'cors',
-            'throttle:60,1',
+            'throttle:180,1',
             'bindings',
         ],
     ];
@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'permission' => Permission::class
+        'permission' => Permission::class,
+        'log'=> \App\Http\Middleware\AdminActionLog::class
     ];
 }

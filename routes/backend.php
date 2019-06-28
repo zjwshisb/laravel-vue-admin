@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('tokens','TokenController@store');
-Route::group(['middleware' => ['auth:backend','permission']],function () {
+Route::group(['middleware' => ['auth:backend','permission','log']],function () {
     Route::apiResources([
         'roles'=> 'RoleController',
         'admins'=> 'AdminController'
