@@ -28,6 +28,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminActionLog whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminActionLog whereUserAgent($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminActionLog whereActionIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminActionLog whereMethod($value)
  */
 class AdminActionLog extends Model
 {
@@ -38,4 +40,8 @@ class AdminActionLog extends Model
     public $fillable = [
         'route','admin_id','params','user_agent','action_ip','method'
     ];
+
+    public function admin(){
+        return $this->belongsTo(Admin::class);
+    }
 }

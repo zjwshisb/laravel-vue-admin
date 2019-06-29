@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input v-model="query.name" class="filter-item w-200" size="medium" placeholder="用户名"></el-input>
-      <el-button  class="filter-item"  icon="el-icon-search" @click="fetchList">搜索</el-button>
-      <el-button type="primary" v-permission="'admins.store'" class="filter-item"  icon="el-icon-plus" @click="showAdd()">新增</el-button>
+      <el-input v-model="query.name"  class="filter-item w-200" size="medium" placeholder="用户名"></el-input>
+      <el-button  class="filter-item" size="medium"  icon="el-icon-search" @click="fetchList(true)">搜索</el-button>
+      <el-button type="primary" size="medium" v-permission="'admins.store'" class="filter-item"  icon="el-icon-plus" @click="showAdd()">新增</el-button>
     </div>
     <el-table :data="admins" border stripe v-loading="visible.listLoading">
       <el-table-column label="#" width="100px">
@@ -23,7 +23,7 @@
           {{rolesToString(scope.row.roles)}}
         </template>
       </el-table-column>
-      <el-table-column prop="last_login_time" label="最后登陆时间" align="center">
+      <el-table-column prop="last_login_at" label="最后登陆时间" align="center">
       </el-table-column>
       <el-table-column prop="created_at" label="创建时间" align="center">
       </el-table-column>
@@ -48,7 +48,7 @@
     </div>
     <el-dialog :title="formTitle" :visible.sync="visible.form" width="600px" @close="$refs['form'].resetFields()">
       <el-form :model="form" label-width="100px" ref="form" >
-        <el-form-item label="账户名" prop="username" verify  required v-if="formType === 'add'">
+        <el-form-item label="用户名" prop="username" verify required  v-if="formType === 'add'">
           <el-input v-model="form.username" />
         </el-form-item>
         <el-form-item label="密码" prop="password" verify  required v-if="formType === 'add'">
@@ -84,16 +84,16 @@
 
 <script>
   import { fetchAdmins, addAdmin, editAdmin } from '@/api/system'
+  import Paginate from '@/mixins/paginate'
+  import { requiredValidator } from '@/utils/validator'
   export default {
     name: 'system-admin',
+    mixins: [Paginate],
     data() {
       return {
         query: {
-          name: '',
-          size: 10,
-          page: 1
+          name: ''
         },
-        total: 0,
         visible: {
           form: false,
           formLoading: false,
@@ -113,6 +113,7 @@
       }
     },
     methods: {
+      requiredValidator,
       rolesToString(roles) {
         return roles.reduce((carry, role, index) => {
           if (index === 0) {
@@ -120,14 +121,6 @@
           }
           return role.name + '，' + carry
         }, '')
-      },
-      handleSizeChange(size) {
-        this.query.size = size
-        this.fetchList()
-      },
-      handleCurrentChange(page) {
-        this.query.page = page
-        this.fetchList()
       },
       handleForm() {
         this.$refs.form.validate().then(valid => {
@@ -180,7 +173,10 @@
         this.formType = 'add'
         this.formTitle = '新增管理员'
       },
-      fetchList() {
+      fetchList(reset = false) {
+        if (reset) {
+          this.query.page = 1
+        }
         this.visible.listLoading = true
         fetchAdmins(this.query).then(res => {
           this.admins = res.data

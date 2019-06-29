@@ -2,8 +2,8 @@
   <div class="app-container">
     <div class="filter-container">
       <el-input v-model="query.name" class="filter-item w-200" size="medium" placeholder="权限名"></el-input>
-      <el-button  class="filter-item"  icon="el-icon-search" @click="fetchList">搜索</el-button>
-      <el-button v-permission="'roles.store'" type="primary" class="filter-item"  icon="el-icon-plus" @click="showAdd()">新增</el-button>
+      <el-button  class="filter-item" size="medium"  icon="el-icon-search" @click="fetchList(true)">搜索</el-button>
+      <el-button v-permission="'roles.store'" size="medium" type="primary" class="filter-item"  icon="el-icon-plus" @click="showAdd()">新增</el-button>
     </div>
     <el-table :data="roles" border stripe v-loading="visible.listLoading">
       <el-table-column label="#" width="100px">
@@ -68,16 +68,15 @@
 
 <script>
   import { fetchRoles, addRole, editRole, deleteRole, fetchMenus } from '@/api/system'
+  import Paginate from '@/mixins/paginate'
   export default {
     name: 'system-role',
+    mixins: [Paginate],
     data() {
       return {
         query: {
-          name: '',
-          size: 10,
-          page: 1
+          name: ''
         },
-        total: 0,
         visible: {
           form: false,
           formLoading: false,
@@ -101,14 +100,6 @@
       }
     },
     methods: {
-      handleSizeChange(size) {
-        this.query.size = size
-        this.fetchList()
-      },
-      handleCurrentChange(page) {
-        this.query.page = page
-        this.fetchList()
-      },
       handleDelete(id) {
         this.$confirm('是否删除该角色?', '提示', {
           confirmButtonText: '确定',
@@ -181,7 +172,10 @@
         this.formType = 'add'
         this.formTitle = '新增角色'
       },
-      fetchList() {
+      fetchList(reset = false) {
+        if (reset) {
+          this.query.page = 1
+        }
         this.visible.listLoading = true
         fetchRoles(this.query).then(res => {
           this.roles = res.data

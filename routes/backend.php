@@ -20,4 +20,5 @@ Route::group(['middleware' => ['auth:backend','permission','log']],function () {
     ]);
     Route::get('data',"DataController@index");
     Route::get('me', 'MeController@index');
+    Route::get('admin-logs','AdminLogController@index');
 });

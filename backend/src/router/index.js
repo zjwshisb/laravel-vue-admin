@@ -53,7 +53,7 @@ export const asyncRouterMap = [
         path: 'role',
         name: 'system-role',
         component: () => import('@/views/system/role'),
-        meta: { title: '权限', icon: 'role',
+        meta: { title: '权限组', icon: 'role',
           permissions: ['roles.index', 'roles.update', 'roles.destroy', 'roles.store'] }
       },
       {
@@ -62,6 +62,13 @@ export const asyncRouterMap = [
         component: () => import('@/views/system/admin'),
         meta: { title: '管理员', icon: 'admin',
           permissions: ['admins.index', 'admins.update', 'admins.store'] }
+      },
+      {
+        path: 'admin-log',
+        name: 'system-admin-log',
+        component: () => import('@/views/system/admin-log'),
+        meta: { title: '操作日志', icon: 'log',
+          permissions: ['admin-logs.index'] }
       }
     ]
   },

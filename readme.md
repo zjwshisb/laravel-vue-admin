@@ -7,9 +7,9 @@
 # 安装php依赖，配置.env
 $ composer install 
 $ php artisan migrate  
-$ phpo artisan db:seed
+$ php artisan db:seed
 # 前端依赖
-$ cd frontend    
+$ cd backend    
 $ npm install 
 # 修改frontend/config/dev.env.js BASE_API 
 $ npm run dev  // 运行
@@ -42,7 +42,13 @@ export const asyncRouterMap = [
 ```html
 <el-button v-permission="'roles.store'" @click="handleAddRole">新增角色</el-button>
 ```
-5.后端的返回的拦截器在frontend/src/utils/request.js 中，可根据自己需要进行修改
+5.整合一些常用的包  
+* [barryvdh/laravel-cors](https://github.com/barryvdh/laravel-cors)
+* [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
+* [overtrue/laravel-lang](https://github.com/overtrue/laravel-lang)
+* [barryvdh/laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper)
+* [mnabialek/laravel-sql-logger](https://github.com/mnabialek/laravel-sql-logger)
+
 
 
 

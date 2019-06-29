@@ -26,6 +26,9 @@ class PermissionSeeder extends Seeder
                     '新增管理员' => 'admins.store',
                     '编辑管理员' => 'admins.update',
                     '重置密码' => 'admins.destroy'
+                ],
+                '操作日志'=> [
+                    '日志列表'=>'admin-logs.index'
                 ]
             ]
         ];

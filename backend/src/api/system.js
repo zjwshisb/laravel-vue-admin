@@ -70,4 +70,10 @@ export const fetData = async data => {
     }
   })
 }
+export const fetchAdminLog = params => {
+  return request({
+    url: 'admin-logs',
+    params
+  })
+}
 
