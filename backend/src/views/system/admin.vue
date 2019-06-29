@@ -85,7 +85,6 @@
 <script>
   import { fetchAdmins, addAdmin, editAdmin } from '@/api/system'
   import Paginate from '@/mixins/paginate'
-  import { requiredValidator } from '@/utils/validator'
   export default {
     name: 'system-admin',
     mixins: [Paginate],
@@ -113,7 +112,6 @@
       }
     },
     methods: {
-      requiredValidator,
       rolesToString(roles) {
         return roles.reduce((carry, role, index) => {
           if (index === 0) {
