@@ -1,4 +1,4 @@
-# laravel，vue.js，element-ui 前后端分离的后台整合包
+# laravel，vue.js，element-ui 前后端分离的后台快速开发整合包
 ## Description
 本项目由[laravel](https://github.com/laravel/laravel),[PanJiaChen/vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
 [element-ui](https://github.com/ElemeFE/element)整合修改而成，权限控制精确到按钮，开箱即用，
