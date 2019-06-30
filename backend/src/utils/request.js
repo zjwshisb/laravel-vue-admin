@@ -26,7 +26,10 @@ service.interceptors.response.use(
     return response.data
   },
   error => {
-    if (!error['response']) {
+    if (!error.response) {
+      MessageBox.alert('服务器无响应', '提示', {
+        confirmButtonText: '知道了'
+      })
       return Promise.reject(error)
     }
     switch (error.response.status) {
@@ -38,15 +41,13 @@ service.interceptors.response.use(
           content = value[0]
         })
         MessageBox.alert(content, '提示', {
-          confirmButtonText: '知道了',
-          type: 'error'
+          confirmButtonText: '知道了'
         })
         break
       }
       case 403: {
         MessageBox.alert('你没有权限执行此操作', '提示', {
-          confirmButtonText: '确定',
-          type: 'error'
+          confirmButtonText: '确定'
         })
         break
       }
@@ -72,13 +73,11 @@ service.interceptors.response.use(
       case 501:
       case 503:
         MessageBox.alert('服务器出了点问题', '提示', {
-          confirmButtonText: '确定',
-          type: 'error'
+          confirmButtonText: '确定'
         })
         break
     }
     return Promise.reject(error.response)
   }
 )
-
 export default service
