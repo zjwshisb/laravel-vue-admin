@@ -77,7 +77,8 @@
             this.$store.dispatch('Login', this.loginForm).then(() => {
               this.loading = false
               this.$router.push({ path: '/' })
-            }).catch(() => {
+            }).catch(e => {
+              this.$message.error(e.msg)
               this.loading = false
             })
           } else {

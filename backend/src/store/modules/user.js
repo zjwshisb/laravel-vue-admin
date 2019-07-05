@@ -27,7 +27,7 @@ const user = {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         login({ username: username, password: userInfo.password }).then(res => {
-          if (res.err_code) {
+          if (!res.token) {
             reject(res)
           } else {
             setToken(res.token)
