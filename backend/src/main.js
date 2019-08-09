@@ -17,6 +17,8 @@ import '@/permission' // permission control
 import elementUIVerify from 'element-ui-verify'
 import { fetData } from '@/api/system'
 Vue.prototype.$fetchData = fetData
+// 在其他页面上（即非左侧菜单路由）的路由可以用 v-if=$store.$adminHas('routeName') 来控制显示与否
+Vue.prototype.$adminHas = store.getters.hasRouteName
 Vue.use(ElementUI, { locale })
 Vue.use(elementUIVerify)
 Vue.config.productionTip = false
