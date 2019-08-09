@@ -6,23 +6,19 @@ import { asyncRouterMap, constantRouterMap } from '@/router'
  * @param permissions
  */
 function filterAsyncRouter(asyncRouterMap, permissions) {
+  const filter = v => {
+    if (v.meta.permissions) {
+      v.meta.permissions = v.meta.permissions.filter(pv => permissions.has(pv))
+      return v.meta.permissions.length !== 0
+    } else {
+      v.children = v.children.filter(filter)
+      return v.children.length !== 0
+    }
+  }
   permissions = new Set([...permissions])
   return asyncRouterMap.filter(value => {
     if (value.path === '*') return true
-    value.children = value.children.filter(v => {
-      if (v.meta.permissions) {
-        v.meta.permissions = v.meta.permissions.filter(pv => permissions.has(pv))
-        return v.meta.permissions.length !== 0
-      } else {
-        v.children = v.children.filter(sv => {
-          if (sv.meta.permissions) {
-            sv.meta.permissions = sv.meta.permissions.filter(pv => permissions.has(pv))
-            return sv.meta.permissions.length !== 0
-          }
-        })
-        return v.children.length !== 0
-      }
-    })
+    value.children = value.children.filter(filter)
     return value.children.length !== 0
   })
 }

@@ -3,7 +3,7 @@
     <el-menu
       mode="vertical"
       :show-timeout="200"
-      :default-active="$route.path"
+      :default-active="activeMenu"
       :collapse="isCollapse"
       background-color="#304156"
       text-color="#bfcbd9"
@@ -15,21 +15,30 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import SidebarItem from './SidebarItem'
+  import { mapGetters } from 'vuex'
+  import SidebarItem from './SidebarItem'
 
-export default {
-  components: { SidebarItem },
-  computed: {
-    ...mapGetters([
-      'sidebar'
-    ]),
-    routes() {
-      return this.$store.getters.routes
-    },
-    isCollapse() {
-      return !this.sidebar.opened
+  export default {
+    components: { SidebarItem },
+    computed: {
+      ...mapGetters([
+        'sidebar'
+      ]),
+      activeMenu() {
+        const route = this.$route
+        const { meta, path } = route
+        // if set path, the sidebar will highlight the path you set
+        if (meta.activeMenu) {
+          return meta.activeMenu
+        }
+        return path
+      },
+      routes() {
+        return this.$store.getters.routes
+      },
+      isCollapse() {
+        return !this.sidebar.opened
+      }
     }
   }
-}
 </script>
