@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:backend')->get('/user', function (Request $request) {
-    dump( \Illuminate\Support\Facades\Auth::user());
-    return;
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });

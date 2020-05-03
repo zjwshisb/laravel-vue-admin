@@ -2,11 +2,8 @@
 
 namespace App\Providers;
 
-use App\Auth\BackendGuard;
-use App\Auth\BackendUserProvider;
-use Illuminate\Hashing\BcryptHasher;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -16,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        // 'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -27,12 +24,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Auth::extend('backend',function ($app, $name, array $config){
-            return new BackendGuard(Auth::createUserProvider($config['provider']),request());
-        });
 
-        Auth::provider('backend',function ($app, array $config){
-            return new BackendUserProvider(new BcryptHasher(),$config['model']);
-        });
+        //
     }
 }
