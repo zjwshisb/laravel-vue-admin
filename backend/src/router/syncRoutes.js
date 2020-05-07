@@ -1,7 +1,4 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 const modulesFiles = require.context('./modules', true, /\.js$/)
-Vue.use(Vuex)
 
 const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   // set './app.js' => 'app'
@@ -10,7 +7,4 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   modules[moduleName] = value.default
   return modules
 }, {})
-
-export default new Vuex.Store({
-  modules
-})
+export default modules
