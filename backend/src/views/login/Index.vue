@@ -10,7 +10,7 @@ export default {
   methods: {
     login () {
       this.$store.dispatch('login').then(res => {
-        this.$router.push({ name: 'SystemAdmin' }).catch(err => {
+        this.$router.push({ name: 'IndexSystemAdmin' }).catch(err => {
           console.log(err)
         })
       })

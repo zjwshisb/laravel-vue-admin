@@ -17,7 +17,7 @@ const module = {
             permission: [],
             title: '商品'
           },
-          component: () => import(/* webpackChunkName: "about" */ '@/views/system/Admin')
+          component: () => import(/* webpackChunkName: "about" */ '@/views/system/Admin'),
         },
         {
           path: 'cache',
