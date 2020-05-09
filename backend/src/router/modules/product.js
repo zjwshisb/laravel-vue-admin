@@ -1,7 +1,7 @@
 import Layout from '@/layout/Index'
 
 const module = {
-  title: '商品管理',
+  title: '模块2',
   routes: [
     {
       path: '/system',

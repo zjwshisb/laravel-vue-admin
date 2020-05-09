@@ -1,3 +1,4 @@
+import { login } from '../../api/user'
 const user = {
   state: {
     username: '',
@@ -11,8 +12,10 @@ const user = {
   },
   actions: {
     login ({ dispatch, commit }, form) {
-      commit('UPDATE_USER')
-      return dispatch('updateRoute')
+      return login(form).then(res => {
+        console.log(res)
+        return dispatch('updateRoute')
+      })
     }
   },
   getters: {

@@ -12,6 +12,16 @@
         {{route.title}}
       </a-menu-item>
     </a-menu>
+    <div class="user">
+      <a-dropdown>
+        <a-avatar :size="32" icon="user" class="avatar"/>
+        <a-menu slot="overlay" @click="menuClick">
+          <a-menu-item key="logout">
+            登出
+          </a-menu-item>
+        </a-menu>
+      </a-dropdown>
+    </div>
   </a-layout-header>
 </template>
 
@@ -28,12 +38,15 @@ export default {
   methods: {
     moduleChange (e) {
       this.$store.commit('UPDATE_MODULE', e.key)
+    },
+    menuClick (e) {
+      console.log(e)
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
   .header{
     display: flex;
     padding: 0;
@@ -41,5 +54,18 @@ export default {
   .menu{
     line-height: 64px;
     text-align: left;
+  }
+  .user{
+    flex: 1;
+    color: #FFF;
+    padding-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .avatar {
+      &:hover{
+        cursor: pointer;
+      }
+    }
   }
 </style>

@@ -54,7 +54,6 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
-
     // set preserveWhitespace
     config.module
       .rule('vue')

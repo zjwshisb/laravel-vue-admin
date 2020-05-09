@@ -1,6 +1,6 @@
 import Layout from '@/layout/Index'
 const module = {
-  title: '基本信息',
+  title: '模块1',
   routes: [
     {
       path: '',
@@ -24,7 +24,8 @@ const module = {
       path: 'system',
       component: Layout,
       meta: {
-        title: '系统管理'
+        title: '系统管理',
+        icon: 'dashboard'
       },
       children: [
         {

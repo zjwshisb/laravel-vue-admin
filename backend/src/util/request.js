@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { getToken } from './token'
-console.log(process.env)
+import { Modal } from 'ant-design-vue'
 const instance = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   headers: {
@@ -12,6 +12,7 @@ const instance = axios.create({
 instance.interceptors.response.use(response => {
   return Promise.resolve(response.data)
 }, error => {
+  console.log(error)
   if (error.response) {
     switch (error.response.status) {
       case 401: {
@@ -21,6 +22,9 @@ instance.interceptors.response.use(response => {
         return Promise.reject(error)
       }
       case 404: {
+        Modal.error({
+          title: '服务器不见啦'
+        })
         return Promise.reject(error)
       }
       case 422: {

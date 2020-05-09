@@ -1,7 +1,8 @@
 import request from '../util/request'
-export const login = () => {
+export const login = form => {
   return request({
     url: 'token',
-    method: 'post'
+    method: 'post',
+    data: form
   })
 }
