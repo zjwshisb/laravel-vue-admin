@@ -13,11 +13,11 @@
         </a-form-model-item>
         <a-form-model-item prop="password">
           <a-input v-model="form.password" placeholder="请输入密码" type="password">
-            <a-icon slot="prefix" type="password" />
+            <a-icon slot="prefix" type="lock" />
           </a-input>
         </a-form-model-item>
-        <a-form-model-item prop="password">
-          <a-button type="primary" block @click="login">登录</a-button>
+        <a-form-model-item>
+          <a-button type="primary" block @click="login" :loading="loading">登录</a-button>
         </a-form-model-item>
       </a-form-model>
     </div>
@@ -25,34 +25,40 @@
 </template>
 
 <script>
+import { requireValidator } from '../../util/validator'
+import { getToken } from '../../util/token'
 export default {
   name: 'Index',
   data () {
     return {
+      loading: false,
       form: {
         username: 'admin',
         password: 'admin'
       },
       rules: {
         username: [
-          {
-            required: true, message: '请输入用户名', trigger: 'blur'
-          }
+          requireValidator()
         ],
         password: [
-          {
-            required: true, message: '请输入密码', trigger: 'blur'
-          }
+          requireValidator()
         ]
       }
     }
   },
   methods: {
     login () {
-      this.$store.dispatch('login').then(res => {
-        this.$router.push({ name: 'IndexSystemAdmin' }).catch(() => {
+      this.$refs.form.validate().then(() => {
+        this.loading = true
+        this.$store.dispatch('login', this.form).then(res => {
+          this.loading = false
+          console.log(getToken())
+          this.$router.push({ name: 'IndexSystemAdmin' }).catch(() => {
+          })
+        }).catch(() => {
+          this.loading = false
         })
-      })
+      }).catch(() => {})
     }
   }
 }

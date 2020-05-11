@@ -1,18 +1,25 @@
 import axios from 'axios'
-import { getToken } from './token'
 import { Modal } from 'ant-design-vue'
+import store from '../store/index'
 const instance = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   headers: {
-    Authorization: 'Bearer ' + getToken(),
     Accept: 'application/json, text/plain, */*'
   },
   timeout: 5000
 })
+instance.interceptors.request.use(config => {
+  if (store.getters.token) {
+    config.headers.Authorization = 'Bearer ' + store.getters.token
+  }
+  return config
+}, error => {
+  console.log(error)
+  Promise.reject(error)
+})
 instance.interceptors.response.use(response => {
   return Promise.resolve(response.data)
 }, error => {
-  console.log(error)
   if (error.response) {
     switch (error.response.status) {
       case 401: {
@@ -23,7 +30,8 @@ instance.interceptors.response.use(response => {
       }
       case 404: {
         Modal.error({
-          title: '服务器不见啦'
+          title: '404',
+          centered: true
         })
         return Promise.reject(error)
       }
@@ -35,10 +43,24 @@ instance.interceptors.response.use(response => {
       case 502:
       case 503:
       case 504:
-        console.log('error')
+        Modal.error({
+          title: '服务器出了点小差',
+          centered: true
+        })
     }
   } else {
-    console.log(error)
+    if (error.message === 'Network Error') {
+      Modal.error({
+        title: 'network error',
+        centered: true
+      })
+    }
+    if (error.message === 'timeout') {
+      Modal.error({
+        title: 'network error',
+        centered: true
+      })
+    }
     return Promise.reject(error)
   }
 })

@@ -46,9 +46,9 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        'backend'=> [
-            'driver'=> 'token',
-            'provider'=> 'admins'
+        'admin'=> [
+            'driver'=> 'admin',
+            'provider'=> 'admin'
         ]
     ],
 
@@ -75,13 +75,9 @@ return [
             'model' => App\User::class,
         ],
         'admin'=> [
-            'driver'=> 'eloquent',
+            'driver'=> 'admin',
             'model'=> \App\Models\Admin::class,
         ]
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

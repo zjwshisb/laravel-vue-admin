@@ -37,13 +37,13 @@ const module = {
             auth: false,
             icon: 'dashboard'
           },
-          component: () => import(/* webpackChunkName: "about" */ '@/views/system/Admin'),
+          component: () => import('@/views/system/Admin'),
           redirect: { name: 'IndexSystemAdminList' },
           children: [
             {
               path: 'add',
               name: 'SystemAdminAdd',
-              component: () => import(/* webpackChunkName: "about" */ '@/views/system/add'),
+              component: () => import('@/views/system/add'),
               meta: {
                 title: '新增管理员'
               }
@@ -51,7 +51,7 @@ const module = {
             {
               path: 'list',
               name: 'SystemAdminList',
-              component: () => import(/* webpackChunkName: "about" */ '@/views/system/list'),
+              component: () => import('@/views/system/list'),
               meta: {
                 title: '管理员列表',
                 hiddenBreadcrumb: true
@@ -66,7 +66,7 @@ const module = {
             permission: [],
             title: '缓存管理'
           },
-          component: () => import(/* webpackChunkName: "about" */ '@/views/system/Cache')
+          component: () => import('@/views/system/Cache')
         }
       ]
     }

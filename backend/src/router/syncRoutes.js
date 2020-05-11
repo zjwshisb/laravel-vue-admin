@@ -29,5 +29,4 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   modules[moduleName] = routeModule
   return modules
 }, {})
-console.log(modules)
 export default modules

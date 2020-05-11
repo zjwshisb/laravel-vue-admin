@@ -2,23 +2,42 @@ import router from './router/index'
 import store from './store/index'
 import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
+import { getToken } from './util/token'
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if (to.name === 'Login') {
-    if (store.getters.id) {
-      next('/')
-      NProgress.done()
+  if (getToken()) {
+    if (to.name === 'Login') {
+      if (store.getters.id) {
+        next('/')
+        NProgress.done()
+      } else {
+        store.dispatch('getUserInfo').then(() => {
+          next({ name: 'IndexSystemAdmin' })
+          NProgress.done()
+        }).catch(() => {
+          next()
+        })
+      }
     } else {
-      next()
-      NProgress.done()
+      if (!store.getters.id) {
+        store.dispatch('getUserInfo').then(() => {
+          next({ ...to, replace: true })
+          NProgress.done()
+        }).catch(() => {
+          next({ name: 'Login' })
+          NProgress.done()
+        })
+      } else {
+        next()
+        NProgress.done()
+      }
     }
   } else {
-    if (!store.getters.id) {
-      next({ name: 'Login' })
-      NProgress.done()
-    } else {
+    if (to.name === 'Login') {
       next()
-      NProgress.done()
+    } else {
+      next({ name: 'Login' })
     }
+    NProgress.done()
   }
 })
