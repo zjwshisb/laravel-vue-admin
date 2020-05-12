@@ -4,4 +4,5 @@ Route::get('/tokens', 'TokenController@index');
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('me', 'MeController@index');
+    Route::post('me/password', 'MeController@password');
 });

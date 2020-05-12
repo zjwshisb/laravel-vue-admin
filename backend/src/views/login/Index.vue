@@ -26,7 +26,6 @@
 
 <script>
 import { requireValidator } from '../../util/validator'
-import { getToken } from '../../util/token'
 export default {
   name: 'Index',
   data () {
@@ -52,8 +51,9 @@ export default {
         this.loading = true
         this.$store.dispatch('login', this.form).then(res => {
           this.loading = false
-          console.log(getToken())
-          this.$router.push({ name: 'IndexSystemAdmin' }).catch(() => {
+          this.$store.dispatch('getUserInfo').then(() => {
+            this.$router.push({ name: 'IndexSystemAdmin' }).catch(() => {
+            })
           })
         }).catch(() => {
           this.loading = false

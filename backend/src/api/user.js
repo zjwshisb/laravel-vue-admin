@@ -11,3 +11,13 @@ export const getInfo = () => {
     url: 'me'
   })
 }
+export const changePassword = (oldPwd, newPwd) => {
+  return request({
+    url: 'me/password',
+    method: 'post',
+    data: {
+      old_password: oldPwd,
+      new_password: newPwd
+    }
+  })
+}

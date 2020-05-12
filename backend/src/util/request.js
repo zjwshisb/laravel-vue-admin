@@ -14,7 +14,6 @@ instance.interceptors.request.use(config => {
   }
   return config
 }, error => {
-  console.log(error)
   Promise.reject(error)
 })
 instance.interceptors.response.use(response => {
@@ -36,7 +35,17 @@ instance.interceptors.response.use(response => {
         return Promise.reject(error)
       }
       case 422: {
-        return Promise.reject(error)
+        const data = error.response.data
+        for (const x in data.errors) {
+          for (const msg of data.errors[x]) {
+            Modal.error({
+              title: msg,
+              centered: true
+            })
+            return Promise.reject(data)
+          }
+        }
+        break
       }
       case 500:
       case 501:
@@ -55,9 +64,9 @@ instance.interceptors.response.use(response => {
         centered: true
       })
     }
-    if (error.message === 'timeout') {
+    if (error.code && error.code === 'ECONNABORTED') {
       Modal.error({
-        title: 'network error',
+        title: '请求服务器超时',
         centered: true
       })
     }

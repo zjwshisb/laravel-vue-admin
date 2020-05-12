@@ -1,9 +1,29 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+  <a-config-provider :getPopupContainer="getPopupContainer" :locale="zhCN">
+    <div id="app">
+      <router-view/>
+    </div>
+  </a-config-provider>
 </template>
-
+<script>
+import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
+export default {
+  data () {
+    return {
+      zhCN: zhCN
+    }
+  },
+  methods: {
+    getPopupContainer (el, dialogContext) {
+      if (dialogContext) {
+        return dialogContext.getDialogWrap()
+      } else {
+        return document.body
+      }
+    }
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

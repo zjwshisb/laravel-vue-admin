@@ -21,6 +21,7 @@ const user = {
         if (res.code === 0) {
           setToken(res.data.token)
           commit('UPDATE_TOKEN', res.data.token)
+          return Promise.resolve(res.data)
         } else {
           return Promise.reject(res)
         }
@@ -34,14 +35,17 @@ const user = {
               id: res.data.id,
               username: res.data.username
             })
-            return Promise.resolve()
+            return Promise.resolve(res.data)
           })
+        } else {
+          return Promise.reject(res)
         }
       })
     },
     frontendLogout ({ commit }) {
       commit('UPDATE_TOKEN', '')
-
+      setToken('')
+      return Promise.resolve()
     }
   },
   getters: {

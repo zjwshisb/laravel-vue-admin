@@ -13,22 +13,37 @@
       </a-menu-item>
     </a-menu>
     <div class="user">
-      <a-dropdown>
-        <a-avatar :size="32" icon="user" class="avatar"/>
+      <a-dropdown :trigger="['click']">
+        <a-badge count="0">
+          <a-avatar :size="32" icon="user" class="avatar"/>
+        </a-badge>
         <a-menu slot="overlay" @click="menuClick">
           <a-menu-item key="logout">
             登出
           </a-menu-item>
+          <a-menu-item key="password">
+            修改密码
+          </a-menu-item>
         </a-menu>
       </a-dropdown>
     </div>
+    <password-form :visible.sync="changePassword"></password-form>
   </a-layout-header>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import PasswordForm from './password'
 export default {
   name: 'index',
+  components: {
+    PasswordForm
+  },
+  data () {
+    return {
+      changePassword: false
+    }
+  },
   computed: {
     ...mapGetters(['syncRoutes', 'currentModule']),
     modulesCount () {
@@ -40,7 +55,14 @@ export default {
       this.$store.commit('UPDATE_MODULE', e.key)
     },
     menuClick (e) {
-      console.log(e)
+      if (e.key === 'logout') {
+        this.$store.dispatch('frontendLogout').then(() => {
+          window.location.reload()
+        })
+      }
+      if (e.key === 'password') {
+        this.changePassword = true
+      }
     }
   }
 }
