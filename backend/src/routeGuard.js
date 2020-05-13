@@ -2,7 +2,7 @@ import router from './router/index'
 import store from './store/index'
 import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
-import { getToken } from './util/token'
+import { getToken, setToken } from './util/token'
 router.beforeEach((to, from, next) => {
   NProgress.start()
   if (getToken()) {
@@ -12,9 +12,10 @@ router.beforeEach((to, from, next) => {
         NProgress.done()
       } else {
         store.dispatch('getUserInfo').then(() => {
-          next({ name: 'IndexSystemAdmin' })
+          next({ name: 'AdminList' })
           NProgress.done()
         }).catch(() => {
+          setToken('')
           next()
         })
       }

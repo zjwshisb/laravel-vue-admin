@@ -12,11 +12,11 @@ const route = {
   },
   actions: {
     updateRoute ({ commit, state }) {
-      for (const x in state.syncRoutes) {
+      for (const x of state.syncRoutes) {
         if (state.currentModule === '') {
-          commit('UPDATE_MODULE', x)
+          commit('UPDATE_MODULE', x.key)
         }
-        router.addRoutes(state.syncRoutes[x].routes)
+        router.addRoutes(x.routes)
       }
       return Promise.resolve()
     }

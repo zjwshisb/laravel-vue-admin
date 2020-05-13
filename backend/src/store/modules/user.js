@@ -50,6 +50,7 @@ const user = {
   },
   getters: {
     id: state => state.id,
+    username: state => state.username,
     token: state => state.token
   }
 }

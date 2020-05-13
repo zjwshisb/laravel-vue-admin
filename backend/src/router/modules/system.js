@@ -1,7 +1,8 @@
-import Layout from '@/layout/Index'
+import Layout from '@/layout/index'
 
 const module = {
   title: '系统设置',
+  sort: 2,
   routes: [
     {
       path: 'admin',
@@ -12,17 +13,18 @@ const module = {
       children: [
         {
           path: 'list',
-          name: 'SystemAdmin',
+          name: 'AdminList',
           meta: {
             permission: [],
             title: '管理员',
-            hiddenBreadcrumb: true
+            hiddenBreadcrumb: true,
+            icon: 'user'
           },
           component: () => import('@/views/system/admin/index')
         },
         {
           path: 'add',
-          name: 'SystemAdminAdd',
+          name: 'AdminAdd',
           meta: {
             permission: [],
             title: '新增管理员'

@@ -5,8 +5,8 @@ const parseRoute = (module, route, root = true) => {
   if (root) {
     route.path = '/' + module + (route.path ? '/' + route.path : '')
   }
-  if (route.name) {
-    route.name = module.charAt(0).toUpperCase() + module.slice(1) + route.name
+  if (route.meta) {
+    route.meta.module = module
   }
   if (route.children) {
     parseRoute(module, route.children)
@@ -21,13 +21,15 @@ const recursiveParse = (module, routes, root = true) => {
   }
 }
 const modules = modulesFiles.keys().reduce((modules, modulePath) => {
-  // set './app.js' => 'app'
   const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
   const value = modulesFiles(modulePath)
   const routeModule = value.default
   recursiveParse(moduleName, routeModule.routes)
-  modules[moduleName] = routeModule
+  modules.push(Object.assign(routeModule, { key: moduleName }))
   return modules
-}, {})
+}, [])
+modules.sort((v1, v2) => {
+  return v1.sort - v2.sort
+})
 console.log(modules)
 export default modules

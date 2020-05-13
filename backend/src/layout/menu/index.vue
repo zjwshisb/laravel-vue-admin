@@ -1,9 +1,13 @@
 <template>
-  <a-layout-sider width="200" v-model="collapsed" collapsible theme="light">
-    <template v-for="(route, module) in syncRoutes">
-      <a-menu mode="inline" class="left-menu" @click="go" v-show="module === currentModule" :key="module">
-        <template v-for="route in route.routes">
-          <a-sub-menu v-if="route.children.filter(v => !v.hidden ).length > 1" :key="route.name" class="sub-menu">
+  <a-layout-sider width="200" v-model="collapsed">
+    <div class="logo">
+      <a-icon type="html5" v-if="collapsed"></a-icon>
+      <span v-else>laravel-antdv-admin</span>
+    </div>
+    <template v-for="module in syncRoutes">
+      <a-menu mode="inline" @click="go" v-show="module.key === currentModule" :key="module.key"  theme="dark">
+        <template v-for="route in module.routes">
+          <a-sub-menu v-if="route.children.filter(v => !v.hidden ).length > 1" :key="route.name">
                 <span slot="title">
                   <a-icon :type="route.meta.icon" v-if="route.meta.icon"/>
                   <span v-if="!collapsed">{{route.meta.title}}
@@ -38,7 +42,17 @@ export default {
   name: 'Index',
   data () {
     return {
-      collapsed: false
+    }
+  },
+  computed: {
+    ...mapGetters(['syncRoutes', 'currentModule', 'menuHidden']),
+    collapsed: {
+      get () {
+        return this.menuHidden
+      },
+      set (val) {
+        this.$store.commit('UPDATE_MENU_STATUS', val)
+      }
     }
   },
   methods: {
@@ -49,19 +63,21 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapGetters(['syncRoutes', 'currentModule'])
-  },
+
   created () {
   }
 }
 </script>
 
 <style scoped lang="scss">
-.left-menu{
-  height: 100%;
-  .sub-menu{
-    text-align: left;
-  }
+.logo{
+  height: 64px;
+  width: 100%;
+  line-height: 64px;
+  font-size: 20px;
+  color: #FFF;
+  background: #002140;
+  text-align: center;
+  font-style: italic
 }
 </style>

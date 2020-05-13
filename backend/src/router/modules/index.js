@@ -1,6 +1,7 @@
-import Layout from '@/layout/Index'
+import Layout from '@/layout/index'
 const module = {
   title: '模块1',
+  sort: 1,
   routes: [
     {
       path: '',
@@ -38,7 +39,7 @@ const module = {
             icon: 'dashboard'
           },
           component: () => import('@/views/system/Admin'),
-          redirect: { name: 'IndexSystemAdminList' },
+          redirect: { name: 'SystemAdminList' },
           children: [
             {
               path: 'add',

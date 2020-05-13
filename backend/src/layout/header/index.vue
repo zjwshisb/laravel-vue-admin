@@ -1,14 +1,16 @@
 <template>
-  <a-layout-header class="header">
-    <div class="logo" style="width: 200px;height: 64px;display: inline-block"/>
+  <a-layout-header class="header" theme="light">
+    <div class="menu-trigger" @click="() => $store.commit('UPDATE_MENU_STATUS', !$store.getters.menuHidden)">
+      <a-icon v-if="!$store.getters.menuHidden" type="menu-fold"/>
+      <a-icon v-else type="menu-unfold"/>
+    </div>
     <a-menu v-if="modulesCount > 1"
             class="menu"
-      theme="dark"
       mode="horizontal"
       :default-selected-keys="[currentModule]"
             @click="moduleChange"
     >
-      <a-menu-item :key="key" v-for="(route, key) in syncRoutes">
+      <a-menu-item :key="route.key" v-for="route in syncRoutes">
         {{route.title}}
       </a-menu-item>
     </a-menu>
@@ -16,6 +18,7 @@
       <a-dropdown :trigger="['click']">
         <a-badge count="0">
           <a-avatar :size="32" icon="user" class="avatar"/>
+          <span class="name">{{$store.getters.username}}</span>
         </a-badge>
         <a-menu slot="overlay" @click="menuClick">
           <a-menu-item key="logout">
@@ -47,7 +50,7 @@ export default {
   computed: {
     ...mapGetters(['syncRoutes', 'currentModule']),
     modulesCount () {
-      return Object.keys(this.syncRoutes).length
+      return this.syncRoutes.length
     }
   },
   methods: {
@@ -69,9 +72,21 @@ export default {
 </script>
 
 <style scoped lang="less">
+  .menu-trigger{
+    height: 100%;
+    width: 64px;
+    text-align: center;
+    font-size: 20px;
+    &:hover {
+      cursor: pointer;
+      color: #1890ff;
+    }
+  }
   .header{
     display: flex;
     padding: 0;
+    margin: 0 -24px 0 -24px;
+    background: #FFF;
   }
   .menu{
     line-height: 64px;
@@ -79,7 +94,6 @@ export default {
   }
   .user{
     flex: 1;
-    color: #FFF;
     padding-right: 50px;
     display: flex;
     align-items: center;
@@ -88,6 +102,12 @@ export default {
       &:hover{
         cursor: pointer;
       }
+    }
+    .name{
+      &:hover{
+        cursor: pointer;
+      }
+      margin-left: 5px;
     }
   }
 </style>

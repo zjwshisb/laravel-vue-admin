@@ -24,7 +24,8 @@ export default {
   },
   methods: {
     getBreadcrumb () {
-      this.breadcrumbs = this.$route.matched.filter(i => i.meta && i.meta.title)
+      console.log(this.$route.matched)
+      this.breadcrumbs = this.$route.matched.filter(i => i.meta && i.meta.title && !i.meta.hiddenBreadcrumb)
     }
   },
   created () {
