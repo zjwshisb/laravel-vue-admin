@@ -1,13 +1,11 @@
 <template>
-  <div>
-    cache
-  </div>
+
 </template>
 
 <script>
-export default {
-  name: 'Cache'
-}
+  export default {
+    name: 'list'
+  }
 </script>
 
 <style scoped>

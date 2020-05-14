@@ -12,7 +12,7 @@ router.beforeEach((to, from, next) => {
         NProgress.done()
       } else {
         store.dispatch('getUserInfo').then(() => {
-          next({ name: 'AdminList' })
+          next({ name: 'AdminAccountList' })
           NProgress.done()
         }).catch(() => {
           setToken('')

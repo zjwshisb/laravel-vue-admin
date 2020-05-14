@@ -15,11 +15,12 @@ class AdminRequest extends FormRequest{
         if(strtoupper($this->method) === 'POST') {
             return [
                 'password'=> 'required',
-                'username'=> 'required'
+                'username'=> 'required',
+                'is_active'=> 'required'
             ];
         } else {
             return [
-
+                'is_active'=> 'required'
             ];
         }
     }

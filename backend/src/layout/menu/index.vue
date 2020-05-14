@@ -22,10 +22,10 @@
               </a-menu-item>
             </template>
           </a-sub-menu>
-          <a-menu-item v-else
+          <a-menu-item v-if="route.children.filter(v => !v.hidden ).length === 1"
                        :key='route.children[0].redirect ? route.children[0].redirect.name: route.children[0].name'
                        class="sub-menu">
-            <a-icon :type="route.children[0].meta.icon" v-if="route.children[0].meta.icon"/>
+            <a-icon :type="route.meta.icon" v-if="route.meta.icon"/>
             <span>
                     {{route.children[0].meta.title}}
                   </span>
