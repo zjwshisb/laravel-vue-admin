@@ -4,50 +4,29 @@ use \Illuminate\Database\Seeder;
 use App\Models\AdminMenu;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 class AdminMenuSeeder extends Seeder
 {
     public function run()
     {
-        $menus = [
-            [
-                'name' => '系统设置',
-                'children' => [
-                    [
-                        'name' => '管理员',
-                        'permissions' => [
-                            'admins.index'
-                        ],
-                        'children' => [
-                            [
-                                'name' => '新增',
-                                'permissions' => [
-                                    'admins.store'
-                                ]
-                            ],
-                            [
-                                'name' => '编辑',
-                                'permissions' => [
-                                    'admins.show',
-                                    'admins.update'
-                                ]
-                            ],
-                        ]
-                    ],
-                ]
-            ]
-        ];
+        $menus = config('adminmenus');
         $guard = 'backend';
         $allPermission = [];
         AdminMenu::query()->delete();
-        \Illuminate\Support\Facades\DB::table('admin_menu_permissions')->delete();
+        DB::table('admin_menu_permissions')->delete();
         $func = function ($m, $parent = null) use (&$allPermission, &$func, $guard) {
             $menu = new AdminMenu();
+            $mPermission = Arr::get($m, 'permissions', []);
             $menu->name = $m['name'];
+            $menu->id = $m['id'];
             if (!is_null($parent)) {
                 $menu->parent_id = $parent->id;
             }
+            if(sizeof($mPermission) > 0) {
+                $menu->has_permission = 1;
+            }
             $menu->save();
-            foreach (Arr::get($m, 'permissions', []) as $permission) {
+            foreach ($mPermission as $permission) {
                 $allPermission[] = $permission;
                 $per = Permission::query()
                     ->where('guard_name', $guard)

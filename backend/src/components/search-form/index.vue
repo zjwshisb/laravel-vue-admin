@@ -5,33 +5,20 @@
 </template>
 
 <script>
+import { searchForm } from '../../util/gird'
 export default {
   name: 'Index',
   props: {
     labelCol: {
       type: Object,
       default () {
-        return {
-          xs: 24,
-          sm: 4,
-          md: 5,
-          lg: 5,
-          xl: 4,
-          xll: 3
-        }
+        return searchForm.labelCol
       }
     },
     wrapperCol: {
       type: Object,
       default () {
-        return {
-          xs: 24,
-          sm: 20,
-          md: 19,
-          lg: 19,
-          xl: 20,
-          xll: 21
-        }
+        return searchForm.wrapperCol
       }
     }
   }

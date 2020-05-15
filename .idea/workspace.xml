@@ -2,29 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c433779-ac02-4428-90e4-3928e5202606" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/OptionController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/RoleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/AdminMenu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/views/system/admin/list.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/util/gird.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/adminmenus.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backend/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Backend/AdminRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Backend/AdminRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backend/OptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/OptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AdminMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AdminMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/api/system.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/api/system.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/components/search-form/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/components/search-form/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/layout/breadcrumb/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/layout/breadcrumb/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/layout/menu/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/layout/menu/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/routeGuard.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routeGuard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/router/modules/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/router/modules/system.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/router/modules/system.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/router/syncRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/router/syncRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/style/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/style/index.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/About.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/Home.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/system/Admin.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/system/Cache.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/role/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/system/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/role/add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/system/admin/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/admin/form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/system/admin/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/admin/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/system/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/role/list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/views/login/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/login/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/views/system/admin/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/admin/form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/views/system/role/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/role/form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/views/system/role/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/role/list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_14_072209_create_admin_menus_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_14_072209_create_admin_menus_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/backend.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/backend.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +38,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Less File" />
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -207,7 +204,8 @@
       <workItem from="1589251052231" duration="13670000" />
       <workItem from="1589331997821" duration="1184000" />
       <workItem from="1589334118607" duration="26284000" />
-      <workItem from="1589423192312" duration="15959000" />
+      <workItem from="1589423192312" duration="16834000" />
+      <workItem from="1589505513504" duration="19692000" />
     </task>
     <servers />
   </component>
@@ -227,22 +225,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589177648422" />
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1589438791469">
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1589532477475">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1589438791469" />
-    <state x="1096" y="623" key="NewPhpFileDialog" timestamp="1589447737359">
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1589532477475" />
+    <state x="1096" y="623" key="NewPhpFileDialog" timestamp="1589529985631">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1096" y="623" key="NewPhpFileDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589447737359" />
+    <state x="1096" y="623" key="NewPhpFileDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589529985631" />
     <state x="956" y="433" width="647" height="534" key="find.popup" timestamp="1589361339857">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="956" y="433" width="647" height="534" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589361339857" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1589440884956">
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1589505856764">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589440884956" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589505856764" />
   </component>
   <component name="masterDetails">
     <states>

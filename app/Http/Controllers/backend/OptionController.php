@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Backend;
 
 
+use App\Models\AdminMenu;
 use Illuminate\Http\Request;
 
 class OptionController extends BaseController{
@@ -18,6 +19,8 @@ class OptionController extends BaseController{
     }
 
     public function admin_menus() {
-
+        return AdminMenu::query()->whereNull('parent_id')
+            ->select(['id','name','parent_id', 'has_permission'])
+            ->with('children.children.children')->get();
     }
 }

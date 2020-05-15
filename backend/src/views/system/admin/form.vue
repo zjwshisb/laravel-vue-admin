@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-form-model :model="form" ref="form" :label-col="{xs:24, sm:24, md:8 }" :wrapper-col="{xs:24, sm:24, md: 8}">
+    <a-form-model :model="form" ref="form" :label-col="{xs:24, sm:24, md:4, lg:8 }" :wrapper-col="{xs:24, sm:24, md: 16, lg:8}">
       <a-form-model-item prop="username" label="用户名">
         <a-input v-model="form.username"></a-input>
       </a-form-model-item>

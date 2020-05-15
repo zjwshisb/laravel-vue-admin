@@ -17,7 +17,13 @@ class CreateAdminMenusTable extends Migration
             $table->id();
             $table->string('name', 255);
             $table->integer('parent_id')->nullable();
+            $table->tinyInteger('has_permission')->default(0);
             $table->timestamps();
+        });
+        Schema::create('role_admin_menus',function (Blueprint $table) {
+            $table->id();
+            $table->integer('role_id')->index();
+            $table->integer('menu_id')->index();
         });
         Schema::create('admin_menu_permissions', function (Blueprint $table){
             $table->id();
@@ -34,5 +40,7 @@ class CreateAdminMenusTable extends Migration
     public function down()
     {
         Schema::dropIfExists('admin_menus');
+        Schema::dropIfExists('role_admin_menus');
+        Schema::dropIfExists('admin_menu_permissions');
     }
 }

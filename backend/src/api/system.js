@@ -5,3 +5,17 @@ export const fetchAdmins = params => {
     params
   })
 }
+export const fetchOptions = params => {
+  return request({
+    url: 'options',
+    method: 'get',
+    params
+  })
+}
+export const AddRole = data => {
+  return request({
+    url: 'roles',
+    method: 'post',
+    data
+  })
+}

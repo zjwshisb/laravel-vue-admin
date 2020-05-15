@@ -14,7 +14,7 @@
                   </span>
                 </span>
             <template v-for="child in route.children">
-              <a-menu-item :key="child.redirect ? child.redirect.name : child.name" v-if="!child.hidden">
+              <a-menu-item :key="child.name" v-if="!child.hidden">
                 <a-icon :type="child.meta.icon" v-if="child.meta.icon"/>
                 <span>
                     {{child.meta.title}}
@@ -23,7 +23,7 @@
             </template>
           </a-sub-menu>
           <a-menu-item v-if="route.children.filter(v => !v.hidden ).length === 1"
-                       :key='route.children[0].redirect ? route.children[0].redirect.name: route.children[0].name'
+                       :key='route.children[0].name'
                        class="sub-menu">
             <a-icon :type="route.meta.icon" v-if="route.meta.icon"/>
             <span>
@@ -59,7 +59,8 @@ export default {
     go (to) {
       const current = this.$route
       if (current.name !== to.key) {
-        this.$router.push({ name: to.key })
+        this.$router.push({ name: to.key }).catch(() => {
+        })
       }
     }
   },

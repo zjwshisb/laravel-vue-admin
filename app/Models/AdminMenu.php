@@ -11,4 +11,8 @@ class AdminMenu extends Model{
             'admin_menu_permissions','menu_id','permission_id');
     }
 
+    public function children() {
+        return $this->hasMany(self::class, 'parent_id')->select('parent_id','id','name','has_permission');
+    }
+
 }

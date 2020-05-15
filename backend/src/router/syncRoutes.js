@@ -11,5 +11,4 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 modules.sort((v1, v2) => {
   return v1.sort - v2.sort
 })
-console.log(modules)
 export default modules
