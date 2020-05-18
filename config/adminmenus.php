@@ -2,82 +2,56 @@
 return [
     [
         'name' => '系统设置',
-        'id'=> 1,
+        'id'=> 10000,
         'children' => [
             [
-                'id'=> 2,
-                'name' => '管理员',
+                'id'=> 11000,
+                'name' => '登录账号',
                 'permissions' => [
-                    'admins.index'
+                    'backend.admins.index'
                 ],
                 'children' => [
                     [
-                        'id'=> 3,
+                        'id'=> 11100,
                         'name' => '新增',
                         'permissions' => [
-                            'admins.store'
+                            'backend.admins.store'
                         ]
                     ],
                     [
-                        'id'=> 4,
+                        'id'=> 11200,
                         'name' => '编辑',
                         'permissions' => [
-                            'admins.show',
-                            'admins.update'
+                            'backend.admins.show',
+                            'backend.admins.update'
                         ]
                     ],
                 ]
             ],
             [
-                'name'=> '商品管理',
-                'id'=> 5,
+                'id'=> 12000,
+                'name' => '权限组',
+                'permissions' => [
+                    'backend.roles.index'
+                ],
                 'children' => [
                     [
-                        'id'=> 6,
-                        'name'=> '商品列表',
-                        'permissions'=> [
-                            'product.index'
-                        ],
-                        'children'=> [
-                            [
-                                'id'=>7,
-                                'name'=>'创建',
-                                'permissions'=> [
-                                    'product.store'
-                                ]
-                            ],
-                            [
-                                'id'=> 8,
-                                'name'=>'编辑',
-                                'permissions'=> [
-                                    'product.update'
-                                ]
-                            ]
+                        'id'=> 12100,
+                        'name' => '新增',
+                        'permissions' => [
+                            'backend.roles.store',
+                            'backend.roles.options'
                         ]
                     ],
                     [
-                        'id'=> 9,
-                        'name'=> '分类管理',
-                        'permission'=> [
-                            'class.index'
-                        ],
-                        'children'=> [
-                            [
-                                'id'=> 10,
-                                'name'=>'创建',
-                                'permissions'=> [
-                                    'class.store'
-                                ]
-                            ],
-                            [
-                                'id'=> 11,
-                                'name'=>'编辑',
-                                'permissions'=> [
-                                    'class.update'
-                                ]
-                            ]
+                        'id'=> 12200,
+                        'name' => '编辑',
+                        'permissions' => [
+                            'backend.roles.show',
+                            'backend.roles.options',
+                            'backend.roles.update'
                         ]
-                    ]
+                    ],
                 ]
             ]
         ]

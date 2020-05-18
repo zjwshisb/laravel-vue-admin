@@ -18,12 +18,25 @@ const route = {
         }
         router.addRoutes(x.routes)
       }
+      router.addRoutes([
+        {
+          path: '*',
+          redirect: { name: '404' }
+        }
+      ])
       return Promise.resolve()
     }
   },
   getters: {
     syncRoutes: state => state.syncRoutes,
-    currentModule: state => state.currentModule
+    currentModule: state => state.currentModule,
+    currentModuleTitle: state => {
+      const index = state.syncRoutes.findIndex(v => v.key === state.currentModule)
+      if (index > -1) {
+        return state.syncRoutes[index].title
+      }
+      return ''
+    }
   }
 }
 export default route

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\Backend\AdminRequest;
 use App\Http\Resources\AdminResource;
 use App\Models\Admin;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class AdminController extends BaseController{
@@ -25,4 +26,9 @@ class AdminController extends BaseController{
     public function destroy(){
 
     }
+
+    public function options(Request $request) {
+        return Role::query()->select(['id','name'])->get();
+    }
+
 }

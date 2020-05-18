@@ -2,24 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c433779-ac02-4428-90e4-3928e5202606" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/util/gird.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/adminmenus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Permission.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Backend/RoleRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/RoleResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/directives/permission.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/mixins/simpleForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/util/extend.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backend/OptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/OptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AdminMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AdminMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backend/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backend/MeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/MeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backend/OptionController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backend/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/api/system.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/api/system.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/components/search-form/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/components/search-form/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/layout/breadcrumb/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/layout/breadcrumb/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/layout/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/layout/menu/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/layout/menu/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/routeGuard.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routeGuard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/router/constRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/router/constRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/router/modules/system.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/router/modules/system.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/router/syncRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/router/syncRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/login/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/login/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/store/modules/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/store/modules/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/store/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/util/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/util/request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/views/404/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/404/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/views/login/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/login/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/views/system/admin/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/admin/form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/views/system/role/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/role/form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/views/system/admin/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/admin/list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/views/system/role/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/role/form.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/views/system/role/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/views/system/role/list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_14_072209_create_admin_menus_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_14_072209_create_admin_menus_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/adminmenus.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminmenus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/permission.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/backend.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/backend.php" afterDir="false" />
     </list>
@@ -156,7 +172,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../saas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../book" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -171,12 +187,13 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\phpStudy\WWW\admin\backend\src\directives" />
+      <recent name="$PROJECT_DIR$/backend" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\phpStudy\WWW\admin\backend\src\router\modules" />
       <recent name="C:\phpStudy\WWW\admin\backend\src\views\404" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -205,7 +222,8 @@
       <workItem from="1589331997821" duration="1184000" />
       <workItem from="1589334118607" duration="26284000" />
       <workItem from="1589423192312" duration="16834000" />
-      <workItem from="1589505513504" duration="19692000" />
+      <workItem from="1589505513504" duration="20552000" />
+      <workItem from="1589766692955" duration="22345000" />
     </task>
     <servers />
   </component>
@@ -221,22 +239,26 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1034" y="299" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589442614544" />
-    <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589177648422">
+    <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589784759511">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589177648422" />
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1589532477475">
+    <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589784759511" />
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1589786463449">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1589532477475" />
-    <state x="1096" y="623" key="NewPhpFileDialog" timestamp="1589529985631">
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1589786463449" />
+    <state x="1096" y="623" key="NewPhpFileDialog" timestamp="1589789199321">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1096" y="623" key="NewPhpFileDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589529985631" />
-    <state x="956" y="433" width="647" height="534" key="find.popup" timestamp="1589361339857">
+    <state x="1096" y="623" key="NewPhpFileDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589789199321" />
+    <state x="335" y="375" width="1449" height="802" key="find.popup" timestamp="1589789816614">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="956" y="433" width="647" height="534" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589361339857" />
+    <state x="335" y="375" width="1449" height="802" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589789816614" />
+    <state x="936" y="330" key="run.anything.popup" timestamp="1589790864006">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589790864006" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1589505856764">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

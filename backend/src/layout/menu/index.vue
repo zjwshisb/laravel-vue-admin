@@ -58,6 +58,7 @@ export default {
   methods: {
     go (to) {
       const current = this.$route
+      console.log(to)
       if (current.name !== to.key) {
         this.$router.push({ name: to.key }).catch(() => {
         })

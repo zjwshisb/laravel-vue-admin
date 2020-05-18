@@ -24,7 +24,18 @@ export default {
   },
   methods: {
     getBreadcrumb () {
-      this.breadcrumbs = this.$route.matched.filter(i => i.meta && i.meta.title && !i.meta.hiddenBreadcrumb)
+      if (this.$store.getters.syncRoutes.length > 1) {
+        const module = [
+          {
+            meta: {
+              title: this.$store.getters.currentModuleTitle
+            }
+          }
+        ]
+        this.breadcrumbs = module.concat(this.$route.matched.filter(i => i.meta && i.meta.title && !i.meta.hiddenBreadcrumb))
+      } else {
+        this.breadcrumbs = this.$route.matched.filter(i => i.meta && i.meta.title && !i.meta.hiddenBreadcrumb)
+      }
     }
   },
   created () {

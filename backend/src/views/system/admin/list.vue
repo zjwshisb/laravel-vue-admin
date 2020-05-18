@@ -11,7 +11,7 @@
           <search-form-col>
             <a-form-item>
               <a-button icon="search" @click="getAdminList">查询</a-button>
-              <a-button type="primary" icon="plus" @click="$router.push({name: 'AdminAccountAdd'})">新增</a-button>
+              <a-button type="primary" icon="plus" @click="$router.push({name: 'SystemAccountAdd'})">新增</a-button>
             </a-form-item>
           </search-form-col>
         </a-row>
@@ -22,7 +22,7 @@
              @change="handleChange">
       <template slot="action" slot-scope="row">
         <div class="table-action">
-          <a-button  icon="edit" type="primary" size="small" @click="() => $router.push(`/admin/${row.id}/edit`)">编辑</a-button>
+          <a-button v-pid="10000"  icon="edit" type="primary" size="small" @click="() => $router.push(`/system/account/${row.id}/edit`)">编辑</a-button>
           <a-button  icon="delete" type="danger" size="small">删除</a-button>
         </div>
       </template>
@@ -46,8 +46,7 @@ export default {
         {
           title: 'id',
           dataIndex: 'id',
-          align: 'center',
-          filterDropdownVisible: false
+          align: 'center'
         },
         {
           title: '用户名',

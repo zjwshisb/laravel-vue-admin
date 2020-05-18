@@ -48,6 +48,7 @@ export default {
      flex: 1;
      min-height: 280px;
      box-sizing: border-box;
+     overflow: auto;
    }
  }
 </style>

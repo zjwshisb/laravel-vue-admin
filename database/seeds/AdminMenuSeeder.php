@@ -10,7 +10,7 @@ class AdminMenuSeeder extends Seeder
     public function run()
     {
         $menus = config('adminmenus');
-        $guard = 'backend';
+        $guard = 'admin';
         $allPermission = [];
         AdminMenu::query()->delete();
         DB::table('admin_menu_permissions')->delete();

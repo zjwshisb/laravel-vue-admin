@@ -6,14 +6,12 @@ import store from './store'
 import antdv from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import './routeGuard'
-
+import './directives/permission'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 import SearchForm from './components/search-form'
 import SearchFormCol from './components/search-form/col'
-import { fetchOptions } from './api/system'
 
-Vue.prototype.$fetchOptions = fetchOptions
 moment.locale('zh-cn')
 Vue.use(antdv)
 

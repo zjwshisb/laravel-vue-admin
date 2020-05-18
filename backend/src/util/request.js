@@ -22,9 +22,22 @@ instance.interceptors.response.use(response => {
   if (error.response) {
     switch (error.response.status) {
       case 401: {
+        Modal.error({
+          title: '登录已失效',
+          centered: true,
+          onOk () {
+            store.dispatch('frontendLogout').then(() => {
+              window.location.reload()
+            })
+          }
+        })
         return Promise.reject(error)
       }
       case 403: {
+        Modal.error({
+          title: '你没有权限执行此操作',
+          centered: true,
+        })
         return Promise.reject(error)
       }
       case 404: {

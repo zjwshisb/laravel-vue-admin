@@ -6,10 +6,11 @@ use App\Http\Requests\Backend\ChangePasswordRequest;
 class MeController extends BaseController{
 
     public function index() {
-        return $this->success([
+        return [
            'id'=> \Auth::id(),
-           'username'=> \Auth::user()->username
-        ]);
+           'username'=> \Auth::user()->username,
+            'pids'=> \Auth::user()->menus->pluck('id'),
+        ];
     }
 
     public function password(ChangePasswordRequest $request) {

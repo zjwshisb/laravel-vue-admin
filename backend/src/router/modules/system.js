@@ -4,7 +4,7 @@ const module = {
   sort: 2,
   routes: [
     {
-      path: '/admin',
+      path: '/system',
       component: Layout,
       meta: {
         title: '登录账号',
@@ -13,39 +13,39 @@ const module = {
       children: [
         {
           path: 'account',
-          name: 'AdminAccountLayout',
+          name: 'SystemAccountLayout',
           component: () => import('@/views/system/admin/index'),
           meta: {
             title: '登录账号',
             hiddenBreadcrumb: true
           },
-          redirect: { name: 'AdminAccountList' },
+          redirect: { name: 'SystemAccountList' },
           children: [
             {
               path: 'list',
-              name: 'AdminAccountList',
+              name: 'SystemAccountList',
               meta: {
-                permission: [],
                 title: '列表',
-                hiddenBreadcrumb: true
+                hiddenBreadcrumb: true,
+                pid: 11000
               },
               component: () => import('@/views/system/admin/list')
             },
             {
               path: 'add',
-              name: 'AdminAccountAdd',
+              name: 'SystemAccountAdd',
               meta: {
-                permission: [],
-                title: '新增'
+                title: '新增',
+                pid: 11100
               },
               component: () => import('@/views/system/admin/form')
             },
             {
               path: ':id/edit',
-              name: 'AdminAccountEdit',
+              name: 'SystemAccountEdit',
               meta: {
-                permission: [],
-                title: '编辑'
+                title: '编辑',
+                pid: 11200
               },
               component: () => import('@/views/system/admin/form')
             }
@@ -54,7 +54,7 @@ const module = {
       ]
     },
     {
-      path: '/admin',
+      path: '/system',
       component: Layout,
       meta: {
         title: '权限组',
@@ -63,43 +63,43 @@ const module = {
       children: [
         {
           path: 'role',
-          name: 'AdminRoleLayout',
+          name: 'SystemRoleLayout',
           meta: {
             title: '权限组',
             hiddenBreadcrumb: true
           },
           redirect: {
-            name: 'AdminRoleList'
+            name: 'SystemRoleList'
           },
           component: () => import('@/views/system/role/index'),
           children: [
             {
               path: 'list',
-              name: 'AdminRoleList',
+              name: 'SystemRoleList',
               meta: {
-                permission: [],
                 title: '列表',
-                hiddenBreadcrumb: true
+                hiddenBreadcrumb: true,
+                pid: 12000
               },
               component: () => import('@/views/system/role/list')
             },
             {
               path: 'add',
-              name: 'AdminRoleAdd',
+              name: 'SystemRoleAdd',
               meta: {
-                permission: [],
-                title: '新增'
+                title: '新增',
+                pid: 12100
               },
               component: () => import('@/views/system/role/form')
             },
             {
               path: ':id/edit',
-              name: 'AdminRoleEdit',
+              name: 'SystemRoleEdit',
               meta: {
-                permission: [],
-                title: '编辑'
+                title: '编辑',
+                pid: 12200
               },
-              component: () => import('@/views/system/admin/form')
+              component: () => import('@/views/system/role/form')
             }
           ]
         }

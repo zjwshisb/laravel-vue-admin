@@ -4,12 +4,14 @@ const user = {
   state: {
     username: '',
     id: '',
-    token: getToken()
+    token: getToken(),
+    pids: []
   },
   mutations: {
     UPDATE_USER (state, user) {
       state.id = user.id
       state.username = user.username
+      state.pids = user.pids
     },
     UPDATE_TOKEN (state, token) {
       state.token = token
@@ -29,17 +31,10 @@ const user = {
     },
     getUserInfo ({ commit, dispatch }) {
       return getInfo().then(res => {
-        if (res.code === 0) {
-          return dispatch('updateRoute').then(() => {
-            commit('UPDATE_USER', {
-              id: res.data.id,
-              username: res.data.username
-            })
-            return Promise.resolve(res.data)
-          })
-        } else {
-          return Promise.reject(res)
-        }
+        return dispatch('updateRoute').then(() => {
+          commit('UPDATE_USER', res)
+          return Promise.resolve(res)
+        })
       })
     },
     frontendLogout ({ commit }) {
@@ -51,7 +46,8 @@ const user = {
   getters: {
     id: state => state.id,
     username: state => state.username,
-    token: state => state.token
+    token: state => state.token,
+    pids: state => state.pids
   }
 }
 export default user

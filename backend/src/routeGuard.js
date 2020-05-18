@@ -9,11 +9,9 @@ router.beforeEach((to, from, next) => {
     if (to.name === 'Login') {
       if (store.getters.id) {
         next('/')
-        NProgress.done()
       } else {
         store.dispatch('getUserInfo').then(() => {
-          next({ name: 'AdminAccountList' })
-          NProgress.done()
+          next({ name: 'SystemAccountList' })
         }).catch(() => {
           setToken('')
           next()
@@ -23,14 +21,11 @@ router.beforeEach((to, from, next) => {
       if (!store.getters.id) {
         store.dispatch('getUserInfo').then(() => {
           next({ ...to, replace: true })
-          NProgress.done()
         }).catch(() => {
           next({ name: 'Login' })
-          NProgress.done()
         })
       } else {
         next()
-        NProgress.done()
       }
     }
   } else {
@@ -39,6 +34,8 @@ router.beforeEach((to, from, next) => {
     } else {
       next({ name: 'Login' })
     }
-    NProgress.done()
   }
+})
+router.afterEach(() => {
+  NProgress.done()
 })
