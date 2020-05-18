@@ -10,6 +10,7 @@ Route::middleware(['auth:admin'])->group(function () {
 Route::middleware(['auth:admin','permission'])->group(function (){
     Route::get('admins','AdminController@index')->name('backend.admins.index');
     Route::get('admin/{id}', 'AdminController@show')->name('backend.admin.show')->where('id', '[0-9]+');
+    Route::get('admin/options', 'AdminController@options')->name('backend.admin.options');
     Route::post('admins','AdminController@store')->name('backend.admins.store');
     Route::put('admins/{id}','AdminController@update')->name('backend.admins.update');
     Route::delete('admins/{id}','AdminController@destroy')->name('backend.admins.destroy');

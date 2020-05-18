@@ -1,6 +1,7 @@
 <template>
   <a-layout-header class="header" theme="light">
-    <div class="menu-trigger" @click="() => $store.commit('UPDATE_MENU_STATUS', !$store.getters.menuHidden)">
+    <div class="menu-trigger" @click="() => $store.commit('UPDATE_MENU_STATUS', !$store.getters.menuHidden)"
+    v-if="!$store.getters.isMobile">
       <a-icon v-if="!$store.getters.menuHidden" type="menu-fold"/>
       <a-icon v-else type="menu-unfold"/>
     </div>

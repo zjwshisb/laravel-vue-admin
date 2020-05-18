@@ -5,7 +5,30 @@ export const fetchAdmins = params => {
     params
   })
 }
-
+export const addAdmin = data => {
+  return request({
+    url: 'admins',
+    method: 'post',
+    data
+  })
+}
+export const updateAdmin = (id, data) => {
+  return request({
+    url: `admins/${id}`,
+    method: 'put',
+    data
+  })
+}
+export const getAdminOption = () => {
+  return request({
+    url: 'admin/options'
+  })
+}
+export const getAdmin = id => {
+  return request({
+    url: `admin/${id}`
+  })
+}
 export const addRole = data => {
   return request({
     url: 'roles',

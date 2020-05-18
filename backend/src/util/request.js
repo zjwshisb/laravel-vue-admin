@@ -69,6 +69,7 @@ instance.interceptors.response.use(response => {
           title: '服务器出了点小差',
           centered: true
         })
+        return Promise.reject(error.response.data)
     }
   } else {
     if (error.message === 'Network Error') {

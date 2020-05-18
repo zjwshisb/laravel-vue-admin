@@ -12,15 +12,15 @@ class AdminRequest extends FormRequest{
 
     public function rules()
     {
-        if(strtoupper($this->method) === 'POST') {
+        if(strtoupper($this->method()) === 'POST') {
             return [
-                'password'=> 'required',
-                'username'=> 'required',
-                'is_active'=> 'required'
+                'username'=> ['required','unique:admins','max:20'],
+                'password'=> ['required','max:20'],
+                'roles'=> ['required','array']
             ];
         } else {
             return [
-                'is_active'=> 'required'
+                'roles'=> ['required','array']
             ];
         }
     }

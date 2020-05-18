@@ -23,11 +23,6 @@ export default {
     }
   },
   mounted () {
-    window.onresize = () => {
-      if (document.body.clientWidth < 992) {
-        this.$store.commit('UPDATE_MENU_STATUS', true)
-      }
-    }
   }
 }
 </script>

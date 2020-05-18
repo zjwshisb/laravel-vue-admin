@@ -1,5 +1,10 @@
 <template>
-  <a-layout-sider width="200" v-model="collapsed">
+  <a-layout-sider width="200" v-model="collapsed"  breakpoint="sm" :collapsed-width="collapsedWidth"
+   @breakpoint="breakpoint"
+   :zeroWidthTriggerStyle="triggerStyle">
+    <div slot="trigger">
+      aaaa
+    </div>
     <div class="logo">
       <a-icon type="html5" v-if="collapsed"></a-icon>
       <span v-else>laravel-antdv-admin</span>
@@ -42,6 +47,11 @@ export default {
   name: 'Index',
   data () {
     return {
+      triggerStyle: {
+        // backgroundColor: '#1890ff',
+        // color: '#000000',
+        marginTop: '-55px',
+      }
     }
   },
   computed: {
@@ -51,14 +61,24 @@ export default {
         return this.menuHidden
       },
       set (val) {
+        console.log(val)
         this.$store.commit('UPDATE_MENU_STATUS', val)
+      }
+    },
+    collapsedWidth () {
+      if (this.$store.getters.isMobile) {
+        return 0
+      } else {
+        return 80
       }
     }
   },
   methods: {
+    breakpoint (breakpoint) {
+      this.$store.commit('UPDATE_IS_MOBILE', breakpoint)
+    },
     go (to) {
       const current = this.$route
-      console.log(to)
       if (current.name !== to.key) {
         this.$router.push({ name: to.key }).catch(() => {
         })

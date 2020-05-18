@@ -12,6 +12,10 @@ class Admin extends Authenticatable{
     use Filterable;
     use HasRoles;
 
+    protected $fillable = [
+      'username', 'password'
+    ];
+
     public function setPasswordAttribute($val) {
         $this->attributes['password'] = Hash::make($val);
     }

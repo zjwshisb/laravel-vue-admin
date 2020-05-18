@@ -10,7 +10,8 @@ class AdminResource extends JsonResource{
         return [
           'id'=> $this->id,
           'username'=> $this->username,
-            'created_at'=> (string) $this->created_at
+            'roles'=> $this->roles->pluck('name')->implode(','),
+            'created_at'=> $this->created_at->toDateTimeString()
         ];
     }
 }

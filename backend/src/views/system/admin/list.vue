@@ -44,13 +44,13 @@ export default {
       list: [],
       columns: [
         {
-          title: 'id',
-          dataIndex: 'id',
+          title: '用户名',
+          dataIndex: 'username',
           align: 'center'
         },
         {
-          title: '用户名',
-          dataIndex: 'username',
+          title: '权限组',
+          dataIndex: 'roles',
           align: 'center'
         },
         {

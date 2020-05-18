@@ -54,8 +54,12 @@ export default {
           this.$store.dispatch('getUserInfo').then(() => {
             this.$router.push({ name: 'SystemAccountLayout' }).catch(() => {
             })
+          }).catch(() => {
           })
-        }).catch(() => {
+        }).catch(res => {
+          this.$error({
+            title: res.message
+          })
           this.loading = false
         })
       }).catch(() => {})

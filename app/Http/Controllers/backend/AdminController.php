@@ -15,11 +15,24 @@ class AdminController extends BaseController{
         return AdminResource::collection($admins);
     }
 
-    public function store(AdminRequest $request) {
-        $admin = Admin::query()->create($request->all());
+    public function show($id) {
+        $admin = Admin::query()->findOrFail($id);
+        return [
+          'username'=> $admin->username,
+          'roles'=> $admin->roles->pluck('id')
+        ];
     }
 
-    public function update() {
+    public function store(AdminRequest $request) {
+        $admin = Admin::query()->create($request->all());
+        $admin->roles()->sync($request->roles);
+        return $this->success(new AdminResource($admin));
+    }
+
+    public function update(AdminRequest $request,$id) {
+        $admin = Admin::query()->findOrFail($id);
+        $admin->roles()->sync($request->roles);
+        return $this->success(new AdminResource($admin));
 
     }
 

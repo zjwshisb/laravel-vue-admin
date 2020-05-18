@@ -5,7 +5,7 @@
         <a-layout class="right-container">
           <m-header></m-header>
           <breadcrumb></breadcrumb>
-          <a-layout-content class="content-container">
+          <a-layout-content class="content-container" :style="styles">
             <router-view></router-view>
           </a-layout-content>
           <m-footer></m-footer>
@@ -26,6 +26,19 @@ export default {
     MFooter,
     Breadcrumb
   },
+  computed: {
+    styles () {
+      if (this.$store.getters.isMobile) {
+        return {
+          margin: '0 -24px'
+        }
+      } else {
+        return {
+          margin: 0
+        }
+      }
+    }
+  },
   data () {
     return {
       collapsed: false
@@ -44,7 +57,6 @@ export default {
    .content-container{
      padding: 10px;
      background: #fff;
-     margin: 0;
      flex: 1;
      min-height: 280px;
      box-sizing: border-box;
