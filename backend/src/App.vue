@@ -14,7 +14,7 @@ export default {
     }
   },
   methods: {
-    getPopupContainer (el, dialogContext) {
+    getPopupContainer (el, dialogContext)          {
       if (dialogContext) {
         return dialogContext.getDialogWrap()
       } else {
