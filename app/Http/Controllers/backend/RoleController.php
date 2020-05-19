@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Backend;
 
-
 use App\Http\Requests\Backend\RoleRequest;
 use App\Http\Resources\RoleResource;
 use App\Models\AdminMenu;
@@ -11,13 +10,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class RoleController extends BaseController{
-
-    public function options() {
-        return AdminMenu::query()->whereNull('parent_id')
-            ->select(['id','name','parent_id', 'has_permission'])
-            ->with('children.children.children')->get();
-    }
-
 
     public function show($id) {
         $role = Role::query()->findOrFail($id);
@@ -70,5 +62,11 @@ class RoleController extends BaseController{
         $role = Role::query()->findOrFail($id);
         $role->delete();
         return $this->success();
+    }
+
+    public function options() {
+        return AdminMenu::query()->whereNull('parent_id')
+            ->select(['id','name','parent_id', 'has_permission'])
+            ->with('children.children.children')->get();
     }
 }

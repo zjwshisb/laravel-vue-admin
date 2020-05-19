@@ -49,8 +49,6 @@ export default {
   data () {
     return {
       triggerStyle: {
-        // backgroundColor: '#1890ff',
-        // color: '#000000',
         marginTop: '-55px'
       }
     }
@@ -66,13 +64,12 @@ export default {
       get () {
         return this.menuHidden
       },
-      set(val) {
-        console.log(val)
+      set (val) {
         this.$store.commit('UPDATE_MENU_STATUS', val)
       }
     },
     collapsedWidth () {
-      if (this.$store.getters.isMobile)              {
+      if (this.$store.getters.isMobile) {
         return 0
       } else {
         return 80

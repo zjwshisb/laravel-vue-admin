@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0c433779-ac02-4428-90e4-3928e5202606" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backend/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/layout/menu/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/layout/menu/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +196,7 @@
       <workItem from="1589423192312" duration="16834000" />
       <workItem from="1589505513504" duration="20552000" />
       <workItem from="1589766692955" duration="22345000" />
-      <workItem from="1589859394160" duration="10070000" />
+      <workItem from="1589859394160" duration="14771000" />
     </task>
     <servers />
   </component>
