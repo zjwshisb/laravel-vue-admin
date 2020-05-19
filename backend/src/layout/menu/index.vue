@@ -66,13 +66,13 @@ export default {
       get () {
         return this.menuHidden
       },
-      set (val) {
+      set (val)     {
         console.log(val)
         this.$store.commit('UPDATE_MENU_STATUS', val)
       }
     },
     collapsedWidth () {
-      if (this.$store.getters.isMobile) {
+      if (this.$store.getters.isMobile)    {
         return 0
       } else {
         return 80
