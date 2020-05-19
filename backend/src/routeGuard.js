@@ -1,17 +1,17 @@
 import router from './router/index'
 import store from './store/index'
-import NProgress from 'nprogress' // Progress 进度条
-import 'nprogress/nprogress.css'// Progress 进度条样式
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 import { getToken, setToken } from './util/token'
 router.beforeEach((to, from, next) => {
   NProgress.start()
   if (getToken()) {
     if (to.name === 'Login') {
       if (store.getters.id) {
-        next('/')
+        next(store.getters.indexRoute)
       } else {
         store.dispatch('getUserInfo').then(() => {
-          next({ name: 'SystemAccountList' })
+          next(store.getters.indexRoute)
         }).catch(() => {
           setToken('')
           next()
@@ -36,6 +36,9 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
-router.afterEach(() => {
+router.afterEach((to, from) => {
+  const active = to.meta.activeMenuName ? to.meta.activeMenuName : to.name
+  store.commit('UPDATE_MENU_ACTIVE_KEYS', active ? [active] : [])
+  store.commit('UPDATE_MODULE', to.meta.module)
   NProgress.done()
 })

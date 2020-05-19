@@ -36,7 +36,7 @@ instance.interceptors.response.use(response => {
       case 403: {
         Modal.error({
           title: '你没有权限执行此操作',
-          centered: true,
+          centered: true
         })
         return Promise.reject(error)
       }
@@ -77,8 +77,7 @@ instance.interceptors.response.use(response => {
         title: 'network error',
         centered: true
       })
-    }
-    if (error.code && error.code === 'ECONNABORTED') {
+    } else if (error.code && error.code === 'ECONNABORTED') {
       Modal.error({
         title: '请求服务器超时',
         centered: true

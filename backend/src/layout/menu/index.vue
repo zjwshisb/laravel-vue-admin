@@ -10,7 +10,8 @@
       <span v-else>laravel-antdv-admin</span>
     </div>
     <template v-for="module in syncRoutes">
-      <a-menu mode="inline" @click="go" v-show="module.key === currentModule" :key="module.key"  theme="dark">
+      <a-menu mode="inline" @click="go" v-show="module.key === currentModule" :key="module.key"  theme="dark"
+              :selectedKeys="selectedKeys">
         <template v-for="route in module.routes">
           <a-sub-menu v-if="route.children.filter(v => !v.hidden ).length > 1" :key="route.name">
                 <span slot="title">
@@ -50,12 +51,17 @@ export default {
       triggerStyle: {
         // backgroundColor: '#1890ff',
         // color: '#000000',
-        marginTop: '-55px',
+        marginTop: '-55px'
       }
     }
   },
   computed: {
     ...mapGetters(['syncRoutes', 'currentModule', 'menuHidden']),
+    selectedKeys: {
+      get () {
+        return this.$store.getters.menuActiveKeys
+      }
+    },
     collapsed: {
       get () {
         return this.menuHidden

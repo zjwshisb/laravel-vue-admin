@@ -7,6 +7,25 @@ const module = {
       path: '/system',
       component: Layout,
       meta: {
+        title: 'dashboard',
+        icon: 'dashboard'
+      },
+      children: [
+        {
+          path: 'dashboard',
+          component: () => import('@/views/system/dashboard/index'),
+          name: 'SystemDashboard',
+          meta: {
+            title: 'dashboard',
+            hiddenBreadcrumb: true
+          }
+        }
+      ]
+    },
+    {
+      path: '/system',
+      component: Layout,
+      meta: {
         title: '登录账号',
         icon: 'user'
       },
@@ -27,7 +46,8 @@ const module = {
               meta: {
                 title: '列表',
                 hiddenBreadcrumb: true,
-                pid: 11000
+                pid: 11000,
+                activeMenuName: 'SystemAccountLayout'
               },
               component: () => import('@/views/system/admin/list')
             },
@@ -36,7 +56,8 @@ const module = {
               name: 'SystemAccountAdd',
               meta: {
                 title: '新增',
-                pid: 11100
+                pid: 11100,
+                activeMenuName: 'SystemAccountLayout'
               },
               component: () => import('@/views/system/admin/form')
             },
@@ -45,7 +66,8 @@ const module = {
               name: 'SystemAccountEdit',
               meta: {
                 title: '编辑',
-                pid: 11200
+                pid: 11200,
+                activeMenuName: 'SystemAccountLayout'
               },
               component: () => import('@/views/system/admin/form')
             }
@@ -79,7 +101,8 @@ const module = {
               meta: {
                 title: '列表',
                 hiddenBreadcrumb: true,
-                pid: 12000
+                pid: 12000,
+                activeMenuName: 'SystemRoleLayout'
               },
               component: () => import('@/views/system/role/list')
             },
@@ -88,7 +111,8 @@ const module = {
               name: 'SystemRoleAdd',
               meta: {
                 title: '新增',
-                pid: 12100
+                pid: 12100,
+                activeMenuName: 'SystemRoleLayout'
               },
               component: () => import('@/views/system/role/form')
             },
@@ -97,7 +121,8 @@ const module = {
               name: 'SystemRoleEdit',
               meta: {
                 title: '编辑',
-                pid: 12200
+                pid: 12200,
+                activeMenuName: 'SystemRoleLayout'
               },
               component: () => import('@/views/system/role/form')
             }

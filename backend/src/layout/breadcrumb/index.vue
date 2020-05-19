@@ -2,8 +2,7 @@
   <a-breadcrumb style="margin: 16px 0;text-align: left">
     <template v-for="b in breadcrumbs" >
       <a-breadcrumb-item v-if="!b.meta.hiddenBreadcrumb" :key="b.name">
-        <span v-if="!b.parent">{{b.meta.title}}</span>
-        <router-link v-else :to="b.path">{{b.meta.title}}</router-link>
+        <span >{{b.meta.title}}</span>
       </a-breadcrumb-item>
     </template>
   </a-breadcrumb>

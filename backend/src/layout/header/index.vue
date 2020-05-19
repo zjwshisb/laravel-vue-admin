@@ -5,16 +5,26 @@
       <a-icon v-if="!$store.getters.menuHidden" type="menu-fold"/>
       <a-icon v-else type="menu-unfold"/>
     </div>
-    <a-menu v-if="modulesCount > 1"
-            class="menu"
-      mode="horizontal"
-      :default-selected-keys="[currentModule]"
-            @click="moduleChange"
-    >
-      <a-menu-item :key="route.key" v-for="route in syncRoutes">
-        {{route.title}}
-      </a-menu-item>
-    </a-menu>
+    <div class="header-menu" v-if="modulesCount > 1">
+      <a-menu v-if="!isMobile"
+              class="horizontal-menu"
+              mode="horizontal"
+              :default-selected-keys="[currentModule]"
+              @click="moduleChange"
+      >
+        <a-menu-item :key="route.key" v-for="route in syncRoutes">
+          {{route.title}}
+        </a-menu-item>
+      </a-menu>
+      <a-dropdown-button v-else  class="vertical-menu"  :trigger="['click']">
+        {{currentModuleTitle}}
+        <a-menu slot="overlay" @click="moduleChange">
+          <a-menu-item :key="route.key" v-for="route in syncRoutes">
+            {{route.title}}
+          </a-menu-item>
+        </a-menu>
+      </a-dropdown-button>
+    </div>
     <div class="user">
       <a-dropdown :trigger="['click']">
         <a-badge count="0">
@@ -49,14 +59,21 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['syncRoutes', 'currentModule']),
+    ...mapGetters(['syncRoutes', 'currentModule', 'isMobile', 'currentModuleTitle']),
     modulesCount () {
       return this.syncRoutes.length
     }
   },
   methods: {
     moduleChange (e) {
-      this.$store.commit('UPDATE_MODULE', e.key)
+      if (e.key !== this.currentModule) {
+        for (const k in this.syncRoutes) {
+          if (this.syncRoutes[k].key === e.key) {
+            this.$router.push(this.syncRoutes[k].routes[0].children[0])
+            break
+          }
+        }
+      }
     },
     menuClick (e) {
       if (e.key === 'logout') {
@@ -89,9 +106,14 @@ export default {
     margin: 0 -24px 0 -24px;
     background: #FFF;
   }
-  .menu{
-    line-height: 64px;
-    text-align: left;
+  .header-menu{
+    .horizontal-menu{
+      line-height: 64px;
+      text-align: left;
+    }
+    .vertical-menu{
+      margin-left: 50px;
+    }
   }
   .user{
     flex: 1;

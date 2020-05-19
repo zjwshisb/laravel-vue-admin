@@ -5,8 +5,7 @@
         <a-row :gutter="12">
           <search-form-col>
             <a-form-item>
-              <a-button icon="search" >查询</a-button>
-              <a-button type="primary" icon="plus" @click="$router.push({name: 'SystemRoleAdd'})">新增</a-button>
+              <a-button v-pid="12100" type="primary" icon="plus" @click="$router.push({name: 'SystemRoleAdd'})">新增</a-button>
             </a-form-item>
           </search-form-col>
         </a-row>
@@ -16,8 +15,8 @@
              :loading="loading.table" @change="tableChange">
       <template slot="action" slot-scope="row">
         <div class="table-action">
-          <a-button  icon="edit" type="primary" size="small" @click="() => $router.push(`/system/role/${row.id}/edit`)">编辑</a-button>
-          <a-button  icon="delete" type="danger" size="small" @click="handleDelete(row.id)">删除</a-button>
+          <a-button v-pid="12200" icon="edit" type="primary" size="small" @click="() => $router.push(`/system/role/${row.id}/edit`)">编辑</a-button>
+          <a-button v-pid="12300" icon="delete" type="danger" size="small" @click="handleDelete(row.id)">删除</a-button>
         </div>
       </template>
     </a-table>

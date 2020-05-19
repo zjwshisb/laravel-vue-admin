@@ -6,7 +6,7 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || '唯绿中央大厨房后台管理系统' // page title
+const name = defaultSettings.title || 'laravel-vue-admin' // page title
 
 const port = process.env.port || process.env.npm_config_port || 8080 // dev port
 
@@ -24,22 +24,12 @@ module.exports = {
       errors: true
     }
   },
-  configureWebpack: {
-    // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
-    name: name,
-    resolve: {
-      alias: {
-        '@': resolve('src')
-      }
-    }
-  },
   chainWebpack (config) {
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test
 
     config.plugin('html').tap(args => {
-      args[0].title = 'laravel-vue-admin'
+      args[0].title = name
       return args
     })
     // set svg-sprite-loader

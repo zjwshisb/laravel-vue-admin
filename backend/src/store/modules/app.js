@@ -1,6 +1,7 @@
 const app = {
   state: {
     menuHidden: false,
+    menuActiveKeys: [],
     isMobile: false
   },
   mutations: {
@@ -9,13 +10,17 @@ const app = {
     },
     UPDATE_IS_MOBILE (state, bool) {
       state.isMobile = bool
+    },
+    UPDATE_MENU_ACTIVE_KEYS (state, keys) {
+      state.menuActiveKeys = keys
     }
   },
   actions: {
   },
   getters: {
     menuHidden: state => state.menuHidden,
-    isMobile: state => state.isMobile
+    isMobile: state => state.isMobile,
+    menuActiveKeys: state => state.menuActiveKeys
   }
 }
 export default app

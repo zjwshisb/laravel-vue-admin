@@ -31,8 +31,8 @@ const user = {
     },
     getUserInfo ({ commit, dispatch }) {
       return getInfo().then(res => {
+        commit('UPDATE_USER', res)
         return dispatch('updateRoute').then(() => {
-          commit('UPDATE_USER', res)
           return Promise.resolve(res)
         })
       })

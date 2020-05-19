@@ -16,7 +16,7 @@
         />
       </a-form-model-item>
       <a-form-model-item :wrapperCol="simpleForm.noLabel.wrapperCol">
-        <a-button type="primary" @click="handleSubmit">提交</a-button>
+        <a-button type="primary" @click="handleSubmit" :loading="loading.submit">提交</a-button>
         <a-button @click="() => $router.back()">取消</a-button>
       </a-form-model-item>
     </a-form-model>
@@ -26,7 +26,7 @@
 <script>
 import SimpleForm from '@/mixins/simpleForm'
 import { requireValidator } from '../../../util/validator'
-import { addAdmin, updateAdmin, getAdminOption, getAdmin} from '../../../api/system'
+import { addAdmin, updateAdmin, getAdminOption, getAdmin } from '../../../api/system'
 
 export default {
   name: 'add',
@@ -42,7 +42,7 @@ export default {
         password: '',
         roles: []
       },
-      roles: [],
+      roles: []
     }
   },
   computed: {
@@ -84,12 +84,14 @@ export default {
   methods: {
     handleSubmit () {
       this.$refs.form.validate().then(() => {
+        this.loading.submit = true
         if (!this.isEdit) {
           return addAdmin(this.form).then(res => {
             if (res.code === 0) {
               this.loading.submit = true
               this.$message.success('新增成功')
               this.$router.back()
+              this.loading.submit = false
             }
           })
         } else {
@@ -98,6 +100,7 @@ export default {
               this.loading.submit = true
               this.$message.success('编辑成功')
               this.$router.back()
+              this.loading.submit = false
             }
           })
         }

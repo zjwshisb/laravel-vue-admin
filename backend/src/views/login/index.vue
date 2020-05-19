@@ -52,7 +52,7 @@ export default {
         this.$store.dispatch('login', this.form).then(res => {
           this.loading = false
           this.$store.dispatch('getUserInfo').then(() => {
-            this.$router.push({ name: 'SystemAccountLayout' }).catch(() => {
+            this.$router.push('/system/dashboard').catch(() => {
             })
           }).catch(() => {
           })
