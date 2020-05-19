@@ -52,6 +52,13 @@ return [
                             'backend.roles.update'
                         ]
                     ],
+                    [
+                        'id'=> 12300,
+                        'name'=> '删除',
+                        'permissions'=> [
+                            'backend.roles.destroy'
+                        ]
+                    ]
                 ]
             ]
         ]

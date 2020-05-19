@@ -27,7 +27,7 @@ class Admin extends Authenticatable{
         } else {
             $menus = new Collection();
             foreach ($this->roles as $role) {
-                $menus = $menus->concat($role);
+                $menus = $menus->concat($role->menus);
             }
         }
         return $menus;
