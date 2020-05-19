@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     ...mapGetters(['syncRoutes', 'currentModule', 'isMobile', 'currentModuleTitle']),
-    modulesCount ()     {
+    modulesCount () {
       return this.syncRoutes.length
     }
   },
