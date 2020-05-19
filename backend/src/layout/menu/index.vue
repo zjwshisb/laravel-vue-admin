@@ -72,7 +72,7 @@ export default {
       }
     },
     collapsedWidth () {
-      if (this.$store.getters.isMobile)     {
+      if (this.$store.getters.isMobile) {
         return 0
       } else {
         return 80
