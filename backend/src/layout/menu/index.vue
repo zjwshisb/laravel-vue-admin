@@ -63,7 +63,7 @@ export default {
       }
     },
     collapsed: {
-      get () {
+      get ()   {
         return this.menuHidden
       },
       set (val) {
