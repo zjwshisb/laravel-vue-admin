@@ -2,11 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c433779-ac02-4428-90e4-3928e5202606" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/AdminActionLogController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/FrontendErrorController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/AdminActionRecord.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/AdminActionLogResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/FrontendErrorResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/ModelFilters/AdminActionLogFilter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/AdminActionLog.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/FrontendError.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backend/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/backend/RoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/layout/menu/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/layout/menu/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/RoleResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/RoleResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/adminmenus.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminmenus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/backend.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/backend.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +153,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../saas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -153,19 +164,19 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="settings.webpack" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\phpStudy\WWW\admin\backend" />
-      <recent name="C:\phpStudy\WWW\admin\backend\src\directives" />
-      <recent name="$PROJECT_DIR$/backend" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\phpStudy\WWW\admin\backend\tests" />
       <recent name="C:\phpStudy\WWW\admin\backend\src\router\modules" />
       <recent name="C:\phpStudy\WWW\admin\backend\src\views\404" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\phpStudy\WWW\admin\backend" />
+      <recent name="C:\phpStudy\WWW\admin\backend\src\directives" />
+      <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -196,7 +207,9 @@
       <workItem from="1589423192312" duration="16834000" />
       <workItem from="1589505513504" duration="20552000" />
       <workItem from="1589766692955" duration="22345000" />
-      <workItem from="1589859394160" duration="14771000" />
+      <workItem from="1589859394160" duration="15299000" />
+      <workItem from="1589938344955" duration="24011000" />
+      <workItem from="1590024011207" duration="271000" />
     </task>
     <servers />
   </component>
@@ -226,22 +239,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589784759511" />
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1589875671497">
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1589961273347">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1589875671497" />
-    <state x="1096" y="623" key="NewPhpFileDialog" timestamp="1589789199321">
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1589961273347" />
+    <state x="1096" y="623" key="NewPhpFileDialog" timestamp="1589955025880">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1096" y="623" key="NewPhpFileDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589789199321" />
-    <state x="781" y="342" key="SettingsEditor" timestamp="1589875698638">
+    <state x="1096" y="623" key="NewPhpFileDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589955025880" />
+    <state x="781" y="342" key="SettingsEditor" timestamp="1589945347674">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1589875698638" />
-    <state x="335" y="375" width="1449" height="802" key="find.popup" timestamp="1589789816614">
+    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1589945347674" />
+    <state x="336" y="398" width="1449" height="802" key="find.popup" timestamp="1589957852181">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="335" y="375" width="1449" height="802" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589789816614" />
+    <state x="336" y="398" width="1449" height="802" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589957852181" />
     <state x="936" y="330" key="run.anything.popup" timestamp="1589790864006">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

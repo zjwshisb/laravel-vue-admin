@@ -9,6 +9,11 @@
             <router-view></router-view>
           </a-layout-content>
           <m-footer></m-footer>
+          <a-back-top class="back-to-top">
+            <div class="ant-back-top-inner">
+              UP
+            </div>
+          </a-back-top>
         </a-layout>
       </a-layout>
   </a-layout>
@@ -49,18 +54,29 @@ export default {
 
 <style scoped lang="scss">
  .main-container{
-    height: 100%;
+   min-height: 100%;
    .right-container{
      padding: 0 24px 24px;
      justify-content: flex-start;
+     overflow: auto;
+     .back-to-top{
+       right: 0;
+       height: 40px;
+       width: 40px;
+       line-height: 40px;
+       border-radius: 4px;
+       background-color: #1088e9;
+       color: #fff;
+       text-align: center;
+       font-size: 20px;
+     }
    }
    .content-container{
      padding: 10px;
      background: #fff;
-     flex: 1;
      min-height: 280px;
+     flex-grow: 1;
      box-sizing: border-box;
-     overflow: auto;
    }
  }
 </style>

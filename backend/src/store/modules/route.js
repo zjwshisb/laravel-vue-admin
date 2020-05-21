@@ -38,12 +38,19 @@ const route = {
     updateRoute ({ commit, state, rootState }) {
       const pids = rootState.user.pids
       const modules = state.syncRoutes
-      for (const module of modules) {
-        for (const x in module.routes) {
-          filterRoute(module.routes[x], pids, module.key)
-          if (x.children <= 0) {
-            module.routes.splice(x, 1)
+      for (const m in modules) {
+        for (const x in modules[m].routes) {
+          filterRoute(modules[m].routes[x], pids, modules[m].key)
+        }
+        for (const x in modules[m].routes) {
+          if (modules[m].routes[x].children <= 0) {
+            modules[m].routes.splice(x, 1)
           }
+        }
+      }
+      for (const m in modules) {
+        if (modules[m].routes.length <= 0) {
+          modules.splice(m, 1)
         }
       }
       commit('UPDATE_SYNC_ROUTES', modules)

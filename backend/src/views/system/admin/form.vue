@@ -5,7 +5,7 @@
         <a-input v-model="form.username" :disabled="isEdit"></a-input>
       </a-form-model-item>
       <a-form-model-item prop="password" label="密码" v-if="!isEdit">
-        <a-input v-model="form.password" type="password"></a-input>
+        <a-input v-model="form.password"></a-input>
       </a-form-model-item>
       <a-form-model-item prop="roles" label="权限组">
         <a-select

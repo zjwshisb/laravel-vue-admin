@@ -6,26 +6,39 @@ return [
         'children' => [
             [
                 'id'=> 11000,
-                'name' => '登录账号',
-                'permissions' => [
-                    'backend.admins.index'
-                ],
+                'name'=> '系统账号',
                 'children' => [
                     [
                         'id'=> 11100,
-                        'name' => '新增',
+                        'name' => '账号列表',
                         'permissions' => [
-                            'backend.admins.store'
+                            'backend.admins.index'
+                        ],
+                        'children' => [
+                            [
+                                'id'=> 11110,
+                                'name' => '新增',
+                                'permissions' => [
+                                    'backend.admins.store'
+                                ]
+                            ],
+                            [
+                                'id'=> 11120,
+                                'name' => '编辑',
+                                'permissions' => [
+                                    'backend.admins.show',
+                                    'backend.admins.update'
+                                ]
+                            ],
                         ]
                     ],
                     [
-                        'id'=> 11200,
-                        'name' => '编辑',
-                        'permissions' => [
-                            'backend.admins.show',
-                            'backend.admins.update'
+                        'id' => 11200,
+                        'name'=> '操作记录',
+                        'permissions'=> [
+                            'backend.admin-action-logs.index'
                         ]
-                    ],
+                    ]
                 ]
             ],
             [
@@ -57,6 +70,26 @@ return [
                         'name'=> '删除',
                         'permissions'=> [
                             'backend.roles.destroy'
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'id'=> 13000,
+                'name'=> '运维',
+                'children' => [
+                    [
+                        'id'=> 13100,
+                        'name'=> '前端异常列表',
+                        'permissions' => ['backend.frontend-errors.index'],
+                        'children' => [
+                            [
+                                'id'=> 13110,
+                                'name'=> '全部清除',
+                                'permissions' => [
+                                    'backend.frontend-errors.flush'
+                                ]
+                            ],
                         ]
                     ]
                 ]

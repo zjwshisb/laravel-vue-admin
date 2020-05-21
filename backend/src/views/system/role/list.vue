@@ -20,9 +20,7 @@
         </div>
       </template>
     </a-table>
-
   </div>
-
 </template>
 
 <script>
@@ -46,6 +44,11 @@ export default {
         {
           title: '说明',
           dataIndex: 'description',
+          align: 'center'
+        },
+        {
+          title: '关联管理员数量',
+          dataIndex: 'users_count',
           align: 'center'
         },
         {

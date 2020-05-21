@@ -10,7 +10,7 @@
           </search-form-col>
           <search-form-col>
             <a-form-item>
-              <a-button icon="search" @click="getAdminList">查询</a-button>
+              <a-button icon="search" @click="getAdminList(true)">查询</a-button>
               <a-button v-pid="11100" type="primary" icon="plus" @click="$router.push({name: 'SystemAccountAdd'})">新增</a-button>
             </a-form-item>
           </search-form-col>
@@ -73,7 +73,10 @@ export default {
     handleChange (e) {
       console.log(e)
     },
-    getAdminList () {
+    getAdminList (reset = false) {
+      if (reset === true) {
+        this.pagination.current = 1
+      }
       this.loading.table = true
       fetchAdmins(
         Object.assign(this.query, {

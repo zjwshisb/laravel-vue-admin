@@ -1,13 +1,15 @@
 <?php
 Route::post('/tokens', 'TokenController@store');
 Route::get('/tokens', 'TokenController@index');
+Route::post('/frontend-error','FrontendErrorController@store');
+
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('me', 'MeController@index');
     Route::post('me/password', 'MeController@password');
 
 });
-Route::middleware(['auth:admin','permission'])->group(function (){
+Route::middleware(['auth:admin','permission', 'admin-action-record'])->group(function (){
     Route::get('admins','AdminController@index')->name('backend.admins.index');
     Route::get('admin/{id}', 'AdminController@show')->name('backend.admin.show')->where('id', '[0-9]+');
     Route::get('admin/options', 'AdminController@options')->name('backend.admin.options');
@@ -22,4 +24,9 @@ Route::middleware(['auth:admin','permission'])->group(function (){
     Route::get('roles/{id}','RoleController@show')->name('backend.roles.show')
         ->where('id','[0-9]+');
     Route::get('roles/options','RoleController@options')->name('backend.roles.options');
+
+    Route::get('admin-action-logs','AdminActionLogController@index')->name('backend.admin-action-logs.index');
+
+    Route::get('frontend-errors','FrontendErrorController@index')->name('backend.frontend-errors.index');
+    Route::post('frontend-errors/flush','FrontendErrorController@flush')->name('backend.frontend-errors.flush');
 });

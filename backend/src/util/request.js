@@ -6,7 +6,7 @@ const instance = axios.create({
   headers: {
     Accept: 'application/json, text/plain, */*'
   },
-  timeout: 5000
+  timeout: 15000
 })
 instance.interceptors.request.use(config => {
   if (store.getters.token) {
@@ -42,7 +42,7 @@ instance.interceptors.response.use(response => {
       }
       case 404: {
         Modal.error({
-          title: '404',
+          title: '数据找不到了!请刷新页面重试',
           centered: true
         })
         return Promise.reject(error)
@@ -69,7 +69,7 @@ instance.interceptors.response.use(response => {
           title: '服务器出了点小差',
           centered: true
         })
-        return Promise.reject(error.response.data)
+        return Promise.reject(error.response)
     }
   } else {
     if (error.message === 'Network Error') {

@@ -26,17 +26,20 @@
       </a-dropdown-button>
     </div>
     <div class="user">
+      <a-icon type="bell" class="icon"></a-icon>
       <a-dropdown :trigger="['click']">
         <a-badge count="0">
           <a-avatar :size="32" icon="user" class="avatar"/>
           <span class="name">{{$store.getters.username}}</span>
         </a-badge>
         <a-menu slot="overlay" @click="menuClick">
-          <a-menu-item key="logout">
-            登出
-          </a-menu-item>
           <a-menu-item key="password">
+            <a-icon type="lock" />
             修改密码
+          </a-menu-item>
+          <a-menu-item key="logout" style="border-top: 1px solid #eaeaea">
+            <a-icon type="logout" />
+            退出登录
           </a-menu-item>
         </a-menu>
       </a-dropdown>
@@ -121,6 +124,13 @@ export default {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    .icon{
+      font-size: 16px;
+      margin-right: 15px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
     .avatar {
       &:hover{
         cursor: pointer;

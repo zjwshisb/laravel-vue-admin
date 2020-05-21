@@ -26,7 +26,7 @@ const module = {
       path: '/system',
       component: Layout,
       meta: {
-        title: '登录账号',
+        title: '系统账号',
         icon: 'user'
       },
       children: [
@@ -35,8 +35,7 @@ const module = {
           name: 'SystemAccountLayout',
           component: () => import('@/views/system/admin/index'),
           meta: {
-            title: '登录账号',
-            hiddenBreadcrumb: true
+            title: '账号列表'
           },
           redirect: { name: 'SystemAccountList' },
           children: [
@@ -46,7 +45,7 @@ const module = {
               meta: {
                 title: '列表',
                 hiddenBreadcrumb: true,
-                pid: 11000,
+                pid: 11100,
                 activeMenuName: 'SystemAccountLayout'
               },
               component: () => import('@/views/system/admin/list')
@@ -56,7 +55,7 @@ const module = {
               name: 'SystemAccountAdd',
               meta: {
                 title: '新增',
-                pid: 11100,
+                pid: 11110,
                 activeMenuName: 'SystemAccountLayout'
               },
               component: () => import('@/views/system/admin/form')
@@ -66,12 +65,21 @@ const module = {
               name: 'SystemAccountEdit',
               meta: {
                 title: '编辑',
-                pid: 11200,
+                pid: 11120,
                 activeMenuName: 'SystemAccountLayout'
               },
               component: () => import('@/views/system/admin/form')
             }
           ]
+        },
+        {
+          path: 'account/action-logs',
+          name: 'SystemAccountActionLog',
+          component: () => import('@/views/system/admin/action-log'),
+          meta: {
+            title: '操作记录',
+            pid: 11200
+          }
         }
       ]
     },
@@ -127,6 +135,25 @@ const module = {
               component: () => import('@/views/system/role/form')
             }
           ]
+        }
+      ]
+    },
+    {
+      path: '/system',
+      component: Layout,
+      meta: {
+        title: '运维',
+        icon: 'sliders'
+      },
+      children: [
+        {
+          path: 'frontend-error',
+          name: 'SystemFrontendError',
+          meta: {
+            title: '前端异常',
+            pid: 13000
+          },
+          component: () => import('@/views/system/devops/frontend-error'),
         }
       ]
     }

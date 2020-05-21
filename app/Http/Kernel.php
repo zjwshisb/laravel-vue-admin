@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminActionRecord;
 use App\Http\Middleware\Permission;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -67,6 +68,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'permission'=> Permission::class
+        'permission'=> Permission::class,
+        'admin-action-record'=> AdminActionRecord::class
     ];
 }

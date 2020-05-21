@@ -65,3 +65,28 @@ export const deleteRole = id => {
     method: 'delete'
   })
 }
+export const errorReport = data => {
+  return request({
+    url: 'frontend-error',
+    method: 'post',
+    data
+  })
+}
+export const fetchAdminActionLogs = params => {
+  return request({
+    url: 'admin-action-logs',
+    params
+  })
+}
+export const fetchFrontendError = params => {
+  return request({
+    url: 'frontend-errors',
+    params
+  })
+}
+export const flushFrontendError = () => {
+  return request({
+    url: 'frontend-errors/flush',
+    method: 'post'
+  })
+}

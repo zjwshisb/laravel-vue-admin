@@ -81,7 +81,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapBackendRoutes() {
         Route::prefix('backend')
             ->middleware('backend')
-            ->namespace($this->namespace."\backend")
+            ->namespace($this->namespace."\Backend")
             ->group(base_path('routes/backend.php'));
     }
 }

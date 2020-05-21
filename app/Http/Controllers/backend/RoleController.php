@@ -22,7 +22,7 @@ class RoleController extends BaseController{
     }
 
     public function index(Request $request) {
-        $roles = Role::query()->paginate($request->size);
+        $roles = Role::query()->withCount('users')->paginate($request->size);
         return RoleResource::collection($roles);
     }
 
