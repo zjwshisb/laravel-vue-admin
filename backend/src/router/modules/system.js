@@ -151,9 +151,18 @@ const module = {
           name: 'SystemFrontendError',
           meta: {
             title: '前端异常',
-            pid: 13000
+            pid: 13100
           },
-          component: () => import('@/views/system/devops/frontend-error'),
+          component: () => import('@/views/system/devops/frontend-error')
+        },
+        {
+          path: 'queue',
+          name: 'SystemQueue',
+          meta: {
+            title: '队列面板',
+            pid: 13200
+          },
+          component: () => import('@/views/system/devops/queue')
         }
       ]
     }

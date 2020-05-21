@@ -30,6 +30,13 @@ return [
                                     'backend.admins.update'
                                 ]
                             ],
+                            [
+                                'id'=> 11130,
+                                'name'=> '重置密码',
+                                'permissions'=> [
+                                    'backend.admins.password'
+                                ]
+                            ],
                         ]
                     ],
                     [
@@ -38,7 +45,7 @@ return [
                         'permissions'=> [
                             'backend.admin-action-logs.index'
                         ]
-                    ]
+                    ],
                 ]
             ],
             [
@@ -71,7 +78,7 @@ return [
                         'permissions'=> [
                             'backend.roles.destroy'
                         ]
-                    ]
+                    ],
                 ]
             ],
             [
@@ -91,6 +98,11 @@ return [
                                 ]
                             ],
                         ]
+                    ],
+                    [
+                        'id'=> 13200,
+                        'name'=> '队列面板',
+                        'permissions' => ['backend.queues.index'],
                     ]
                 ]
             ]

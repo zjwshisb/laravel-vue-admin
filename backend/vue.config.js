@@ -9,10 +9,9 @@ function resolve (dir) {
 const name = defaultSettings.title || 'laravel-vue-admin' // page title
 
 const port = process.env.port || process.env.npm_config_port || 8080 // dev port
-
 module.exports = {
-  publicPath: process.env.PUBLIC_PATH,
-  outputDir: process.env.OUTPUT_DIR,
+  publicPath: process.env.VUE_APP_PUBLIC_PATH,
+  outputDir: process.env.VUE_APP_OUTPUT_DIR,
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
@@ -25,8 +24,8 @@ module.exports = {
     }
   },
   chainWebpack (config) {
-    config.plugins.delete('preload') // TODO: need test
-    config.plugins.delete('prefetch') // TODO: need test
+    config.plugins.delete('preload')
+    config.plugins.delete('prefetch')
     config.plugin('html').tap(args => {
       args[0].title = name
       return args

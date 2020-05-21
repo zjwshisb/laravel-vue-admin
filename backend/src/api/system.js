@@ -29,6 +29,15 @@ export const getAdmin = id => {
     url: `admin/${id}`
   })
 }
+export const updateAdminPassword = (id, password) => {
+  return request({
+    url: `admin/${id}/password`,
+    method: 'put',
+    data: {
+      password
+    }
+  })
+}
 export const addRole = data => {
   return request({
     url: 'roles',

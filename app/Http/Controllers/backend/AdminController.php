@@ -36,6 +36,18 @@ class AdminController extends BaseController{
 
     }
 
+    public function password(Request $request, $id) {
+        $admin = Admin::query()->findOrFail($id);
+        $this->validate($request, [
+            'password'=> 'required'
+        ],[
+            'password'=> '密码'
+        ]);
+        $admin->password = $request->password;
+        $admin->save();
+        return $this->success();
+    }
+
     public function destroy(){
 
     }

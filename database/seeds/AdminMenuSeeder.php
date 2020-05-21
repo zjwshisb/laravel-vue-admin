@@ -51,7 +51,7 @@ class AdminMenuSeeder extends Seeder
         foreach ($roles as $role) {
             $perm = new \Illuminate\Support\Collection();
             foreach ($role->menus as $menu) {
-                $perm =  $perm->concat($menu->permissons->pluck('id'));
+                $perm =  $perm->concat($menu->permissions->pluck('id'));
             }
             $role->permissions()->sync($perm);
         }
