@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Modal } from 'ant-design-vue'
 import store from '../store/index'
+import router from '../router'
 const instance = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   headers: {
@@ -34,13 +35,11 @@ instance.interceptors.response.use(response => {
         return Promise.reject(error)
       }
       case 403: {
-        Modal.error({
-          title: '你没有权限执行此操作',
-          centered: true
-        })
+        router.push('/403')
         return Promise.reject(error)
       }
       case 404: {
+        // modeL->findOrFail 的统一处理
         Modal.error({
           title: '数据找不到了!请刷新页面重试',
           centered: true
@@ -48,6 +47,7 @@ instance.interceptors.response.use(response => {
         return Promise.reject(error)
       }
       case 422: {
+        // 后端requestForm 验证失败的统一处理
         const data = error.response.data
         for (const x in data.errors) {
           for (const msg of data.errors[x]) {

@@ -1,14 +1,17 @@
 import Layout from '@/layout/index'
+// 侧边菜单最多显示2级，当超过2级时，可通过页面路由进行导航（通过v-pid="111000"控制显示与否）
+// 当二级菜单只有一个需要显示的时候会提升到一级菜单显示
+
 const module = {
-  title: '系统设置',
-  sort: 2,
+  title: '系统设置', // 顶部菜单显示名称，只有一个顶部菜单时不会显示
+  sort: 2, // 顶部菜单排序
   routes: [
     {
       path: '/system',
       component: Layout,
       meta: {
         title: 'dashboard',
-        icon: 'dashboard'
+        icon: 'dashboard' // and-design-vue icon组件名称
       },
       children: [
         {
@@ -17,7 +20,7 @@ const module = {
           name: 'SystemDashboard',
           meta: {
             title: 'dashboard',
-            hiddenBreadcrumb: true
+            hiddenBreadcrumb: true // 在面包屑隐藏
           }
         }
       ]
@@ -33,20 +36,21 @@ const module = {
         {
           path: 'account',
           name: 'SystemAccountLayout',
-          component: () => import('@/views/system/admin/index'),
+          component: () => import('@/views/system/admin/index'), // 此组件只有一个 router-view
           meta: {
             title: '账号列表'
           },
-          redirect: { name: 'SystemAccountList' },
-          children: [
+          // hidden: false, 在侧边菜单隐藏不显示
+          redirect: { name: 'SystemAccountList' }, // 跳转三级菜单（列表）
+          children: [ // 三级子菜单，通过页面导航跳转
             {
               path: 'list',
               name: 'SystemAccountList',
               meta: {
                 title: '列表',
                 hiddenBreadcrumb: true,
-                pid: 11100,
-                activeMenuName: 'SystemAccountLayout'
+                pid: 11100, // 权限id 与 v-pid='11100' 一样, 不存在时则不进行权限判断
+                activeMenuName: 'SystemAccountLayout' // 高亮的侧边菜单名称
               },
               component: () => import('@/views/system/admin/list')
             },

@@ -20,6 +20,7 @@ router.beforeEach((to, from, next) => {
     } else {
       if (!store.getters.id) {
         store.dispatch('getUserInfo').then(() => {
+          // 重新跳转，确保异步路由加载成功
           next({ ...to, replace: true })
         }).catch(() => {
           next({ name: 'Login' })

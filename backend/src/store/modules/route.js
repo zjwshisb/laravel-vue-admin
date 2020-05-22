@@ -1,6 +1,6 @@
 import syncRoutes from '@/router/syncRoutes'
 import router from '@/router/index'
-// 递归过滤没有权限的侧边菜单
+// 递归过滤没有权限的路由
 const filterRoute = (route, pids, module) => {
   if (route.meta) {
     route.meta.module = module
