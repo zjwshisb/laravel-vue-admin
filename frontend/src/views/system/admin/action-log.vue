@@ -9,12 +9,8 @@
             </a-form-item>
           </search-form-col>
           <search-form-col>
-            <a-form-item label="请求方法">
-              <a-select v-model="query.method" allowClear>
-                <a-select-option :value="x" v-for="x in methods" :key="x">
-                  {{x}}
-                </a-select-option>
-              </a-select>
+            <a-form-item label="操作">
+              <a-input placeholder="操作" v-model="query.name" allowClear></a-input>
             </a-form-item>
           </search-form-col>
           <search-form-col>
@@ -50,14 +46,11 @@ export default {
       list: [],
       query: {
         admin: '',
-        method: ''
+        name: ''
       },
       loading: {
         table: false
       },
-      methods: [
-        'get', 'post', 'delete', 'put'
-      ],
       columns: [
         {
           title: '操作人',
@@ -65,26 +58,9 @@ export default {
           align: 'center'
         },
         {
-          title: '请求方法',
-          dataIndex: 'method',
+          title: '操作',
+          dataIndex: 'name',
           align: 'center'
-        },
-        {
-          title: '路由',
-          dataIndex: 'action',
-          align: 'center'
-        },
-        {
-          title: '请求参数',
-          dataIndex: 'params',
-          align: 'center',
-          scopedSlots: { customRender: 'params' }
-        },
-        {
-          title: '路由参数',
-          dataIndex: 'route_params',
-          align: 'center',
-          scopedSlots: { customRender: 'route_params' }
         },
         {
           title: 'ip',

@@ -40,7 +40,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
             $token = $request->get('token');
             if($token) {
                 $user = Admin::query()->where('auth_token', $token)->first();
-                if($user && $user->can('backend.queues.index')) {
+                if($user && $user->can('Backend.queues.index')) {
                     Session::push('id', $user->id);
                     return true;
                 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Middleware;
 use App\Models\AdminActionLog;
+use App\Models\AdminMenu;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,10 +11,27 @@ use Illuminate\Support\Facades\Route;
  * @package App\Http\Middleware
  */
 class AdminActionRecord {
+
+    protected $ignores = [
+      'GET', 'OPTIONS'
+    ];
+
     public function handle(Request $request, Closure $next)
     {
         $res = $next($request);
-        if(strtoupper($request->getMethod()) !== 'OPTIONS') {
+        $method = $request->getMethod();
+        if(!in_array($method, $this->ignores)) {
+            $menu = AdminMenu::query()->whereHas('permissions',function ($query){
+               $query->where('name', Route::currentRouteName())
+                   ->where('guard_name', 'admin');
+            })->first();
+            if($menu) {
+                $name[] = $menu->name;
+                while ($menu->parent) {
+                    $menu = $menu->parent;
+                    $name[] = $menu->name;
+                }
+            }
             AdminActionLog::query()->create([
                 'admin_id' => \Auth::id(),
                 'method'=> $request->getMethod(),
@@ -21,7 +39,8 @@ class AdminActionRecord {
                 'params'=> $request->all(),
                 'route_params' => Route::current()->parameters,
                 'ip'=> $request->getClientIp(),
-                'created_at'=> now()->toDateTimeString()
+                'created_at'=> now()->toDateTimeString(),
+                'name'=> isset($name) ? implode('>', array_reverse($name)) : ''
             ]);
         }
         return $res;

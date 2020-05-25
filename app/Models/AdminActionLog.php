@@ -17,7 +17,8 @@ class AdminActionLog extends Model{
         'params',
         'route_params',
         'ip',
-        'created_at'
+        'created_at',
+        'name'
     ];
 
     protected $casts = [

@@ -57,10 +57,12 @@ export default {
           }).catch(() => {
           })
         }).catch(res => {
-          this.$error({
-            title: res.message
-          })
-          this.loading = false
+          if (res.message) {
+            this.$error({
+              title: res.message
+            })
+            this.loading = false
+          }
         })
       }).catch(() => {})
     }

@@ -14,7 +14,7 @@ class AdminActionLogFilter extends ModelFilter
         return $this->whereIn('admin_id', $admin->pluck('id'));
     }
 
-    public function method($val) {
-        return $this->where('method', $val);
+    public function name($val) {
+        return $this->where('name','like','%'.$val.'%');
     }
 }

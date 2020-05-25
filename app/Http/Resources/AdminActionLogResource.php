@@ -10,11 +10,8 @@ class AdminActionLogResource extends JsonResource{
         return [
             'id'=> $this->id,
             'admin_name'=> $this->admin->username ?? '',
-            'params'=> $this->params,
-            'route_params'=> $this->route_params,
-            'method'=> $this->method,
-            'action'=> $this->action,
             'ip'=> $this->ip,
+            'name'=> $this->name,
             'created_at' => $this->created_at
         ];
     }

@@ -15,4 +15,8 @@ class AdminMenu extends Model{
         return $this->hasMany(self::class, 'parent_id')->select('parent_id','id','name','has_permission');
     }
 
+    public function parent() {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
 }

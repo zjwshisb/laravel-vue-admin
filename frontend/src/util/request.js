@@ -73,10 +73,10 @@ instance.interceptors.response.use(response => {
     }
   } else {
     if (error.message === 'Network Error') {
-      Modal.error({
-        title: 'network error',
-        centered: true
-      })
+      // Modal.error({
+      //   title: 'network error',
+      //   centered: true
+      // })
     } else if (error.code && error.code === 'ECONNABORTED') {
       Modal.error({
         title: '请求服务器超时',

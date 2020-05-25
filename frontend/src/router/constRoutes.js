@@ -9,11 +9,13 @@ const constantRoutes = [
   },
   {
     path: '/404',
+    name: '404',
     component: () => import(/* webpackChunkName: "about" */ '../views/404/index')
   },
   {
     path: '/403',
+    name: '403',
     component: () => import(/* webpackChunkName: "about" */ '../views/403/index')
-  },
+  }
 ]
 export default constantRoutes

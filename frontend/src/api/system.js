@@ -99,3 +99,8 @@ export const flushFrontendError = () => {
     method: 'post'
   })
 }
+export const getDashboard = () => {
+  return request({
+    url: 'system/dashboard'
+  })
+}
