@@ -18,7 +18,8 @@ class SystemDashboardController extends BaseController{
                 'id' => $log->id,
                 'name'=> $log->name,
                 'admin_name'=> $log->admin->username ?? '',
-                'created_at'=> $log->created_at
+                'created_at'=> $log->created_at,
+                'avatar'=> $log->admin->avatar
             ];
           })
         ];

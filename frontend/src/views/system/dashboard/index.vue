@@ -8,6 +8,7 @@
                             <a-list-item-meta
                                 :description="item.created_at + '   ' + item.name"
                             >
+                                <img slot="avatar" :src="item.avatar" width="40px">
                                 <a slot="title">{{ item.admin_name }}</a>
                             </a-list-item-meta>
                         </a-list-item>

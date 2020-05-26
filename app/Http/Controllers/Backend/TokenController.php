@@ -16,7 +16,7 @@ class TokenController extends BaseController {
                 return $this->fail('账号已禁用', 2);
             }
             $admin->auth_token = Str::random(32);
-            $admin->last_login_at = now()->toDateString();
+            $admin->last_login_at = now()->toDateTimeString();
             $admin->save();
             AdminActionLog::query()->create([
                 'admin_id' => $admin->id,

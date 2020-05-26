@@ -5,13 +5,15 @@ const user = {
     username: '',
     id: '',
     token: getToken(),
-    pids: []
+    pids: [],
+    avatar: ''
   },
   mutations: {
     UPDATE_USER (state, user) {
       state.id = user.id
       state.username = user.username
       state.pids = user.pids
+      state.avatar = user.avatar
     },
     UPDATE_TOKEN (state, token) {
       state.token = token
@@ -47,7 +49,8 @@ const user = {
     id: state => state.id,
     username: state => state.username,
     token: state => state.token,
-    pids: state => state.pids
+    pids: state => state.pids,
+    avatar: state => state.avatar
   }
 }
 export default user

@@ -10,6 +10,7 @@ class MeController extends BaseController{
            'id'=> \Auth::id(),
            'username'=> \Auth::user()->username,
             'pids'=> \Auth::user()->menus->pluck('id'),
+            'avatar'=> \Auth::user()->avatar
         ];
     }
 

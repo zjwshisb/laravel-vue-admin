@@ -16,6 +16,7 @@ class UpdateAdminTable extends Migration
         Schema::table('admins', function (Blueprint $table){
            $table->tinyInteger('is_forbidden')->default(0);
            $table->dateTime('last_login_at')->nullable();
+           $table->string('avatar', 512)->nullable();
         });
         Schema::table('admin_action_logs', function (Blueprint $table){
            $table->string('name', 255)->default('');
@@ -32,6 +33,7 @@ class UpdateAdminTable extends Migration
         Schema::table('admins', function (Blueprint $table){
             $table->dropColumn('is_forbidden');
             $table->dropColumn('last_login_at');
+            $table->dropColumn('avatar');
         });
         Schema::table('admin_action_logs', function (Blueprint $table){
             $table->dropColumn('name');

@@ -79,6 +79,11 @@ export default {
           align: 'center'
         },
         {
+          title: '最后登录时间',
+          dataIndex: 'last_login_at',
+          align: 'center'
+        },
+        {
           title: '创建时间',
           dataIndex: 'created_at',
           align: 'center'
