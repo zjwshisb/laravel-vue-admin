@@ -7,6 +7,7 @@ Route::post('/frontend-error','FrontendErrorController@store');
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('me', 'MeController@index');
     Route::post('me/password', 'MeController@password');
+    Route::get('system/dashboard','SystemDashboardController@index')->name('backend.system-dashboard.index');
 
 });
 Route::middleware(['auth:admin','permission', 'admin-action-record'])->group(function (){
@@ -30,5 +31,4 @@ Route::middleware(['auth:admin','permission', 'admin-action-record'])->group(fun
 
     Route::get('frontend-errors','FrontendErrorController@index')->name('backend.frontend-errors.index');
     Route::post('frontend-errors/flush','FrontendErrorController@flush')->name('backend.frontend-errors.flush');
-    Route::get('system/dashboard','SystemDashboardController@index')->name('backend.system-dashboard.index');
 });

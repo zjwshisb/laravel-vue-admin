@@ -31,7 +31,8 @@ class Admin extends Authenticatable{
             }
             $path = 'avatar/'. $this->id.".png";
             $fullPath = \Storage::disk('public')->path($path);
-            Facade::create($this->username)->save($fullPath);
+            $name = pinyin_permalink($this->username, "-");
+            Facade::create($name)->save($fullPath);
             $this->avatar = $path;
             $this->save();
         }

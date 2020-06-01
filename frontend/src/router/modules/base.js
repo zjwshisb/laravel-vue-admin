@@ -13,7 +13,7 @@ const module = {
       children: [
         {
           path: 'dashboard',
-          component: () => import('@/views/system/dashboard/index'),
+          component: () => import('@/views/base/dashboard/index'),
           name: 'BaseDashboard',
           meta: {
             title: 'dashboard',

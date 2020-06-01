@@ -1,5 +1,5 @@
 <template>
-    <iframe :src="url" class="queue"></iframe>
+  <iframe :src="url" class="queue" id="queue"  @resize="iframeChange"></iframe>
 </template>
 
 <script>
@@ -10,8 +10,12 @@ export default {
       url: process.env.VUE_APP_QUEUE_URL + '?token=' + this.$store.getters.token
     }
   },
-  created () {
+  methods: {
+    iframeChange () {
+      console.log(document.getElementById('queue').offsetHeight)
+    }
   }
+
 }
 </script>
 

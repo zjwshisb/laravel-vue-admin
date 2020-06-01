@@ -167,6 +167,7 @@ return [
          */
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         EloquentFilter\ServiceProvider::class,
+        Overtrue\LaravelPinyin\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
