@@ -9,7 +9,10 @@
                             <a-list-item-meta
                                 :description="item.created_at + '   ' + item.name"
                             >
-                                <img slot="avatar" :src="item.avatar" width="40px">
+                                <template slot="avatar">
+                                  <a-avatar v-if="item.avatar" :src="item.avatar"/>
+                                  <a-avatar v-else icon="user" :size="48" />
+                                </template>
                                 <a slot="title">{{ item.admin_name }}</a>
                             </a-list-item-meta>
                         </a-list-item>

@@ -29,7 +29,8 @@
       <a-icon type="bell" class="icon"></a-icon>
       <a-dropdown :trigger="['click']">
         <a-badge count="0">
-          <a-avatar :src="$store.getters.avatar"/>
+          <a-avatar v-if="$store.getters.avatar" :src="$store.getters.avatar"/>
+          <a-avatar v-else icon="user"/>
           <span class="name">{{$store.getters.username}}</span>
         </a-badge>
         <a-menu slot="overlay" @click="menuClick">

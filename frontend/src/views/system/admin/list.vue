@@ -20,6 +20,10 @@
     <a-table :data-source="list" :columns="columns" bordered rowKey="id" :pagination="pagination"
              :loading="loading.table"
              @change="handleChange">
+      <template slot="status" slot-scope="is_forbidden">
+        <a-icon type="close" v-if="is_forbidden" class="error-color"/>
+        <a-icon v-else type="check" class="success-color"></a-icon>
+      </template>
       <template slot="action" slot-scope="row">
         <div class="table-action">
           <a-button v-pid="11120"  icon="edit" type="primary" size="small" @click="() => $router.push(`/system/account/${row.id}/edit`)">编辑</a-button>
@@ -77,6 +81,12 @@ export default {
           title: '权限组',
           dataIndex: 'roles',
           align: 'center'
+        },
+        {
+          title: '状态',
+          dataIndex: 'is_forbidden',
+          align: 'center',
+          scopedSlots: { customRender: 'status' }
         },
         {
           title: '最后登录时间',

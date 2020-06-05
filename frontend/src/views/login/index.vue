@@ -54,7 +54,6 @@ export default {
           this.$store.dispatch('getUserInfo').then(() => {
             this.$router.push('/system/dashboard').catch(() => {
             })
-          }).catch(() => {
           })
         }).catch(res => {
           if (res.message) {

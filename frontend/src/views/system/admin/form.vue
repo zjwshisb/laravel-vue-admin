@@ -15,6 +15,9 @@
           allowClear
         />
       </a-form-model-item>
+      <a-form-model-item prop="is_forbidden" label="禁用" >
+        <a-switch v-model="form.is_forbidden" />
+      </a-form-model-item>
       <a-form-model-item :wrapperCol="simpleForm.noLabel.wrapperCol">
         <a-button type="primary" @click="handleSubmit" :loading="loading.submit">提交</a-button>
         <a-button @click="() => $router.back()">取消</a-button>
@@ -40,7 +43,8 @@ export default {
       form: {
         username: '',
         password: '',
-        roles: []
+        roles: [],
+        is_forbidden: ''
       },
       roles: []
     }
@@ -109,7 +113,7 @@ export default {
       })
     }
   },
-  created () {
+  beforeMount () {
     getAdminOption().then(res => {
       this.roles = res
     })
