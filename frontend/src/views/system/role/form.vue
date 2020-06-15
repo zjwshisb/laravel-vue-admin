@@ -7,11 +7,15 @@
       <a-form-model-item prop="description" label="说明">
         <a-input v-model="form.description" :maxLength="255"></a-input>
       </a-form-model-item>
-      <a-form-model-item label="权限设置"  prop="menus">
-        <a-table row-key="id" :data-source="menus" :columns="columns" :pagination="false" :rowSelection="{
-           onSelect: select, selectedRowKeys: form.menus, onChange: selectChange, getCheckboxProps: getCheckboxProps
-        }">
-        </a-table>
+      <a-form-model-item label="权限设置"  prop="menus.checked">
+        <a-tree
+          v-model="form.menus"
+          checkable
+          :tree-data="menus"
+          @check="menuCheck"
+          :checkStrictly="true"
+          :replaceFields="{children:'children', title:'name', key:'id', selectable: 'has_permission'}"
+        />
       </a-form-model-item>
       <a-form-model-item :wrapperCol="simpleForm.noLabel.wrapperCol">
         <a-button type="primary" @click="handleSubmit" :loading="loading.submit">提交</a-button>
@@ -22,121 +26,151 @@
 </template>
 
 <script>
-import SimpleForm from '@/mixins/simpleForm'
-import { addRole, getRole, updateRole, getRoleOption } from '../../../api/system'
-import { requireValidator } from '../../../util/validator'
-export default {
-  name: 'add',
-  mixins: [SimpleForm],
-  data () {
-    return {
-      menus: [],
-      id: '',
-      form: {
-        name: '',
-        description: '',
-        menus: []
-      },
-      columns: [
-        {
-          dataIndex: 'name',
-          key: 'id'
-        }
-      ],
-      loading: {
-        submit: false
-      }
-    }
-  },
-  computed: {
-    rules () {
+  import SimpleForm from '@/mixins/simpleForm'
+  import { addRole, getRole, getRoleOption, updateRole } from '../../../api/system'
+  import { requireValidator } from '../../../util/validator'
+
+  export default {
+    name: 'add',
+    mixins: [SimpleForm],
+    data () {
       return {
-        name: [
-          requireValidator()
+        menus: [],
+        id: '',
+        form: {
+          name: '',
+          description: '',
+          menus: {
+            checked: [],
+            halfChecked: []
+          }
+        },
+        columns: [
+          {
+            dataIndex: 'name',
+            key: 'id'
+          }
         ],
-        description: [
-          requireValidator()
-        ],
-        menus: [
-          requireValidator('请选择权限')
-        ]
-      }
-    }
-  },
-  methods: {
-    handleSubmit () {
-      this.$refs.form.validate().then(res => {
-        this.loading.submit = true
-        if (this.id === '') {
-          addRole(this.form).then(res => {
-            if (res.code === 0) {
-              this.$message.success('新增成功')
-              this.$router.go(-1)
-            }
-            this.loading.submit = false
-          }).catch(() => {
-            this.loading.submit = false
-          })
-        } else {
-          updateRole(this.id, this.form).then(res => {
-            if (res.code === 0) {
-              this.$message.success('修改成功')
-              this.$router.go(-1)
-            }
-            this.loading.submit = false
-          }).catch(() => {
-            this.loading.submit = false
-          })
-        }
-      }).catch(() => {})
-    },
-    getCheckboxProps (record) {
-      return {
-        props: {
-          disabled: false,
-          name: record.name
+        loading: {
+          submit: false
         }
       }
     },
-    select (record, selected, selectedRowKeys, selectedRows) {
-      if (selected &&
-        record.parent_id &&
-        this.form.menus.findIndex(v => parseInt(v.id) === record.parent_id) === -1) {
-        this.form.menus.push(record.parent_id)
+    computed: {
+      rules () {
+        return {
+          name: [
+            requireValidator()
+          ],
+          description: [
+            requireValidator()
+          ],
+          menus: [
+            requireValidator('请选择权限')
+          ]
+        }
       }
     },
-    selectChange (selectedRowKeys, selectedRow) {
-      this.form.menus = selectedRowKeys
-    }
-  },
-  created () {
-    getRoleOption({}).then(res => {
-      const filterChildren = menu => {
-        if (menu.children) {
-          if (menu.children.length === 0) {
-            delete menu.children
+    methods: {
+      handleSubmit () {
+        this.$refs.form.validate().then(res => {
+          this.loading.submit = true
+          const form = {
+            name: this.form.name,
+            description: this.form.description,
+            menus: this.form.menus.checked
+          }
+          if (this.id === '') {
+            addRole(form).then(res => {
+              if (res.code === 0) {
+                this.$message.success('新增成功')
+                this.$router.go(-1)
+              }
+              this.loading.submit = false
+            }).catch(() => {
+              this.loading.submit = false
+            })
           } else {
-            for (const child of menu.children) {
-              filterChildren(child)
+            updateRole(this.id, form).then(res => {
+              if (res.code === 0) {
+                this.$message.success('修改成功')
+                this.$router.go(-1)
+              }
+              this.loading.submit = false
+            }).catch(() => {
+              this.loading.submit = false
+            })
+          }
+        }).catch(() => {})
+      },
+      menuCheck (checkedKeys, e) {
+        console.log(checkedKeys)
+        if (e.checked) {
+          if (e.node.$parent.dataRef && e.node.$parent.dataRef.id) {
+            const selectParent = node => {
+              const parent = node.$parent
+              const pid = parent.dataRef.id
+              if (this.form.menus && this.form.menus.checked) {
+                if (this.form.menus.checked.findIndex(v => v === pid) === -1) {
+                  this.form.menus.checked.push(pid)
+                }
+              }
+              if (parent.$parent && parent.$parent.dataRef && parent.$parent.dataRef.id) {
+                selectParent(node.$parent)
+              }
             }
+            selectParent(e.node)
+          }
+        } else {
+          const hadPermission = e.node.dataRef.has_permission
+          if (hadPermission === 1) {
+            const func = node => {
+              for (const child of node.$children) {
+                if (child.dataRef && child.dataRef.id) {
+                  const pid = child.dataRef.id
+                  const index = this.form.menus.checked.findIndex(v => v === pid)
+                  if (index > -1) {
+                    this.form.menus.checked.splice(index, 1)
+                  }
+                  if (child.$children && child.$children.length > 0) {
+                    func(child)
+                  }
+                }
+              }
+            }
+            func(e.node)
           }
         }
       }
-      for (const x of res) {
-        filterChildren(x)
-      }
-      this.menus = res
-    })
-    if (this.$route.params.id) {
-      this.id = this.$route.params.id
-      getRole(this.id).then(res => {
-        this.form.name = res.name
-        this.form.menus = res.menus
-        this.form.description = res.description
+    },
+    created () {
+      getRoleOption({}).then(res => {
+        const filterChildren = menu => {
+          if (menu.children) {
+            if (menu.children.length === 0) {
+              delete menu.children
+            } else {
+              for (const child of menu.children) {
+                filterChildren(child)
+              }
+            }
+          }
+        }
+        for (const x of res) {
+          filterChildren(x)
+        }
+        this.menus = res
       })
+      if (this.$route.params.id) {
+        this.id = this.$route.params.id
+        getRole(this.id).then(res => {
+          this.form.name = res.name
+          this.form.menus = res.menus
+          this.form.description = res.description
+        })
+      }
     }
   }
-}
 </script>
 
 <style scoped>

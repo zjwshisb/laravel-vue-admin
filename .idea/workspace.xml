@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c433779-ac02-4428-90e4-3928e5202606" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/style/color.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/style/params.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/admin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/TokenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/TokenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Backend/AdminRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Backend/AdminRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/AdminResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/AdminResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/header/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/header/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/style/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/style/index.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/login/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/admin/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/admin/list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/dashboard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/dashboard/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AdminMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AdminMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +222,8 @@
       <workItem from="1590024011207" duration="985000" />
       <workItem from="1590025486349" duration="9401000" />
       <workItem from="1590421466431" duration="7813000" />
-      <workItem from="1591335153175" duration="4879000" />
+      <workItem from="1591335153175" duration="5021000" />
+      <workItem from="1592209163834" duration="43000" />
     </task>
     <servers />
   </component>
