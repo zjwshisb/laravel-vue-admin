@@ -6,7 +6,6 @@ use App\Http\Resources\RoleResource;
 use App\Models\AdminMenu;
 use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class RoleController extends BaseController{
@@ -32,12 +31,7 @@ class RoleController extends BaseController{
             $role->fill(array_merge($request->all(), ['guard_name'=>'admin']));
             $role->save();
             $role->menus()->sync($request->menus);
-            $role->load('menus.permissions');
-            $permissions= new Collection();
-            foreach($role->menus as $menu) {
-                $permissions = $permissions->concat($menu->permissions->pluck('id'));
-            }
-            $role->permissions()->sync($permissions);
+            $role->syncMenusToPermission();
             return $this->success(new RoleResource($role));
         });
     }
@@ -48,20 +42,19 @@ class RoleController extends BaseController{
             $role->fill($request->all());
             $role->save();
             $role->menus()->sync($request->menus);
-            $role->load('menus.permissions');
-            $permissions= new Collection();
-            foreach($role->menus as $menu) {
-                $permissions = $permissions->concat($menu->permissions->pluck('id'));
-            }
-            $role->permissions()->sync($permissions);
+            $role->syncMenusToPermission();
             return $this->success(new RoleResource($role));
         });
     }
 
     public function destroy($id) {
-        $role = Role::query()->findOrFail($id);
-        $role->delete();
-        return $this->success();
+        return DB::transaction(function () use ($id){
+            $role = Role::query()->findOrFail($id);
+            $role->menus()->detach();
+            $role->delete();
+            return $this->success();
+        });
+
     }
 
     public function options() {

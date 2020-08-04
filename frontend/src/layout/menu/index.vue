@@ -1,26 +1,23 @@
 <template>
-  <a-layout-sider width="200" v-model="collapsed"  breakpoint="sm" :collapsed-width="collapsedWidth"
+  <a-layout-sider class="left-menu" width="200" v-model="collapsed"  breakpoint="sm" :collapsed-width="collapsedWidth"
    @breakpoint="breakpoint"
    :zeroWidthTriggerStyle="triggerStyle">
-    <div slot="trigger">
-      aaaa
-    </div>
     <div class="logo">
       <a-icon type="html5" v-if="collapsed"></a-icon>
-      <span v-else>laravel-antdv-admin</span>
+      <span v-else>唯绿erp</span>
     </div>
     <template v-for="module in syncRoutes">
       <a-menu mode="inline" @click="go" v-show="module.key === currentModule" :key="module.key"  theme="dark"
               :selectedKeys="selectedKeys">
-        <template v-for="route in module.routes">
-          <a-sub-menu v-if="route.children.filter(v => !v.hidden ).length > 1" :key="route.name">
+        <template v-for="(route, index) in module.routes">
+          <a-sub-menu v-if="route.children.filter(v => !v.hidden ).length > 1" :key="route.path + index">
                 <span slot="title">
                   <a-icon :type="route.meta.icon" v-if="route.meta.icon"/>
                   <span v-if="!collapsed">{{route.meta.title}}
                   </span>
                 </span>
             <template v-for="child in route.children">
-              <a-menu-item :key="child.name" v-if="!child.hidden">
+              <a-menu-item :key="route.path + '/' +child.path" v-if="!child.hidden">
                 <a-icon :type="child.meta.icon" v-if="child.meta.icon"/>
                 <span>
                     {{child.meta.title}}
@@ -29,7 +26,7 @@
             </template>
           </a-sub-menu>
           <a-menu-item v-if="route.children.filter(v => !v.hidden ).length === 1"
-                       :key='route.children[0].name'
+                       :key="route.path + '/' + route.children[0].path"
                        class="sub-menu">
             <a-icon :type="route.meta.icon" v-if="route.meta.icon"/>
             <span>
@@ -82,8 +79,8 @@ export default {
     },
     go (to) {
       const current = this.$route
-      if (current.name !== to.key) {
-        this.$router.push({ name: to.key }).catch(() => {
+      if (current.path !== to.key) {
+        this.$router.push(to.key).catch(() => {
         })
       }
     }

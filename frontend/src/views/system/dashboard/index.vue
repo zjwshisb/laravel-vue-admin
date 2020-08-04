@@ -1,5 +1,6 @@
 <template>
     <div>
+      <a-spin v-bind:spinning="spinning">
         <a-row :gutter="20">
             <a-col :xs="24" :sm="24" :md="16" :lg="16">
                 <a-card title="动态">
@@ -9,7 +10,10 @@
                             <a-list-item-meta
                                 :description="item.created_at + '   ' + item.name"
                             >
-                                <img slot="avatar" :src="item.avatar" width="40px">
+                                <template slot="avatar">
+                                  <a-avatar v-if="item.avatar" :src="item.avatar"/>
+                                  <a-avatar v-else icon="user" :size="48" />
+                                </template>
                                 <a slot="title">{{ item.admin_name }}</a>
                             </a-list-item-meta>
                         </a-list-item>
@@ -31,6 +35,7 @@
                 </a-card>
             </a-col>
         </a-row>
+      </a-spin>
     </div>
 </template>
 
@@ -42,13 +47,16 @@ export default {
   data () {
     return {
       activities: [],
-      errors: []
+      errors: [],
+      spinning: false
     }
   },
   created () {
+    this.spinning = true
     getDashboard().then(res => {
       this.activities = res.activities
       this.errors = res.errors
+      this.spinning = false
     })
   }
 }

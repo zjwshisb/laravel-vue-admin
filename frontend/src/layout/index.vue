@@ -14,6 +14,7 @@
               UP
             </div>
           </a-back-top>
+          <debug v-if="$store.getters.debug"></debug>
         </a-layout>
       </a-layout>
   </a-layout>
@@ -24,12 +25,14 @@ import MHeader from './header/index'
 import MMenu from './menu/index'
 import Breadcrumb from './breadcrumb/index'
 import MFooter from './footer/index'
+import Debug from './debug/index'
 export default {
   components: {
     MHeader,
     MMenu,
     MFooter,
-    Breadcrumb
+    Breadcrumb,
+    Debug
   },
   computed: {
     styles () {

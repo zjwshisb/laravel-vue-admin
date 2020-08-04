@@ -13,7 +13,8 @@ class Permission {
     {
         $user = \Auth::user();
         if($user && $user->is_super != 1) {
-            $route = Route::currentRouteName();
+            $route = Route::current()->getAction()['controller'] ?? '';
+            \Log::error($route);
             if ($user->can($route)) {
                 return $next($request);
             } else {

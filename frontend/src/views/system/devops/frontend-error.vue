@@ -3,10 +3,17 @@
     <div class="filter-container">
       <a-button v-pid="13110" type="danger" icon="delete" @click="handleFlush">清空</a-button>
     </div>
-    <a-table :data-source="list" :columns="columns" bordered rowKey="id" :pagination="pagination"
-             :loading="loading.table" :scroll="{x: $store.getters.isMobile}"
-             @change="handleChange">
-    </a-table>
+    <a-table
+      :data-source="list"
+      :columns="columns"
+      bordered
+      row-key="id"
+      :pagination="pagination"
+      :loading="loading.table"
+      :scroll="{x: $store.getters.isMobile}"
+      class="w-100"
+      @change="handleChange"
+    />
   </div>
 </template>
 
@@ -30,18 +37,20 @@ export default {
           title: '时间',
           dataIndex: 'created_at',
           align: 'center',
-          width: 200
+          width: '200px'
         },
         {
           title: '错误信息',
           dataIndex: 'message',
           align: 'center',
-          width: 200
+          width: '200px',
+          ellipsis: true
         },
         {
           title: '堆栈',
           dataIndex: 'stack',
-          align: 'center'
+          align: 'center',
+          ellipsis: true
         },
         {
           title: 'vue信息',
@@ -51,6 +60,9 @@ export default {
         }
       ]
     }
+  },
+  created () {
+    this.getData()
   },
   methods: {
     handleFlush () {
@@ -82,9 +94,6 @@ export default {
         this.pagination.total = res.meta.total
       })
     }
-  },
-  created () {
-    this.getData()
   }
 }
 </script>

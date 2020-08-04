@@ -104,3 +104,34 @@ export const getDashboard = () => {
     url: 'system/dashboard'
   })
 }
+export const fetchRoute = () => {
+  return request({
+    url: 'routes'
+  })
+}
+export const getSystemLog = params => {
+  return request({
+    url: 'system-logs',
+    params
+  })
+}
+export const getSystemLogContent = params => {
+  return request({
+    url: 'system-logs/content',
+    params
+  })
+}
+export const deleteSystemLog = path => {
+  return request({
+    url: 'system-logs',
+    method: 'delete',
+    params: {
+      path: path
+    }
+  })
+}
+export const getRedisInfo = () => {
+  return request({
+    url: 'system/redis'
+  })
+}

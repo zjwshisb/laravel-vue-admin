@@ -29,7 +29,8 @@
       <a-icon type="bell" class="icon"></a-icon>
       <a-dropdown :trigger="['click']">
         <a-badge count="0">
-          <a-avatar :src="$store.getters.avatar"/>
+          <a-avatar v-if="$store.getters.avatar" :src="$store.getters.avatar"/>
+          <a-avatar v-else icon="user"/>
           <span class="name">{{$store.getters.username}}</span>
         </a-badge>
         <a-menu slot="overlay" @click="menuClick">
@@ -72,7 +73,12 @@ export default {
       if (e.key !== this.currentModule) {
         for (const k in this.syncRoutes) {
           if (this.syncRoutes[k].key === e.key) {
-            this.$router.push(this.syncRoutes[k].routes[0].children[0])
+            const routes = this.syncRoutes[k].routes
+            let url = routes[0].path
+            if (routes[0].children[0]) {
+              url += '/' + routes[0].children[0].path
+            }
+            this.$router.push(url)
             break
           }
         }

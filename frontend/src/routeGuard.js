@@ -38,7 +38,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 router.afterEach((to, from) => {
-  const active = to.meta.activeMenuName ? to.meta.activeMenuName : to.name
+  const active = to.meta.activeUrl ? to.meta.activeUrl : to.path
   store.commit('UPDATE_MENU_ACTIVE_KEYS', active ? [active] : [])
   store.commit('UPDATE_MODULE', to.meta.module)
   NProgress.done()

@@ -1,7 +1,7 @@
 <template>
   <a-breadcrumb style="margin: 16px 0;text-align: left">
     <template v-for="b in breadcrumbs" >
-      <a-breadcrumb-item v-if="!b.meta.hiddenBreadcrumb" :key="b.name">
+      <a-breadcrumb-item v-if="!b.meta.hiddenBreadcrumb" :key="b.path">
         <span >{{b.meta.title}}</span>
       </a-breadcrumb-item>
     </template>
@@ -31,7 +31,9 @@ export default {
             }
           }
         ]
-        this.breadcrumbs = module.concat(this.$route.matched.filter(i => i.meta && i.meta.title && !i.meta.hiddenBreadcrumb))
+        this.breadcrumbs = module.concat(
+          this.$route.matched.filter(i => i.meta && i.meta.title && !i.meta.hiddenBreadcrumb)
+        )
       } else {
         this.breadcrumbs = this.$route.matched.filter(i => i.meta && i.meta.title && !i.meta.hiddenBreadcrumb)
       }

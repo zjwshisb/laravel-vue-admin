@@ -1,12 +1,18 @@
 <template>
   <div class="footer">
-    laravel-vue-admin
+    {{title}}
   </div>
 </template>
 
 <script>
+import setting from '../../settings'
 export default {
-  name: 'index'
+  name: 'index',
+  data () {
+    return {
+      ...setting
+    }
+  }
 }
 </script>
 

@@ -1,12 +1,16 @@
 import { login, getInfo } from '../../api/user'
 import { setToken, getToken } from '../../util/token'
+
 const user = {
   state: {
     username: '',
     id: '',
     token: getToken(),
     pids: [],
-    avatar: ''
+    avatar: '',
+    area: [],
+    customers: [],
+    category: []
   },
   mutations: {
     UPDATE_USER (state, user) {
@@ -14,9 +18,14 @@ const user = {
       state.username = user.username
       state.pids = user.pids
       state.avatar = user.avatar
+      state.customers = user.customers
+      state.category = user.category
     },
     UPDATE_TOKEN (state, token) {
       state.token = token
+    },
+    UPDATE_AREA (state, area) {
+      state.area = area
     }
   },
   actions: {

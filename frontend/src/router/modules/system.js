@@ -4,7 +4,7 @@ import Layout from '@/layout/index'
 
 const module = {
   title: '系统设置', // 顶部菜单显示名称，只有一个顶部菜单时不会显示
-  sort: 2, // 顶部菜单排序
+  sort: 100, // 顶部菜单排序
   routes: [
     {
       path: '/system',
@@ -35,22 +35,19 @@ const module = {
       children: [
         {
           path: 'account',
-          name: 'SystemAccountLayout',
           component: () => import('@/views/system/admin/index'), // 此组件只有一个 router-view
           meta: {
-            title: '账号列表'
+            title: '账号列表',
+            activeMenuName: 'SystemAccountLayout'
           },
-          // hidden: false, 在侧边菜单隐藏不显示
-          redirect: { name: 'SystemAccountList' }, // 跳转三级菜单（列表）
           children: [ // 三级子菜单，通过页面导航跳转
             {
-              path: 'list',
+              path: '',
               name: 'SystemAccountList',
               meta: {
                 title: '列表',
                 hiddenBreadcrumb: true,
-                pid: 11100, // 权限id 与 v-pid='11100' 一样, 不存在时则不进行权限判断
-                activeMenuName: 'SystemAccountLayout' // 高亮的侧边菜单名称
+                pid: 11100 // 权限id 与 v-pid='11100' 一样, 不存在时则不进行权限判断
               },
               component: () => import('@/views/system/admin/list')
             },
@@ -60,7 +57,7 @@ const module = {
               meta: {
                 title: '新增',
                 pid: 11110,
-                activeMenuName: 'SystemAccountLayout'
+                activeUrl: '/system/account'
               },
               component: () => import('@/views/system/admin/form')
             },
@@ -70,7 +67,7 @@ const module = {
               meta: {
                 title: '编辑',
                 pid: 11120,
-                activeMenuName: 'SystemAccountLayout'
+                activeUrl: '/system/account'
               },
               component: () => import('@/views/system/admin/form')
             }
@@ -78,7 +75,6 @@ const module = {
         },
         {
           path: 'account/action-logs',
-          name: 'SystemAccountActionLog',
           component: () => import('@/views/system/admin/action-log'),
           meta: {
             title: '操作记录',
@@ -92,29 +88,25 @@ const module = {
       component: Layout,
       meta: {
         title: '权限组',
-        icon: 'eye'
+        icon: 'eye',
+        hiddenBreadcrumb: true // 当菜单下只有一个显示的子菜单时需要隐藏
       },
       children: [
         {
           path: 'role',
-          name: 'SystemRoleLayout',
           meta: {
-            title: '权限组',
-            hiddenBreadcrumb: true
-          },
-          redirect: {
-            name: 'SystemRoleList'
+            title: '权限组'
           },
           component: () => import('@/views/system/role/index'),
           children: [
             {
-              path: 'list',
+              path: '',
               name: 'SystemRoleList',
               meta: {
                 title: '列表',
                 hiddenBreadcrumb: true,
                 pid: 12000,
-                activeMenuName: 'SystemRoleLayout'
+                activeUrl: '/system/role'
               },
               component: () => import('@/views/system/role/list')
             },
@@ -124,7 +116,7 @@ const module = {
               meta: {
                 title: '新增',
                 pid: 12100,
-                activeMenuName: 'SystemRoleLayout'
+                activeUrl: '/system/role'
               },
               component: () => import('@/views/system/role/form')
             },
@@ -134,7 +126,7 @@ const module = {
               meta: {
                 title: '编辑',
                 pid: 12200,
-                activeMenuName: 'SystemRoleLayout'
+                activeUrl: '/system/role'
               },
               component: () => import('@/views/system/role/form')
             }
@@ -167,9 +159,47 @@ const module = {
             pid: 13200
           },
           component: () => import('@/views/system/devops/queue')
+        },
+        {
+          path: 'route',
+          name: 'SystemRoute',
+          meta: {
+            title: '后端路由',
+            pid: 13300
+          },
+          component: () => import('@/views/system/devops/route')
+        },
+        {
+          path: 'redis',
+          name: 'SystemRedis',
+          meta: {
+            title: 'redis',
+            pid: 13400
+          },
+          component: () => import('@/views/system/devops/redis')
+        }
+      ]
+    },
+    {
+      path: '/system',
+      component: Layout,
+      meta: {
+        title: '运维',
+        icon: 'file-text'
+      },
+      children: [
+        {
+          path: 'log',
+          name: 'SystemLog',
+          meta: {
+            title: '系统日志',
+            pid: 14000
+          },
+          component: () => import('@/views/system/log/index')
         }
       ]
     }
+
   ]
 }
 export default module

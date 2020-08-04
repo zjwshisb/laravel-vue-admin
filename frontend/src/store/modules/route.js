@@ -1,25 +1,25 @@
 import syncRoutes from '@/router/syncRoutes'
 import router from '@/router/index'
 // 递归过滤没有权限的路由
-const filterRoute = (route, pids, module) => {
-  if (route.meta) {
-    route.meta.module = module
-  }
-  if (route.children) {
-    route.children = route.children.filter(v => {
-      return filterRoute(v, pids, module)
-    })
-    if (route.children.length > 0) {
-      return true
+const filterRoute = (routes, pids, module) => {
+  return routes.filter(route => {
+    if (route.meta) {
+      route.meta.module = module
+    }
+    if (route.children) {
+      route.children = filterRoute(route.children, pids, module)
+      if (route.children.length > 0) {
+        return true
+      } else {
+        return false
+      }
     } else {
-      return false
+      if (route.meta.pid) {
+        return pids.findIndex(v => v === route.meta.pid) > -1
+      }
+      return true
     }
-  } else {
-    if (route.meta.pid) {
-      return pids.findIndex(v => v === route.meta.pid) > -1
-    }
-    return true
-  }
+  })
 }
 const route = {
   state: {
@@ -37,22 +37,13 @@ const route = {
   actions: {
     updateRoute ({ commit, state, rootState }) {
       const pids = rootState.user.pids
-      const modules = state.syncRoutes
+      let modules = state.syncRoutes
       for (const m in modules) {
-        for (const x in modules[m].routes) {
-          filterRoute(modules[m].routes[x], pids, modules[m].key)
-        }
-        for (const x in modules[m].routes) {
-          if (modules[m].routes[x].children <= 0) {
-            modules[m].routes.splice(x, 1)
-          }
-        }
+        modules[m].routes = filterRoute(modules[m].routes, pids, modules[m].key)
       }
-      for (const m in modules) {
-        if (modules[m].routes.length <= 0) {
-          modules.splice(m, 1)
-        }
-      }
+      modules = modules.filter(v => {
+        return v.routes.length > 0
+      })
       commit('UPDATE_SYNC_ROUTES', modules)
       for (const x of state.syncRoutes) {
         if (state.currentModule === '') {
@@ -79,7 +70,17 @@ const route = {
       }
       return ''
     },
-    indexRoute: state => state.syncRoutes[0].routes[0].children[0]
+    indexRoute: state => {
+      const firstRoutes = state.syncRoutes[0].routes
+      let url = ''
+      if (firstRoutes[0]) {
+        url += firstRoutes[0].path
+      }
+      if (firstRoutes[0].children) {
+        url += '/' + firstRoutes[0].children[0].path
+      }
+      return url
+    }
   }
 }
 export default route

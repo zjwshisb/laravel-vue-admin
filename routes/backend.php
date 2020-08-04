@@ -7,28 +7,35 @@ Route::post('/frontend-error','FrontendErrorController@store');
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('me', 'MeController@index');
     Route::post('me/password', 'MeController@password');
-    Route::get('system/dashboard','SystemDashboardController@index')->name('backend.system-dashboard.index');
+    Route::get('system/dashboard','SystemDashboardController@index');
 
 });
 Route::middleware(['auth:admin','permission', 'admin-action-record'])->group(function (){
-    Route::get('admins','AdminController@index')->name('backend.admins.index');
-    Route::get('admin/{id}', 'AdminController@show')->name('backend.admin.show')->where('id', '[0-9]+');
-    Route::get('admin/options', 'AdminController@options')->name('backend.admin.options');
-    Route::post('admins','AdminController@store')->name('backend.admins.store');
-    Route::put('admins/{id}','AdminController@update')->name('backend.admins.update');
-    Route::delete('admins/{id}','AdminController@destroy')->name('backend.admins.destroy');
-    Route::put('admin/{id}/password','AdminController@password')->name('backend.admin.password');
+    Route::get('admins','AdminController@index');
+    Route::get('admin/{id}', 'AdminController@show')->where('id', '[0-9]+');
+    Route::get('admin/options', 'AdminController@options');
+    Route::post('admins','AdminController@store');
+    Route::put('admins/{id}','AdminController@update');
+    Route::delete('admins/{id}','AdminController@destroy');
+    Route::put('admin/{id}/password','AdminController@password');
 
-    Route::post('roles','RoleController@store')->name('backend.roles.store');
-    Route::put('roles/{id}','RoleController@update')->name('backend.roles.update');
-    Route::delete('roles/{id}','RoleController@destroy')->name('backend.roles.destroy');
-    Route::get('roles','RoleController@index')->name('backend.roles.index');
-    Route::get('roles/{id}','RoleController@show')->name('backend.roles.show')
+    Route::post('roles','RoleController@store');
+    Route::put('roles/{id}','RoleController@update');
+    Route::delete('roles/{id}','RoleController@destroy');
+    Route::get('roles','RoleController@index');
+    Route::get('roles/{id}','RoleController@show')
         ->where('id','[0-9]+');
-    Route::get('roles/options','RoleController@options')->name('backend.roles.options');
+    Route::get('roles/options','RoleController@options');
 
-    Route::get('admin-action-logs','AdminActionLogController@index')->name('backend.admin-action-logs.index');
+    Route::get('admin-action-logs','AdminActionLogController@index');
 
-    Route::get('frontend-errors','FrontendErrorController@index')->name('backend.frontend-errors.index');
-    Route::post('frontend-errors/flush','FrontendErrorController@flush')->name('backend.frontend-errors.flush');
+    Route::get('frontend-errors','FrontendErrorController@index');
+    Route::post('frontend-errors/flush','FrontendErrorController@flush');
+
+    Route::get('system-logs','SystemLogController@index');
+    Route::get('system-logs/content','SystemLogController@content');
+    Route::delete('system-logs', 'SystemLogController@destroy');
+    Route::get('system/redis','SystemController@redis');
+    Route::get('routes','RouteController@index');
+
 });

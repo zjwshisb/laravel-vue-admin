@@ -49,11 +49,7 @@ class AdminMenuSeeder extends Seeder
         Permission::query()->whereNotIn('name', $allPermission)->delete();
         $roles = \App\Models\Role::query()->get();
         foreach ($roles as $role) {
-            $perm = new \Illuminate\Support\Collection();
-            foreach ($role->menus as $menu) {
-                $perm =  $perm->concat($menu->permissions->pluck('id'));
-            }
-            $role->permissions()->sync($perm);
+           $role->syncMenusToPermission();
         }
     }
 }

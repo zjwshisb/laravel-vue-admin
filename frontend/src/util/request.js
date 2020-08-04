@@ -18,9 +18,15 @@ instance.interceptors.request.use(config => {
   Promise.reject(error)
 })
 instance.interceptors.response.use(response => {
+  if (store.getters.debug && response.data.debug) {
+    store.commit('ADD_LOG', response.data.debug)
+  }
   return Promise.resolve(response.data)
 }, error => {
   if (error.response) {
+    if (store.getters.debug && error.response.data.debug) {
+      store.commit('ADD_LOG', error.response.data.debug)
+    }
     switch (error.response.status) {
       case 401: {
         Modal.error({
@@ -73,10 +79,10 @@ instance.interceptors.response.use(response => {
     }
   } else {
     if (error.message === 'Network Error') {
-      // Modal.error({
-      //   title: 'network error',
-      //   centered: true
-      // })
+      Modal.error({
+        title: 'network error',
+        centered: true
+      })
     } else if (error.code && error.code === 'ECONNABORTED') {
       Modal.error({
         title: '请求服务器超时',
