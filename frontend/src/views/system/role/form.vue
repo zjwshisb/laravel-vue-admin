@@ -69,6 +69,9 @@ export default {
           requireValidator('请选择权限')
         ]
       }
+    },
+    isEdit () {
+      return !!this.id
     }
   },
   methods: {
@@ -80,7 +83,7 @@ export default {
           description: this.form.description,
           menus: this.form.menus.checked
         }
-        if (this.id === '') {
+        if (!this.isEdit) {
           addRole(form).then(res => {
             if (res.code === 0) {
               this.$message.success('新增成功')
@@ -104,7 +107,6 @@ export default {
       }).catch(() => {})
     },
     menuCheck (checkedKeys, e) {
-      console.log(checkedKeys)
       if (e.checked) {
         if (e.node.$parent.dataRef && e.node.$parent.dataRef.id) {
           const selectParent = node => {

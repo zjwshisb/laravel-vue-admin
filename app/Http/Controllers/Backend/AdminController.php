@@ -19,7 +19,8 @@ class AdminController extends BaseController{
         $admin = Admin::query()->findOrFail($id);
         return [
           'username'=> $admin->username,
-          'roles'=> $admin->roles->pluck('id')
+          'roles'=> $admin->roles->pluck('id'),
+            'is_forbidden'=> $admin->is_forbidden
         ];
     }
 
@@ -31,7 +32,9 @@ class AdminController extends BaseController{
 
     public function update(AdminRequest $request,$id) {
         $admin = Admin::query()->findOrFail($id);
+        $admin->is_forbidden = $request->is_forbidden;
         $admin->roles()->sync($request->roles);
+        $admin->save();
         return $this->success(new AdminResource($admin));
 
     }

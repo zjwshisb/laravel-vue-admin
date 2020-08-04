@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use EloquentFilter\Filterable;
+use Illuminate\Session\Store;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,29 +15,30 @@ class Admin extends Authenticatable{
     use Filterable;
     use HasRoles;
 
+
+    public static function boot()
+    {
+        parent::boot();
+    }
+
     protected $fillable = [
-      'username', 'password'
+      'username', 'password', 'is_forbidden'
     ];
 
     public function setPasswordAttribute($val) {
         $this->attributes['password'] = Hash::make($val);
     }
 
+    public function getIsForbiddenAttribute($val) {
+        return  !!$this->attributes['is_forbidden'];
+   }
+
+    public function setIsForbiddenAttribute($val) {
+        $this->attributes['is_forbidden'] = $val ? 1 : 0;
+    }
 
     public function getAvatarAttribute() {
-        if(!$this->attributes['avatar']) {
-            $avatarDir = \Storage::disk('public')->path('avatar');
-            if(!is_dir($avatarDir)) {
-                mkdir($avatarDir);
-            }
-            $path = 'avatar/'. $this->id.".png";
-            $fullPath = \Storage::disk('public')->path($path);
-            $name = pinyin_permalink($this->username, "-");
-            Facade::create($name)->save($fullPath);
-            $this->avatar = $path;
-            $this->save();
-        }
-        return \Storage::disk('public')->url($this->attributes['avatar']);
+        return  $this->attributes['avatar'] ? \Storage::disk('public')->url($this->attributes['avatar']) : '';
     }
 
     public function getMenusAttribute() {

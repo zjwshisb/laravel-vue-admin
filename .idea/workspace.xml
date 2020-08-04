@@ -1,87 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:backend" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="0c433779-ac02-4428-90e4-3928e5202606" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Debug/RedisCollection.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Debug/RequestCollection.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/RouteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/SystemController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/SystemLogController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/api-debugger.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/layout/debug/components/redis.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/layout/debug/components/sql.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/layout/debug/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/system/devops/redis.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/system/devops/route.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/system/log/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/admin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/RoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Permission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/HorizonServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/HorizonServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/adminmenus.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminmenus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AdminMenuSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/system.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/system.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/breadcrumb/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/breadcrumb/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/footer/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/footer/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/header/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/header/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/menu/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/menu/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routeGuard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routeGuard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router/modules/system.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/modules/system.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/debug.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/debug.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/util/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/util/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/admin/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/admin/list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/dashboard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/dashboard/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/devops/frontend-error.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/devops/frontend-error.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AdminMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AdminMenu.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/backend.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/backend.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,16 +13,30 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Less File" />
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="Less File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Backend</find>
+      <find>network error</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>backend</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/backend/src</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -209,26 +146,23 @@
       <path value="$PROJECT_DIR$/vendor/laravolt/avatar" />
       <path value="$PROJECT_DIR$/vendor/overtrue/laravel-pinyin" />
       <path value="$PROJECT_DIR$/vendor/overtrue/pinyin" />
-      <path value="$PROJECT_DIR$/vendor/lanin/laravel-api-debugger" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
-      <path value="$PROJECT_DIR$/vendor/symfony/string" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
-      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectId" id="1bYtLYo8mJkqJj9Rz6boBi2tfp8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -243,17 +177,16 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/config" />
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Backend" />
-      <recent name="$PROJECT_DIR$/frontend/src" />
-      <recent name="$PROJECT_DIR$/frontend/src/store" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\phpStudy\WWW\admin\backend" />
       <recent name="C:\phpStudy\WWW\admin\backend\src\directives" />
       <recent name="$PROJECT_DIR$/backend" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/src/views/403" />
+      <recent name="C:\phpStudy\WWW\admin\backend\tests" />
+      <recent name="C:\phpStudy\WWW\admin\backend\src\router\modules" />
+      <recent name="C:\phpStudy\WWW\admin\backend\src\views\404" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -288,13 +221,14 @@
       <workItem from="1589938344955" duration="24011000" />
       <workItem from="1590024011207" duration="985000" />
       <workItem from="1590025486349" duration="9401000" />
-      <workItem from="1590421466431" duration="10932000" />
-      <workItem from="1596529090353" duration="4847000" />
+      <workItem from="1590421466431" duration="7813000" />
+      <workItem from="1591335153175" duration="5021000" />
+      <workItem from="1592209163834" duration="43000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -306,17 +240,6 @@
       </list>
     </option>
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="WindowStateProjectService">
     <state x="872" y="358" key="#ESLint" timestamp="1588840060861">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -326,11 +249,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1034" y="299" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589442614544" />
-    <state x="663" y="325" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596532105333">
-      <screen x="0" y="23" width="1680" height="929" />
+    <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589784759511">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589784759511" />
-    <state x="663" y="325" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1680.-235.3360.1867/0.23.1680.929@0.23.1680.929" timestamp="1596532105333" />
     <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1590040178092">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -351,10 +273,6 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="92" y="92" width="2376" height="1216" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590026161451" />
-    <state x="628" y="408" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596533031993">
-      <screen x="0" y="23" width="1680" height="929" />
-    </state>
-    <state x="628" y="408" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1680.-235.3360.1867/0.23.1680.929@0.23.1680.929" timestamp="1596533031993" />
     <state x="336" y="398" width="1449" height="802" key="find.popup" timestamp="1589957852181">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -367,16 +285,6 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589505856764" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Requests/Backend/AdminRequest.php</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

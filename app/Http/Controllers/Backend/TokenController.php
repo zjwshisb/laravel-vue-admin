@@ -15,6 +15,9 @@ class TokenController extends BaseController {
             if($admin->is_forbidden) {
                 return $this->fail('账号已禁用', 2);
             }
+            if($admin->menus->count() < 0) {
+                return $this->fail('该账号没有设置权限,无法登录', 3);
+            }
             $admin->auth_token = Str::random(32);
             $admin->last_login_at = now()->toDateTimeString();
             $admin->save();

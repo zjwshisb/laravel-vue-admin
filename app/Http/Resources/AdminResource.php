@@ -12,7 +12,8 @@ class AdminResource extends JsonResource{
           'username'=> $this->username,
             'roles'=> $this->roles->pluck('name')->implode(','),
             'created_at'=> $this->created_at->toDateTimeString(),
-            'last_login_at'=> $this->last_login_at
+            'last_login_at'=> $this->last_login_at,
+            'is_forbidden'=> $this->is_forbidden
         ];
     }
 }
