@@ -1,15 +1,14 @@
 <template>
-  <div>
     <a-page-header :title="title" @back="$router.back()">
       <a-form-model :model="form" :rules="rules" ref="form" :label-col="simpleForm.labelCol" :wrapper-col="simpleForm.wrapperCol">
         <a-form-model-item prop="username" label="用户名">
-          <a-input v-model="form.username" :disabled="isEdit"></a-input>
+          <a-input v-model="form.username" :disabled="isEdit" style="width: 500px"></a-input>
         </a-form-model-item>
         <a-form-model-item prop="password" label="密码" v-if="!isEdit">
-          <a-input v-model="form.password"></a-input>
+          <a-input v-model="form.password" style="width: 500px"></a-input>
         </a-form-model-item>
         <a-form-model-item prop="roles" label="权限组">
-          <a-select
+          <a-select style="width: 500px"
             mode="multiple"
             v-model="form.roles"
             :options="roleOptions"
@@ -25,7 +24,6 @@
         </a-form-model-item>
       </a-form-model>
     </a-page-header>
-  </div>
 </template>
 
 <script>

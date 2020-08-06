@@ -11,10 +11,10 @@ export default {
             span: 24
           },
           md: {
-            span: 4
+            span: 2
           },
           lg: {
-            span: 8
+            span: 2
           }
         },
         wrapperCol: {
@@ -25,10 +25,10 @@ export default {
             span: 24
           },
           md: {
-            span: 16
+            span: 22
           },
           lg: {
-            span: 8
+            span: 22
           }
         },
         noLabel: {
@@ -42,12 +42,12 @@ export default {
               span: 24
             },
             md: {
-              offset: 4,
-              span: 16
+              offset: 2,
+              span: 22
             },
             lg: {
-              offset: 8,
-              span: 8
+              offset: 2,
+              span: 22
             }
           }
         }

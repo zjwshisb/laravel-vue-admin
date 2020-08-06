@@ -41,18 +41,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c433779-ac02-4428-90e4-3928e5202606" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/AdminMenuResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AdminActionRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/AdminActionRecord.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Permission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AdminMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AdminMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/layout/debug/components/redis.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/debug/components/redis.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/layout/debug/components/sql.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/debug/components/sql.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/layout/debug/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/debug/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/menu/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/menu/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/login/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/mixins/simpleForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/mixins/simpleForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +206,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -268,7 +269,8 @@
       <workItem from="1590421466431" duration="7813000" />
       <workItem from="1591335153175" duration="5021000" />
       <workItem from="1592209163834" duration="43000" />
-      <workItem from="1596676506666" duration="5147000" />
+      <workItem from="1596676506666" duration="5149000" />
+      <workItem from="1596695335136" duration="2586000" />
     </task>
     <servers />
   </component>
@@ -318,10 +320,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1590040178092" />
-    <state x="1096" y="623" key="NewPhpFileDialog" timestamp="1590031452264">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="719" y="436" key="NewPhpFileDialog" timestamp="1596697399038">
+      <screen x="0" y="23" width="1680" height="929" />
     </state>
     <state x="1096" y="623" key="NewPhpFileDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590031452264" />
+    <state x="719" y="436" key="NewPhpFileDialog/1680.-235.3360.1867/0.23.1680.929@0.23.1680.929" timestamp="1596697399038" />
     <state x="1104" y="410" key="RollbackChangesDialog" timestamp="1590040591929">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

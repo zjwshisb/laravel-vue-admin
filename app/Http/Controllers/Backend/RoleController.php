@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\RoleRequest;
+use App\Http\Resources\AdminMenuResource;
 use App\Http\Resources\RoleResource;
 use App\Models\AdminMenu;
 use App\Models\Role;
@@ -58,8 +59,9 @@ class RoleController extends BaseController{
     }
 
     public function options() {
-        return AdminMenu::query()->whereNull('parent_id')
-            ->select(['id','name','parent_id', 'has_permission'])
+        $menus = AdminMenu::query()->whereNull('parent_id')
+            ->select(['id','name','parent_id'])
             ->with('children.children.children')->get();
+        return AdminMenuResource::collection($menus);
     }
 }

@@ -1,6 +1,6 @@
 <template>
   <a-modal :visible="visible" :footer="null" @cancel="$emit('update:visible', false)" title="sql" width="1000px"
-           :z-index="1001">
+           :z-index="1010">
     <a-table :data-source="dataSource" :columns="columns" :pagination="false" :rowKey="rowKey"></a-table>
   </a-modal>
 </template>

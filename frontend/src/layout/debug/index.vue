@@ -17,7 +17,6 @@
         <a-icon type="database" />
         <span class="success-color">{{last.database.total}}</span></div>
       <div @click.stop="showRedis(last)">redis(<span class="success-color">{{last.redis.total}}</span>)</div>
-
     </div>
     <a-drawer
       :bodyStyle="{padding: 0}"

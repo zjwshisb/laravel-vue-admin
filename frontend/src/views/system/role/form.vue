@@ -1,71 +1,124 @@
 <template>
-  <div>
-    <a-page-header @back="$router.back()" :title="title">
-      <a-form-model :model="form" ref="form" :rules="rules" :label-col="simpleForm.labelCol" :wrapper-col="simpleForm.wrapperCol">
-        <a-form-model-item prop="name" label="角色名称">
-          <a-input v-model="form.name" :maxLength="32"></a-input>
-        </a-form-model-item>
-        <a-form-model-item prop="description" label="说明">
-          <a-input v-model="form.description" :maxLength="255"></a-input>
-        </a-form-model-item>
-        <a-form-model-item label="权限设置"  prop="menus.checked">
-          <a-tree
-            v-model="form.menus"
-            checkable
-            :tree-data="menus"
-            @check="menuCheck"
-            :checkStrictly="true"
-            :replaceFields="{children:'children', title:'name', key:'id', selectable: 'has_permission'}"
-          />
-        </a-form-model-item>
-        <a-form-model-item :wrapperCol="simpleForm.noLabel.wrapperCol">
-          <a-button type="primary" @click="handleSubmit" :loading="loading.submit">提交</a-button>
-          <a-button @click="() => $router.go(-1)">取消</a-button>
-        </a-form-model-item>
-      </a-form-model>
-    </a-page-header>
-  </div>
+  <a-page-header :title="title" @back="$router.back()">
+    <a-form-model
+      ref="form"
+      :model="form"
+      :rules="rules"
+      :label-col="labelCol"
+      :wrapper-col="wrapperCol"
+      style="margin-top: 20px"
+    >
+      <a-form-model-item label="角色名称" prop="name">
+        <a-input
+          v-model="form.name"
+          placeholder="请输入角色名称"
+          style="width: 500px"
+          allow-clear />
+      </a-form-model-item>
+      <a-form-model-item label="说明" prop="description">
+        <a-textarea
+          v-model="form.description"
+          placeholder="请输入说明"
+          style="width: 500px"
+          :auto-size="{ minRows: 3, maxRows: 5 }"
+          allowClear
+          suffix="x" />
+      </a-form-model-item>
+      <a-divider orientation="left">
+        权限设置
+      </a-divider>
+      <a-form-model-item :wrapper-col="{ span: 22, offset: 2 }" >
+        <a-checkbox :indeterminate="indeterminate" :checked="isCheckAll" @change="e => checkAll(e)" >
+          全选
+        </a-checkbox>
+      </a-form-model-item>
+      <a-form-model-item v-model="form.menus" v-for="root in this.menus" :key="root.id" :label="root.name" prop="menus.checkIds" >
+        <a-checkbox :checked="isCheck(m)" v-for="m in root.children" :key="m.index" @change="e => checkChange(e, m)">
+          {{ m.name }}
+          <a-popover placement="right">
+            <template slot="title">
+              <div class="font">
+                子权限
+              </div>
+            </template>
+            <template slot="content">
+              <div v-for="sm in m.children" :key="sm.id" style="margin: 5px">
+                <a-checkbox :checked="isCheck(sm)" @change="e => checkChange(e, sm, m)" >
+                  {{ sm.name }}
+                </a-checkbox>
+                <div v-if="sm.children && sm.children.length > 0" style="margin: 8px 0 8px 30px">
+                  <a-checkbox :checked="isCheck(smm)" v-for="smm in sm.children" :key="smm.id" @change="e => checkChange(e, smm, sm, m)">
+                    {{ smm.name }}
+                  </a-checkbox>
+                </div>
+              </div>
+            </template>
+            <a-icon v-if="m.children && m.children.length > 0" type="unordered-list" @click.stop.prevent style="margin-right: 20px" />
+          </a-popover>
+        </a-checkbox>
+      </a-form-model-item>
+      <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
+        <a-button type="primary" @click="handleSubmit" :loading="loading.submit">提交</a-button>
+        <a-button style=" margin-left: 10px;" @click="() => $router.back()">取消</a-button>
+      </a-form-model-item>
+    </a-form-model>
+  </a-page-header>
 </template>
-
 <script>
 import SimpleForm from '@/mixins/simpleForm'
-import { addRole, getRole, getRoleOption, updateRole } from '../../../api/system'
 import { requireValidator } from '../../../util/validator'
-
+import { getRoleOption, addRole, updateRole, getRole } from '../../../api/system'
 export default {
   name: 'add',
-  mixins: [SimpleForm],
+  mixin: [SimpleForm],
   data () {
     return {
-      menus: [],
       id: '',
+      labelCol: { span: 2 },
+      wrapperCol: { span: 14 },
+      indeterminate: false,
+      isCheckAll: false,
+      checkIdsSet: new Set(),
+      menus: [],
       form: {
         name: '',
         description: '',
         menus: {
-          checked: [],
-          halfChecked: []
+          checkIds: []
         }
       },
-      columns: [
-        {
-          dataIndex: 'name',
-          key: 'id'
-        }
-      ],
       loading: {
         submit: false
       }
     }
   },
   computed: {
+    menuTotal () {
+      let i = 0
+      const func = menu => {
+        i++
+        if (menu.children && menu.children.length > 0) {
+          console.log(menu.children)
+          for (const child of menu.children) {
+            func(child)
+          }
+        }
+      }
+      for (const m of this.menus) {
+        for (const c of m.children) {
+          func(c)
+        }
+      }
+      return i
+    },
     title () {
-      if (this.isEdit) {
+      if (this.id) {
         return '编辑'
       } else {
         return '新增'
       }
     },
+    /* 验证规则 */
     rules () {
       return {
         name: [
@@ -78,21 +131,19 @@ export default {
           requireValidator('请选择权限')
         ]
       }
-    },
-    isEdit () {
-      return !!this.id
     }
   },
   methods: {
+    /* 提交数据 */
     handleSubmit () {
       this.$refs.form.validate().then(res => {
         this.loading.submit = true
         const form = {
           name: this.form.name,
           description: this.form.description,
-          menus: this.form.menus.checked
+          menus: this.form.menus.checkIds
         }
-        if (!this.isEdit) {
+        if (this.id === '') {
           addRole(form).then(res => {
             if (res.code === 0) {
               this.$message.success('新增成功')
@@ -115,75 +166,95 @@ export default {
         }
       }).catch(() => {})
     },
-    menuCheck (checkedKeys, e) {
-      if (e.checked) {
-        if (e.node.$parent.dataRef && e.node.$parent.dataRef.id) {
-          const selectParent = node => {
-            const parent = node.$parent
-            const pid = parent.dataRef.id
-            if (this.form.menus && this.form.menus.checked) {
-              if (this.form.menus.checked.findIndex(v => v === pid) === -1) {
-                this.form.menus.checked.push(pid)
-              }
-            }
-            if (parent.$parent && parent.$parent.dataRef && parent.$parent.dataRef.id) {
-              selectParent(node.$parent)
-            }
-          }
-          selectParent(e.node)
-        }
+    /* 判断全选框样式 */
+    isIndeterminate () {
+      this.indeterminate = !!this.form.menus.checkIds.length && this.form.menus.checkIds.length < this.menuTotal
+      this.isCheckAll = this.form.menus.checkIds.length === this.menuTotal
+    },
+    checkAll (e) {
+      if (e.target.checked) {
+        this.menus.forEach((item) => {
+          item.children.forEach(c => {
+            this.handleCheck(c, true)
+          })
+        })
       } else {
-        const hadPermission = e.node.dataRef.has_permission
-        if (hadPermission === 1) {
-          const func = node => {
-            for (const child of node.$children) {
-              if (child.dataRef && child.dataRef.id) {
-                const pid = child.dataRef.id
-                const index = this.form.menus.checked.findIndex(v => v === pid)
-                if (index > -1) {
-                  this.form.menus.checked.splice(index, 1)
-                }
-                if (child.$children && child.$children.length > 0) {
-                  func(child)
-                }
-              }
-            }
+        this.menus.forEach((item) => {
+          item.children.forEach(c => {
+            this.handleUncheck(item)
+          })
+        })
+      }
+      this.isIndeterminate()
+    },
+    /* 判断当前多选框是否已选中 */
+    isCheck (m) {
+      return this.form.menus.checkIds.findIndex((v) => v === m.id) > -1
+    },
+    handleCheck (m, checkChildren = false) {
+      this.checkIdsSet.add(m.id)
+      this.form.menus.checkIds = [...this.checkIdsSet]
+      if (checkChildren) {
+        if (m.children && m.children.length > 0) {
+          for (const i of m.children) {
+            this.handleCheck(i, checkChildren)
           }
-          func(e.node)
         }
       }
+    },
+    handleUncheck (m) {
+      this.checkIdsSet.delete(m.id)
+      this.form.menus.checkIds = [...this.checkIdsSet]
+      if (m.children && m.children.length > 0) {
+        for (const i of m.children) {
+          this.handleUncheck(i)
+        }
+      }
+    },
+    checkChange (e, item, pitem = null, ppitem = null) {
+      if (e.target.checked) {
+        this.handleCheck(item, true)
+        if (pitem) {
+          this.handleCheck(pitem)
+        }
+        if (ppitem) {
+          this.handleCheck(ppitem)
+        }
+      } else {
+        this.handleUncheck(item)
+      }
+      this.isIndeterminate()
+      // console.log(this.form.menus.checkIds)
     }
   },
   created () {
-    getRoleOption({}).then(res => {
-      const filterChildren = menu => {
-        if (menu.children) {
-          if (menu.children.length === 0) {
-            delete menu.children
-          } else {
-            for (const child of menu.children) {
-              filterChildren(child)
-            }
-          }
-        }
-      }
-      for (const x of res) {
-        filterChildren(x)
-      }
-      this.menus = res
+    /* 获取权限设置选项 */
+    getRoleOption().then(res => {
+      this.menus = res.data
     })
+    /* 编辑页面 */
     if (this.$route.params.id) {
       this.id = this.$route.params.id
       getRole(this.id).then(res => {
         this.form.name = res.name
-        this.form.menus = res.menus
+        this.form.menus.checkIds = res.menus
         this.form.description = res.description
+        if (res.menus && res.menus.length > 0) {
+          this.isIndeterminate()
+          res.menus.forEach((item) => {
+            this.checkIdsSet.add(item)
+          })
+        }
       })
     }
   }
+
 }
 </script>
 
-<style scoped>
-
+<style>
+  .font{
+    font-size: 17px;
+    font-weight: bold;
+  }
 </style>
