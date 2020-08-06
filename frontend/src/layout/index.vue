@@ -2,7 +2,7 @@
   <a-layout class="main-container">
       <a-layout>
         <m-menu></m-menu>
-        <a-layout class="right-container">
+        <a-layout class="right-container" :style="{ marginLeft:$store.getters.currentMenuWidth + 'px' }">
           <m-header></m-header>
           <breadcrumb></breadcrumb>
           <a-layout-content class="content-container" :style="styles">

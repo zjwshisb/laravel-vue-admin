@@ -52,16 +52,11 @@ export default {
         this.$store.dispatch('login', this.form).then(res => {
           this.loading = false
           this.$store.dispatch('getUserInfo').then(() => {
-            this.$router.push('/system/dashboard').catch(() => {
+            this.$router.push(this.$store.getters.indexRoute).catch(() => {
             })
           })
         }).catch(res => {
-          if (res.message) {
-            this.$error({
-              title: res.message
-            })
-            this.loading = false
-          }
+          this.loading = false
         })
       }).catch(() => {})
     }

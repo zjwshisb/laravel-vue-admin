@@ -13,6 +13,17 @@ class AdminMenu extends Model{
         return !!$this->has_permission;
     }
 
+    public function getBreadcrumb(){
+        $title= [];
+        $_this = $this;
+        $title[] = $_this->name;
+        while($_this->parent) {
+            $_this = $_this->parent;
+            $title[] = $_this->name;
+        };
+        return implode('>', array_reverse($title));
+    }
+
     public function permissions() {
         return $this->belongsToMany(Permission::class,
             'admin_menu_permissions','menu_id','permission_id');

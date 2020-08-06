@@ -21,16 +21,13 @@ class AdminActionRecord {
         $res = $next($request);
         $method = $request->getMethod();
         if(!in_array($method, $this->ignores)) {
-            $menu = AdminMenu::query()->whereHas('permissions',function ($query){
-               $query->where('name', Route::currentRouteName())
+            $action = Route::current()->getAction()['controller'] ?? '';
+            $menu = AdminMenu::query()->whereHas('permissions',function ($query) use ($action){
+               $query->where('name', $action)
                    ->where('guard_name', 'admin');
             })->first();
             if($menu) {
-                $name[] = $menu->name;
-                while ($menu->parent) {
-                    $menu = $menu->parent;
-                    $name[] = $menu->name;
-                }
+                $breadcrumb = $menu->getBreadcrumb();
             }
             AdminActionLog::query()->create([
                 'admin_id' => \Auth::id(),
@@ -40,7 +37,7 @@ class AdminActionRecord {
                 'route_params' => Route::current()->parameters,
                 'ip'=> $request->getClientIp(),
                 'created_at'=> now()->toDateTimeString(),
-                'name'=> isset($name) ? implode('>', array_reverse($name)) : ''
+                'name'=> $breadcrumb ?? ''
             ]);
         }
         return $res;

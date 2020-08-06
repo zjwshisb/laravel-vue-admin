@@ -1,10 +1,11 @@
 <template>
-  <a-layout-sider class="left-menu" width="200" v-model="collapsed"  breakpoint="sm" :collapsed-width="collapsedWidth"
+  <a-layout-sider class="left-menu" :width="$store.getters.leftMenuWidth" v-model="collapsed"  breakpoint="sm"
+                  :collapsed-width="$store.getters.collapsedWidth"
    @breakpoint="breakpoint"
    :zeroWidthTriggerStyle="triggerStyle">
     <div class="logo">
       <a-icon type="html5" v-if="collapsed"></a-icon>
-      <span v-else>唯绿erp</span>
+      <span v-else>laravel-vue-admin</span>
     </div>
     <template v-for="module in syncRoutes">
       <a-menu mode="inline" @click="go" v-show="module.key === currentModule" :key="module.key"  theme="dark"
@@ -64,13 +65,6 @@ export default {
       set (val) {
         this.$store.commit('UPDATE_MENU_STATUS', val)
       }
-    },
-    collapsedWidth () {
-      if (this.$store.getters.isMobile) {
-        return 0
-      } else {
-        return 80
-      }
     }
   },
   methods: {
@@ -102,4 +96,9 @@ export default {
   text-align: center;
   font-style: italic
 }
+  .left-menu{
+    position: fixed;
+    min-height: 100%;
+    z-index: 1001;
+  }
 </style>

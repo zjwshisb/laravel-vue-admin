@@ -9,18 +9,21 @@ use Illuminate\Support\Facades\Route;
  * @package App\Http\Middleware
  */
 class Permission {
+    /**
+     * @param $request
+     * @param Closure $next
+     * @return mixed
+     * @throws AuthorizationException
+     */
     public function handle($request, Closure $next)
     {
         $user = \Auth::user();
         if($user && $user->is_super != 1) {
-            $route = Route::current()->getAction()['controller'] ?? '';
-            \Log::error($route);
-            if ($user->can($route)) {
+            $action = Route::current()->getAction()['controller'] ?? '';
+            if (!$action || $user->can($action)) {
                 return $next($request);
-            } else {
-               throw new AuthorizationException();
             }
         }
-        return $next($request);
+        throw new AuthorizationException();
     }
 }

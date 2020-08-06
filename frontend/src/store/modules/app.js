@@ -2,7 +2,8 @@ const app = {
   state: {
     menuHidden: false,
     menuActiveKeys: [],
-    isMobile: false
+    isMobile: false,
+    leftMenuWidth: 200
   },
   mutations: {
     UPDATE_MENU_STATUS (state, status) {
@@ -20,7 +21,24 @@ const app = {
   getters: {
     menuHidden: state => state.menuHidden,
     isMobile: state => state.isMobile,
-    menuActiveKeys: state => state.menuActiveKeys
+    menuActiveKeys: state => state.menuActiveKeys,
+    leftMenuWidth: state => state.leftMenuWidth,
+    currentMenuWidth: state => {
+      if (state.isMobile) {
+        return 0
+      }
+      if (state.menuHidden) {
+        return 80
+      }
+      return state.leftMenuWidth
+    },
+    collapsedWidth: state => {
+      if (state.isMobile) {
+        return 0
+      } else {
+        return 80
+      }
+    }
   }
 }
 export default app

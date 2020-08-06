@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:backend" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0c433779-ac02-4428-90e4-3928e5202606" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AdminActionRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/AdminActionRecord.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Permission.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/AdminMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AdminMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/layout/debug/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/debug/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/layout/menu/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/menu/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/login/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,9 +61,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -26,20 +72,14 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Backend</find>
-      <find>network error</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>backend</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/backend/src</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -146,23 +186,26 @@
       <path value="$PROJECT_DIR$/vendor/laravolt/avatar" />
       <path value="$PROJECT_DIR$/vendor/overtrue/laravel-pinyin" />
       <path value="$PROJECT_DIR$/vendor/overtrue/pinyin" />
+      <path value="$PROJECT_DIR$/vendor/lanin/laravel-api-debugger" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
   </component>
   <component name="ProjectId" id="1bYtLYo8mJkqJj9Rz6boBi2tfp8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -173,7 +216,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -183,6 +226,7 @@
       <recent name="$PROJECT_DIR$/backend" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend" />
       <recent name="$PROJECT_DIR$/backend/src/views/403" />
       <recent name="C:\phpStudy\WWW\admin\backend\tests" />
       <recent name="C:\phpStudy\WWW\admin\backend\src\router\modules" />
@@ -224,11 +268,12 @@
       <workItem from="1590421466431" duration="7813000" />
       <workItem from="1591335153175" duration="5021000" />
       <workItem from="1592209163834" duration="43000" />
+      <workItem from="1596676506666" duration="5147000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -240,11 +285,27 @@
       </list>
     </option>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="872" y="358" key="#ESLint" timestamp="1588840060861">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="872" y="358" key="#ESLint/0.0.2560.1400@0.0.2560.1400" timestamp="1588840060861" />
+    <state x="304" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596535054560">
+      <screen x="0" y="23" width="1680" height="929" />
+    </state>
+    <state x="304" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/1680.-235.3360.1867/0.23.1680.929@0.23.1680.929" timestamp="1596535054560" />
     <state x="1034" y="299" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1589442614544">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -265,10 +326,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1104" y="410" key="RollbackChangesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590040591929" />
-    <state x="781" y="342" key="SettingsEditor" timestamp="1589945347674">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="513" y="230" key="SettingsEditor" timestamp="1596679656991">
+      <screen x="0" y="23" width="1680" height="929" />
     </state>
     <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1589945347674" />
+    <state x="513" y="230" key="SettingsEditor/1680.-235.3360.1867/0.23.1680.929@0.23.1680.929" timestamp="1596679656991" />
     <state x="92" y="92" width="2376" height="1216" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590026161451">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

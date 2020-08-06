@@ -1,28 +1,30 @@
 <template>
   <div>
-    <a-form-model :model="form" :rules="rules" ref="form" :label-col="simpleForm.labelCol" :wrapper-col="simpleForm.wrapperCol">
-      <a-form-model-item prop="username" label="用户名">
-        <a-input v-model="form.username" :disabled="isEdit"></a-input>
-      </a-form-model-item>
-      <a-form-model-item prop="password" label="密码" v-if="!isEdit">
-        <a-input v-model="form.password"></a-input>
-      </a-form-model-item>
-      <a-form-model-item prop="roles" label="权限组">
-        <a-select
-          mode="multiple"
-          v-model="form.roles"
-          :options="roleOptions"
-          allowClear
-        />
-      </a-form-model-item>
-      <a-form-model-item prop="is_forbidden" label="禁用" >
-        <a-switch v-model="form.is_forbidden" />
-      </a-form-model-item>
-      <a-form-model-item :wrapperCol="simpleForm.noLabel.wrapperCol">
-        <a-button type="primary" @click="handleSubmit" :loading="loading.submit">提交</a-button>
-        <a-button @click="() => $router.back()">取消</a-button>
-      </a-form-model-item>
-    </a-form-model>
+    <a-page-header :title="title" @back="$router.back()">
+      <a-form-model :model="form" :rules="rules" ref="form" :label-col="simpleForm.labelCol" :wrapper-col="simpleForm.wrapperCol">
+        <a-form-model-item prop="username" label="用户名">
+          <a-input v-model="form.username" :disabled="isEdit"></a-input>
+        </a-form-model-item>
+        <a-form-model-item prop="password" label="密码" v-if="!isEdit">
+          <a-input v-model="form.password"></a-input>
+        </a-form-model-item>
+        <a-form-model-item prop="roles" label="权限组">
+          <a-select
+            mode="multiple"
+            v-model="form.roles"
+            :options="roleOptions"
+            allowClear
+          />
+        </a-form-model-item>
+        <a-form-model-item prop="is_forbidden" label="禁用" >
+          <a-switch v-model="form.is_forbidden" />
+        </a-form-model-item>
+        <a-form-model-item :wrapperCol="simpleForm.noLabel.wrapperCol">
+          <a-button type="primary" @click="handleSubmit" :loading="loading.submit">提交</a-button>
+          <a-button @click="() => $router.back()">取消</a-button>
+        </a-form-model-item>
+      </a-form-model>
+    </a-page-header>
   </div>
 </template>
 
@@ -51,6 +53,13 @@ export default {
     }
   },
   computed: {
+    title () {
+      if (this.isEdit) {
+        return '编辑'
+      } else {
+        return '新增'
+      }
+    },
     isEdit () {
       return this.id !== ''
     },

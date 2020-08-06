@@ -1,27 +1,29 @@
 <template>
   <div>
-    <a-form-model :model="form" ref="form" :rules="rules" :label-col="simpleForm.labelCol" :wrapper-col="simpleForm.wrapperCol">
-      <a-form-model-item prop="name" label="角色名称">
-        <a-input v-model="form.name" :maxLength="32"></a-input>
-      </a-form-model-item>
-      <a-form-model-item prop="description" label="说明">
-        <a-input v-model="form.description" :maxLength="255"></a-input>
-      </a-form-model-item>
-      <a-form-model-item label="权限设置"  prop="menus.checked">
-        <a-tree
-          v-model="form.menus"
-          checkable
-          :tree-data="menus"
-          @check="menuCheck"
-          :checkStrictly="true"
-          :replaceFields="{children:'children', title:'name', key:'id', selectable: 'has_permission'}"
-        />
-      </a-form-model-item>
-      <a-form-model-item :wrapperCol="simpleForm.noLabel.wrapperCol">
-        <a-button type="primary" @click="handleSubmit" :loading="loading.submit">提交</a-button>
-        <a-button @click="() => $router.go(-1)">取消</a-button>
-      </a-form-model-item>
-    </a-form-model>
+    <a-page-header @back="$router.back()" :title="title">
+      <a-form-model :model="form" ref="form" :rules="rules" :label-col="simpleForm.labelCol" :wrapper-col="simpleForm.wrapperCol">
+        <a-form-model-item prop="name" label="角色名称">
+          <a-input v-model="form.name" :maxLength="32"></a-input>
+        </a-form-model-item>
+        <a-form-model-item prop="description" label="说明">
+          <a-input v-model="form.description" :maxLength="255"></a-input>
+        </a-form-model-item>
+        <a-form-model-item label="权限设置"  prop="menus.checked">
+          <a-tree
+            v-model="form.menus"
+            checkable
+            :tree-data="menus"
+            @check="menuCheck"
+            :checkStrictly="true"
+            :replaceFields="{children:'children', title:'name', key:'id', selectable: 'has_permission'}"
+          />
+        </a-form-model-item>
+        <a-form-model-item :wrapperCol="simpleForm.noLabel.wrapperCol">
+          <a-button type="primary" @click="handleSubmit" :loading="loading.submit">提交</a-button>
+          <a-button @click="() => $router.go(-1)">取消</a-button>
+        </a-form-model-item>
+      </a-form-model>
+    </a-page-header>
   </div>
 </template>
 
@@ -57,6 +59,13 @@ export default {
     }
   },
   computed: {
+    title () {
+      if (this.isEdit) {
+        return '编辑'
+      } else {
+        return '新增'
+      }
+    },
     rules () {
       return {
         name: [
