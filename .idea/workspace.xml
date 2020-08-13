@@ -41,19 +41,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c433779-ac02-4428-90e4-3928e5202606" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/AdminMenuResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/admin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/RoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/debug/components/redis.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/debug/components/redis.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/debug/components/sql.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/debug/components/sql.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/debug/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/debug/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/mixins/simpleForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/mixins/simpleForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/admin/form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/system/role/form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vue.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/laravolt/avatar.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +67,7 @@
       </list>
     </option>
   </component>
+  <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -183,10 +178,6 @@
       <path value="$PROJECT_DIR$/vendor/tucker-eric/eloquentfilter" />
       <path value="$PROJECT_DIR$/vendor/cakephp/chronos" />
       <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
-      <path value="$PROJECT_DIR$/vendor/intervention/image" />
-      <path value="$PROJECT_DIR$/vendor/laravolt/avatar" />
-      <path value="$PROJECT_DIR$/vendor/overtrue/laravel-pinyin" />
-      <path value="$PROJECT_DIR$/vendor/overtrue/pinyin" />
       <path value="$PROJECT_DIR$/vendor/lanin/laravel-api-debugger" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
@@ -195,6 +186,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/mnabialek/laravel-sql-logger" />
+      <path value="$PROJECT_DIR$/vendor/mnabialek/laravel-version" />
     </include_path>
   </component>
   <component name="ProjectId" id="1bYtLYo8mJkqJj9Rz6boBi2tfp8" />
@@ -205,7 +199,11 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -234,6 +232,7 @@
       <recent name="C:\phpStudy\WWW\admin\backend\src\views\404" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -270,7 +269,9 @@
       <workItem from="1591335153175" duration="5021000" />
       <workItem from="1592209163834" duration="43000" />
       <workItem from="1596676506666" duration="5149000" />
-      <workItem from="1596695335136" duration="2586000" />
+      <workItem from="1596695335136" duration="3277000" />
+      <workItem from="1597281299503" duration="3383000" />
+      <workItem from="1597286274347" duration="670000" />
     </task>
     <servers />
   </component>
