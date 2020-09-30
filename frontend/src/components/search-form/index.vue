@@ -13,7 +13,7 @@ export default {
       default () {
         return {
           xs: 24,
-          sm: 4,
+          sm: 6,
           md: 5,
           lg: 5,
           xl: 4,
@@ -26,7 +26,7 @@ export default {
       default () {
         return {
           xs: 24,
-          sm: 20,
+          sm: 18,
           md: 19,
           lg: 19,
           xl: 20,

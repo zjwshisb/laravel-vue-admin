@@ -35,10 +35,9 @@ const module = {
       children: [
         {
           path: 'account',
-          component: () => import('@/views/system/admin/index'), // 此组件只有一个 router-view
+          component: () => import('@/views/index'), // 此组件只有一个 router-view
           meta: {
-            title: '账号列表',
-            activeMenuName: 'SystemAccountLayout'
+            title: '账号列表'
           },
           children: [ // 三级子菜单，通过页面导航跳转
             {
@@ -97,7 +96,7 @@ const module = {
           meta: {
             title: '权限组'
           },
-          component: () => import('@/views/system/role/index'),
+          component: () => import('@/views/index'),
           children: [
             {
               path: '',

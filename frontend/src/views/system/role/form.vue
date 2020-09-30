@@ -12,14 +12,12 @@
         <a-input
           v-model="form.name"
           placeholder="请输入角色名称"
-          style="width: 500px"
           allow-clear />
       </a-form-model-item>
       <a-form-model-item label="说明" prop="description">
         <a-textarea
           v-model="form.description"
           placeholder="请输入说明"
-          style="width: 500px"
           :auto-size="{ minRows: 3, maxRows: 5 }"
           allowClear
           suffix="x" />
@@ -66,8 +64,8 @@
 </template>
 <script>
 import SimpleForm from '@/mixins/simpleForm'
-import { requireValidator } from '../../../util/validator'
-import { getRoleOption, addRole, updateRole, getRole } from '../../../api/system'
+import { requireValidator } from '@/util/validator'
+import { getRoleOption, addRole, updateRole, getRole } from '@/api/system'
 export default {
   name: 'add',
   mixin: [SimpleForm],
@@ -98,7 +96,6 @@ export default {
       const func = menu => {
         i++
         if (menu.children && menu.children.length > 0) {
-          console.log(menu.children)
           for (const child of menu.children) {
             func(child)
           }
@@ -168,7 +165,7 @@ export default {
     },
     /* 判断全选框样式 */
     isIndeterminate () {
-      this.indeterminate = !!this.form.menus.checkIds.length && this.form.menus.checkIds.length < this.menuTotal
+      this.indeterminate = this.form.menus.checkIds.length > 0 && this.form.menus.checkIds.length < this.menuTotal
       this.isCheckAll = this.form.menus.checkIds.length === this.menuTotal
     },
     checkAll (e) {
@@ -224,31 +221,28 @@ export default {
         this.handleUncheck(item)
       }
       this.isIndeterminate()
-      // console.log(this.form.menus.checkIds)
     }
   },
   created () {
     /* 获取权限设置选项 */
     getRoleOption().then(res => {
       this.menus = res.data
+      if (this.$route.params.id) {
+        this.id = this.$route.params.id
+        getRole(this.id).then(res => {
+          this.form.name = res.name
+          this.form.menus.checkIds = res.menus
+          this.form.description = res.description
+          if (res.menus && res.menus.length > 0) {
+            this.isIndeterminate()
+            res.menus.forEach((item) => {
+              this.checkIdsSet.add(item)
+            })
+          }
+        })
+      }
     })
-    /* 编辑页面 */
-    if (this.$route.params.id) {
-      this.id = this.$route.params.id
-      getRole(this.id).then(res => {
-        this.form.name = res.name
-        this.form.menus.checkIds = res.menus
-        this.form.description = res.description
-        if (res.menus && res.menus.length > 0) {
-          this.isIndeterminate()
-          res.menus.forEach((item) => {
-            this.checkIdsSet.add(item)
-          })
-        }
-      })
-    }
   }
-
 }
 </script>
 
