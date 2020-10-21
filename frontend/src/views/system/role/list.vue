@@ -1,15 +1,11 @@
 <template>
   <div>
     <div class="filter-container">
-      <search-form>
-        <a-row :gutter="12">
-          <search-form-col>
-            <a-form-item>
-              <a-button v-pid="12100" type="primary" icon="plus" @click="$router.push({name: 'SystemRoleAdd'})">新增</a-button>
-            </a-form-item>
-          </search-form-col>
-        </a-row>
-      </search-form>
+      <a-form layout="inline">
+        <a-form-item>
+          <a-button v-pid="12100" type="primary" icon="plus" @click="$router.push({name: 'SystemRoleAdd'})">新增</a-button>
+        </a-form-item>
+      </a-form>
     </div>
     <a-table :data-source="list" :columns="columns" bordered rowKey="id" :pagination="pagination"
              :loading="loading.table" @change="tableChange">

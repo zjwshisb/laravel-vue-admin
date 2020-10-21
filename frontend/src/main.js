@@ -9,14 +9,9 @@ import './routeGuard'
 import './directives/permission'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
-import SearchForm from './components/search-form'
-import SearchFormCol from './components/search-form/col'
 import { errorReport } from './api/system'
 moment.locale('zh-cn')
 Vue.use(antdv)
-
-Vue.component('search-form', SearchForm)
-Vue.component('search-form-col', SearchFormCol)
 
 Vue.config.productionTip = false
 Vue.config.errorHandler = (error, vm, info) => {

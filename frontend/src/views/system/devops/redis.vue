@@ -1,15 +1,11 @@
 <template>
   <div>
     <div class="filter-container">
-      <search-form>
-        <a-row>
-          <search-form-col>
-            <a-form-item label="key">
-              <a-input v-model="key"></a-input>
-            </a-form-item>
-          </search-form-col>
-        </a-row>
-      </search-form>
+      <a-form layout="inline">
+        <a-form-item label="key">
+          <a-input v-model="key"></a-input>
+        </a-form-item>
+      </a-form>
     </div>
     <a-table :data-source="data" :columns="columns" row-key="key" bordered
              :loading="loading" :pagination="false"></a-table>

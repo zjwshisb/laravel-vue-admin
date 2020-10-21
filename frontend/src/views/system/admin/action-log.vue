@@ -1,25 +1,15 @@
 <template>
   <div>
     <div class="filter-container">
-      <search-form>
-        <a-row :gutter="12">
-          <search-form-col>
-            <a-form-item label="操作人">
-              <a-input placeholder="操作人" v-model="query.admin" allowClear></a-input>
-            </a-form-item>
-          </search-form-col>
-          <search-form-col>
-            <a-form-item label="操作">
-              <a-input placeholder="操作" v-model="query.name" allowClear></a-input>
-            </a-form-item>
-          </search-form-col>
-          <search-form-col>
-            <a-form-item>
-              <a-button icon="search" @click="getData(true)">查询</a-button>
-            </a-form-item>
-          </search-form-col>
-        </a-row>
-      </search-form>
+      <a-form layout="inline">
+        <a-form-item label="操作人">
+          <a-input class="filter-item"  placeholder="操作人" v-model="query.admin" allowClear></a-input>
+        </a-form-item>
+        <a-form-item label="操作">
+          <a-input class="filter-item" placeholder="操作" v-model="query.name" allowClear></a-input>
+        </a-form-item>
+        <a-button icon="search" @click="getData(true)">查询</a-button>
+      </a-form>
     </div>
     <a-table :data-source="list" :columns="columns" bordered rowKey="id" :pagination="pagination"
              :loading="loading.table" :scroll="{x: $store.getters.isMobile}"

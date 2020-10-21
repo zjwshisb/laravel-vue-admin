@@ -1,21 +1,15 @@
 <template>
   <div>
     <div class="filter-container">
-      <search-form>
-        <a-row :gutter="12">
-          <search-form-col>
-            <a-form-item label="用户名">
-              <a-input placeholder="请输入用户名" v-model="query.username" allow-clear></a-input>
-            </a-form-item>
-          </search-form-col>
-          <search-form-col>
-            <a-form-item>
-              <a-button icon="search" @click="getAdminList(true)">查询</a-button>
-              <a-button v-pid="11100" type="primary" icon="plus" @click="$router.push({name: 'SystemAccountAdd'})">新增</a-button>
-            </a-form-item>
-          </search-form-col>
-        </a-row>
-      </search-form>
+      <a-form layout="inline">
+        <a-form-item label="用户名">
+          <a-input class="filter-item" placeholder="请输入用户名" v-model="query.username" allow-clear></a-input>
+        </a-form-item>
+        <a-form-item>
+          <a-button icon="search" @click="getAdminList(true)">查询</a-button>
+          <a-button v-pid="11100" type="primary" icon="plus" @click="$router.push({name: 'SystemAccountAdd'})">新增</a-button>
+        </a-form-item>
+      </a-form>
     </div>
     <a-table :data-source="list" :columns="columns" bordered rowKey="id" :pagination="pagination"
              :loading="loading.table"

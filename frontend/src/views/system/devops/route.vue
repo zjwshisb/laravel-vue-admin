@@ -1,16 +1,11 @@
 <template>
   <div>
     <div class="filter-container">
-      <search-form>
-        <a-row :gutter="12">
-          <search-form-col>
-            <a-form-item label="name">
-              <a-input v-model="query.name" placeholder="name" />
-            </a-form-item>
-          </search-form-col>
-        </a-row>
-      </search-form>
-
+      <a-form layout="inline">
+        <a-form-item label="name">
+          <a-input v-model="query.name" placeholder="name" />
+        </a-form-item>
+      </a-form>
     </div>
     <a-table
       :data-source="filterData"
